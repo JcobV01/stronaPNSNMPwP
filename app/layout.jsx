@@ -1,5 +1,5 @@
-import React from 'react'
 import '@styles/global.css';
+import { headers } from 'next/headers';
 
 export const metadata = {
     title: "Parafia Przybysławice",
@@ -7,9 +7,21 @@ export const metadata = {
 }
 
 const RootLayout = ({ children }) => {
+    const heads = headers()
+    const pathname = heads.get("x-pathname")
+
     return (
         <html lang="pl-PL">
             <body>
+                {pathname === "/" ? 
+                <header>
+                    Strona główna
+                </header>
+                :
+                <header>
+                    Strony poboczne
+                </header>
+                }
                 <main>
                     {children}
                 </main>
