@@ -1,10 +1,20 @@
-import React from 'react'
+import Galeria from "@components/home/Galeria"
+import Grupy from "@components/home/Grupy"
+import Kalendarz from "@components/home/Kalendarz"
+import Kontakt from "@components/home/Kontakt"
+import Parafia from "@components/home/parafia"
+import Quote from "@components/quote"
 
 const page = () => {
   return (
-    <header>
-      <h1 className='flex-center'>PARAFIA PRZYBYSŁAWICE</h1>
-    </header>
+    <>
+      <Parafia/>
+      <Kalendarz/>
+      <Grupy/>
+      <Galeria/>
+      <Kontakt/>
+      <Quote text="test" author="św. Jan Paweł II"/>
+    </>
   )
 }
 

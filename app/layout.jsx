@@ -1,3 +1,4 @@
+import Footer from '@components/Footer';
 import '@styles/global.css';
 import { headers } from 'next/headers';
 
@@ -25,6 +26,7 @@ const RootLayout = ({ children }) => {
                 <main>
                     {children}
                 </main>
+                <Footer/>
             </body>
         </html>
     )
