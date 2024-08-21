@@ -52,7 +52,7 @@ const Grupy = () => {
         <article className='flex flex-wrap justify-center gap-[30px]'>
           {
             data.map((card) => (
-              <GroupsCard icon={card.icon} name={card.name} desc={card.desc} link="#"/>
+              <GroupsCard icon={card.icon} name={card.name} desc={card.desc} link="#" key={card.name}/>
             ))
           }
         </article>
