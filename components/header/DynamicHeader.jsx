@@ -82,7 +82,7 @@ const DynamicHeader = () => {
                     </div>
                 </header>
                 :
-                <header className="w-full h-[605px] bg-cover bg-center" style={{ backgroundImage: `url(${headerImage.src})` }}>
+                <header className="w-full h-[405px] bg-cover bg-center" style={{ backgroundImage: `url(${headerImage.src})` }}>
                     <div className="w-full h-full bg-[#00000090]">
                         <section className='z-10 relative'>
 
