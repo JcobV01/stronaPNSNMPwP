@@ -1,6 +1,6 @@
 import Galeria from "@components/home/Galeria"
 import Grupy from "@components/home/Grupy"
-import Kalendarz from "@components/home/Kalendarz"
+import Kalendarz from "@components/home/kalendarz/Kalendarz"
 import Kontakt from "@components/home/Kontakt"
 import Parafia from "@components/home/parafia/Parafia"
 import Quote from "@components/quote"
