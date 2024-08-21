@@ -13,7 +13,7 @@ const page = () => {
       <Grupy/>
       <Galeria/>
       <Kontakt/>
-      <Quote text="test" author="św. Jan Paweł II"/>
+      <Quote text="Bez Maryi Ewangelia staje się bezcielesna i bezkształtną, przemienia się w ideologię, w duchowy racjonalizm." author="~ św. Jan Paweł II"/>
     </>
   )
 }
