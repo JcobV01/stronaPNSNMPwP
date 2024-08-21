@@ -45,16 +45,18 @@ const Grupy = () => {
   ]
 
   return (
-    <section id="grupy" className='p-[47px]' style={{backgroundImage: `url(${background.src})`}}>
-      <Title title="Grupy" title2="Prafialne" subtitle="Opis grup"/>
-      <p>Nasza parafia to miejsce, gdzie każdy może znaleźć swoją duchową ścieżkę i zaangażować się w życie wspólnoty. Wierzymy, że każda osoba ma wyjątkowy dar do zaoferowania i chcemy wspólnie wzrastać w wierze i miłości. Funkcjonują u nas: Liturgiczna Służba Ołtarza, Dziewczęca Służba Maryjna, Schola, Akcja Katolicka, Róże Różańcowe oraz Rada Parafialna, które działają na rzecz wspólnoty i Kościoła.</p>
-      <article>
-        {
-          data.map((card) => (
-            <GroupsCard icon={card.icon} name={card.name} desc={card.desc}/>
-          ))
-        }
-      </article>
+    <section id="grupy" style={{backgroundImage: `url(${background.src})`}}>
+      <div className='w-full h-full bg-[#00000050] p-[47px] flex flex-col items-center gap-[50px]'>
+        <Title title="Grupy" title2="Prafialne" subtitle="Opis grup" color="#FFF"/>
+        <p className='text-[#ECECEC] w-[80%] text-[15px] tracking-[3px] font-medium text-center'>Nasza parafia to miejsce, gdzie każdy może znaleźć swoją duchową ścieżkę i zaangażować się w życie wspólnoty. Wierzymy, że każda osoba ma wyjątkowy dar do zaoferowania i chcemy wspólnie wzrastać w wierze i miłości. Funkcjonują u nas: Liturgiczna Służba Ołtarza, Dziewczęca Służba Maryjna, Schola, Akcja Katolicka, Róże Różańcowe oraz Rada Parafialna, które działają na rzecz wspólnoty i Kościoła.</p>
+        <article className='flex flex-wrap justify-center gap-[30px]'>
+          {
+            data.map((card) => (
+              <GroupsCard icon={card.icon} name={card.name} desc={card.desc} link="#"/>
+            ))
+          }
+        </article>
+      </div>
     </section>
   )
 }
