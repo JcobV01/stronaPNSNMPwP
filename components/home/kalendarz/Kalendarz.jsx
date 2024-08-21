@@ -28,7 +28,7 @@ const Kalendarz = () => {
         </div>
       </article>
 
-      <article className='flex flex-col gap-[30px]'>
+      <article className='flex flex-col gap-[30px] sm:mt-[30px]'>
         <DayCard/>
         <DayCard/>
         <DayCard/>
