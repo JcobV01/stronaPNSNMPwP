@@ -10,7 +10,7 @@ const Footer = () => {
     const year = new Date().getFullYear()
   return (
     <footer className='bg-[#11161A] flex flex-col items-center gap-[46px] p-6'>
-        <Logo width="100" height="100"/>
+        <Logo width="100" height="100" padding={true} backgroundOpacity={true}/>
         <Navbar bold={true} uppercase={true}/>
         <div className='flex gap-[36px]'>
             <Icon imgSource={fbIcon} destination="https://www.facebook.com/parafiaprzybyslawice"/>

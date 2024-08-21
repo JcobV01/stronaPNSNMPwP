@@ -55,18 +55,18 @@ const RootLayout = ({ children }) => {
                         <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
                             <section className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
                                 <div className='pt-[40px] flex-center'>
-                                    <Logo width="200" height="200" />
+                                    <Logo width="150" height="150" padding={false} backgroundOpacity={false}/>
                                 </div>
                                 <div className='flex-center flex-col text-center'>
-                                    <p className='text-[20px] text-[#B0B0B0] mt-[25px]'>Rzymskokatolicka</p>
-                                    <h1 className='text-white text-[80px] font-bold tracking-[4px] leading-[80px] mt-[30px]'>PARAFIA PRZYBYSŁAWICE</h1>
-                                    <p className='text-white text-[25px] w-[550px] mt-[90px]'>Parafia Niepokalanego Serca Najświętszej Maryi Panny w Przybysławicach – parafia rzymskokatolicka, znajdująca się w diecezji tarnowskiej, w dekanacie Radłów</p>
+                                    <p className='text-[20px] text-[#B0B0B0] mt-[40px]'>Rzymskokatolicka</p>
+                                    <h1 className='text-white text-[80px] font-bold tracking-[4px] leading-[80px] mt-[40px]'>PARAFIA PRZYBYSŁAWICE</h1>
+                                    <p className='text-white text-[25px] w-[550px] mt-[70px]'>Parafia Niepokalanego Serca Najświętszej Maryi Panny w Przybysławicach – parafia rzymskokatolicka, znajdująca się w diecezji tarnowskiej, w dekanacie Radłów</p>
                                     <div className='flex-center gap-[30px] mt-[55px]'>
                                         <Icon imgSource={ytIcon} destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" />
                                         <Icon imgSource={fbIcon} destination="https://www.facebook.com/parafiaprzybyslawice" />
                                     </div>
                                 </div>
-                                <div className='mt-auto mb-[40px]'>
+                                <div className='mt-auto mb-[30px]'>
                                     <Navbar bold={false} uppercase={false}/>
                                 </div>
                             </section>
