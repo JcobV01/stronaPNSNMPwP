@@ -5,7 +5,8 @@
 @tailwind utilities;
 
 * {
-  font-family: 'Poppins'
+  font-family: 'Poppins';
+  color: '#353535';
 }
 
 .flex-center {
