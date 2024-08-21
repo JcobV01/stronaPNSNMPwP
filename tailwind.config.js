@@ -29,7 +29,7 @@ module.exports = {
       'sm': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
 
-      'fold': {'max': '325px'},
+      'fold': {'max': '345px'},
       // => @media (max-width: 325px) { ... }
     },
   },
