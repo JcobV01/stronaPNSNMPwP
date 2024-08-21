@@ -23,7 +23,7 @@ const DayCard = ({date, name, color="#3C9530", texts}) => {
 
             <Link href="/kalendarz" className="absolute bottom-[15px] right-[15px] flex gap-[10px] sm:static">
                 <p className="text-[15px] sm:w-full sm:text-right">Zobacz więcej</p>
-                <Image src={arrow} width={20} height={20} alt="Ikona strzałki"/>
+                <Image src={arrow} width="auto" height="auto" alt="Ikona strzałki"/>
             </Link>
         </div>
     </div>
