@@ -67,7 +67,7 @@ const RootLayout = ({ children }) => {
                                     </div>
                                 </div>
                                 <div className='mt-auto mb-[40px]'>
-                                    <Navbar bold={false} />
+                                    <Navbar bold={false} uppercase={false}/>
                                 </div>
                             </section>
                         </div>
