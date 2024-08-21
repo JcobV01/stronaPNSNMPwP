@@ -53,7 +53,7 @@ const RootLayout = ({ children }) => {
                 {pathname === "/" ?
                     <header className="w-full h-screen bg-cover" style={{ backgroundImage: `url(${mainImage.src})` }}>
                         <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
-                            <section className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
+                            <section id="homepage" className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
                                 <div className='pt-[40px] flex-center'>
                                     <Logo width="150" height="150" padding={false} backgroundOpacity={false}/>
                                 </div>
