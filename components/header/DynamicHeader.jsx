@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation'
 
 import Logo from '@components/Logo'
 import Icon from '@components/header/Icon'
-import Navbar from '@components/navbar';
+import Navbar from '@components/header/Navbar';
 
 import fbIcon from '@public/assets/icons/facebook.svg'
 import ytIcon from '@public/assets/icons/youtube.svg'
@@ -76,7 +76,7 @@ const DynamicHeader = () => {
                                 </div>
                             </div>
                             <div className='mt-auto mb-[30px] md:text-center sm:mt-[20px]'>
-                                <Navbar bold={false} uppercase={false} />
+                                <Navbar />
                             </div>
                         </section>
                     </div>
