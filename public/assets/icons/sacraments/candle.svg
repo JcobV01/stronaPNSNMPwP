@@ -1,9 +1,20 @@
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<rect width="40" height="40" fill="url(#pattern0_198_43)"/>
-<defs>
-<pattern id="pattern0_198_43" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_198_43" transform="scale(0.0111111)"/>
-</pattern>
-<image id="image0_198_43" width="90" height="90" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD1ElEQVR4nO2czWtcVRTAX7RqaUF0IShpoatS/wDBXTZdVLC6GmbumZiUUoJfEWzKnJOE8gRt5pxoCPEDjGih7aIQCkqpHws3rsSdtrGh2Ym4EiLVtqG05pWbr0niJGbmzZtzZ3J+cFYz896cH4cz996590WRYRiGYTSIYon3+WjU9YwqFOOJxx3Jzw75V6Dyk9XeY6QkF8ePOuTvgSTx4Uh+6I3j3Wmva6wj6QCSCyuSK8FT/rX17zXqxhG/+1/Jy5WN8k79VzZWKWC5G4gXNhPtXyuQuMonjJrJ08hBR/z35pJX+jXfypf42drvYET+h86PMP5PcqWF8LW+ON5j6mrEEX+xXclr+vVntd5nRwMk+Volr4lXtL9/S1Aceu8Zh/xXvaId8s2eobFO7TyCB5C/TFHNKyORS9p5BA1g+eX0klfjRe18giSXm3p4aQ2jYaKn4zh+SDuv4AAcPdZAyYvhJzvaeQUHkFxvtGhf1dp5BUWxxM9nIHkxijTynHZ+weBIPs5KNBB/qJ1fMADJdFaiHclV7fyCAYjvZCYa5bZ2fsEAKP9kJ5pvaucXDIByI7MejTKjnV8wAPK32Ynmr7XzCwZH/GaGreM17fyCIT/8wX4gvp9B27hne0A24FA+z6CiP914nx1Pz9BY53b+H6xltOHXtne82GpAiV9oRAtxKP86LB+tehNjCSB+y4tKI7mAo/3LlzO2okjyUj1txLcLW/CvkdzgmaccyoQfOWyvVfB568kp8MMzwPIbjuQbP8tbnK4vxYyfjDiS120IZxiGYRiGYRiG0Sq4EheAeDbNolGKmAPkT9r+yJxDOaEkeP26CMmPbbsmAiSvhiC5EvxH220VA5SBrY+vKVU2ynzb7DYFEtQWCltX9gIQc0vvow5fsqyNK/5Af9ROR4oh1ED+JY/lA1FrkHQ4lHF1aVRv8J9uULqisEk6AOUjfVmSsrLlbhHleBTqQR9AOasuiRpa3ZNdcbwrCkoy8Tl9MZJFfNcbjz+h7Tjq65t8xB+eDEBIkmFlz7rBM4dUH73TmFOu0goxBzR6uOmSj/RPPAYklwMQkDSxsv1WNWya5Nyp0aeB5Cf9xEUrLnYPvL83c9GO5KsAkk00w28xzl40yrx2oqAuugkHkLSThEDCRJOJTrSr0Cqa9MVZ6yB9qdajyUSrVxxYRYu6JGsdpC/QejSFFTZhIROdaFehVTTpi7PWQfpSrUeTiVavOGj1inYkv2snCcrhSH5rgmg+rZ0oqIvm4eY8fpj4pOIRiURFrs/VPzYO5e2W3uZrGIZhGIZhGIYRbeABbPxash9eN4cAAAAASUVORK5CYII="/>
-</defs>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Warstwa_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.16 32.92">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #5a7889;
+      }
+
+      .cls-2 {
+        fill: #5a7888;
+      }
+    </style>
+  </defs>
+  <g id="Warstwa_1-2" data-name="Warstwa_1">
+    <g>
+      <path class="cls-2" d="M29.16,32.89c-8.69,0-16.32.1-23.95-.08-1.77-.04-4.92-.89-5.02-1.66-.32-2.6-.39-5.89.95-7.93,6.62-10.09,20.18-8.06,26.59-.43,1.73,2.06.96,6.22,1.42,10.09Z"/>
+      <path class="cls-1" d="M14.71,0c4.94,3.82,6.29,7.85,3.63,10.81-2.37,2.63-4.96,3.22-7.6.51-3.15-3.25-1.89-6.73,3.96-11.32Z"/>
+    </g>
+  </g>
 </svg>

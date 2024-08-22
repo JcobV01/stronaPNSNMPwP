@@ -1,8 +1,15 @@
+import SacramentsNavbar from '@components/home/sakramenty/SacramentsNavbar'
+import Title from '@components/Title'
 import React from 'react'
 
 const layout = () => {
   return (
-    <div>layout</div>
+    <div className='pt-[80px]'>
+      <Title title="Sakramenty" title2="" subtitle="Informacje" />
+      <div className='mt-[60px]'>
+        <SacramentsNavbar />
+      </div>
+    </div>
   )
 }
 

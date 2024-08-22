@@ -1,9 +1,9 @@
 import React from 'react'
 
-const sakramenty = () => {
+const page = () => {
   return (
-    <div>sakramenty</div>
+    <div>page</div>
   )
 }
 
-export default sakramenty
+export default page
