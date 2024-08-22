@@ -36,5 +36,5 @@
 
 .custom-hamburger::before{@apply -translate-y-[10px];}
 .custom-hamburger::after{@apply translate-y-[10px];}
-.active-hamburger::before {transform: rotate(45deg) translate(5px, -5px);}
-.active-hamburger::after {transform: rotate(-45deg) translate(5px, 5px);}
+.active-hamburger::before {transform: rotate(45deg);}
+.active-hamburger::after {transform: rotate(-45deg);}

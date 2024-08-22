@@ -4,11 +4,11 @@ import Title from '@components/Title'
 const cmentarz = () => {
   return (
     <section className='flex-center'>
-      <article className='mt-[65px] w-[1400px]'>
+      <article className='mt-[65px] w-[1400px] 2xl:w-[90%]'>
         <Title title="Cmentarz" title2="" subtitle="Regulamin"/>
         <div>
-          <h4 className='text-center mt-[90px]'>Regulamin cmentarza parfii pw. Niepokalanego Serca NMP w Przybysławicach</h4>
-          <ol className='mt-[45px] list-decimal'>
+          <h4 className='text-center text-[25px] font-semibold tracking-[3px] mt-[70px] md:text-[20px] sm:text-[18px] sm:mt-[40px]'>Regulamin cmentarza parfii pw. Niepokalanego Serca NMP w Przybysławicach</h4>
+          <ol className='mt-[45px] list-decimal text-[18px] tracking-[2.5px] space-y-[40px] md:text-[15px] md:px-[20px]'>
             <li>Cmentarz jest miejscem świętym, miejscem wiecznego spoczynku naszych Zmarłych i miejscem modlitwy za nich. Ma charakter sakralny. Powinien być otoczony religijną czcią i szacunkiem oraz szczególną troską. Na cmentarzu należy zachowywać powagę, ciszę i porządek.</li>
             <li>Cmentarz jest własnością Parafii Rzymskokatolickiej pw. Niepokalanego Serca NMP w Przybysławicach i służy Parafianom.</li>
             <li>Cmentarz zarządza Proboszcz Parafii (KANCELARIA PARAFIALNA czynna po Mszach Świętych z wyjątkiem Niedziel i Świąt).  Bezpośrednio w jego imieniu porządku na cmentarzu oraz nadzór sprawuje Pan Kościelny oraz Firma Usługowa p. Ryszard Cierniak 14 67 151 16. Pan Kościelny ma nadzór nad pracami kamieniarskimi, przygotowaniem grobu do pochówku i udostępnieniem wjazdu na cmentarz. Nikomu bez zgody ks. Proboszcza nie można wjechać pojazdem na cmentarz.</li>
@@ -49,7 +49,7 @@ const cmentarz = () => {
             <li>Wszystkie sprawy związane z ustaleniem terminu pogrzebu, załatwiamy w kancelarii parafialnej.</li>
             <li>W sprawach nieuregulowanych niniejszym Regulaminem mają zastosowanie powszechnie obowiązujące przepisy, a w szczególności Ustawa z dnia 31 stycznia 1956 r. o cmentarzach i pochówku zmarłych (tekst jednolity Dz.U. z 2000 r. Nr 23, poz. 295 z późn. Zm.) oraz Rozporządzenie Ministra Infrastruktury z dnia 7 marca 2008 r. w sprawie wymagań, jakie muszą spełniać cmentarze, groby i inne miejsca pochówku zwłok i szczątków (Dz.U. z 2008 r. Nr 48, poz. 284).</li>
           </ol>
-          <p>Przybysławice, dn. 23 września 2019 r.</p>
+          <p className="text-[20px] font-semibold tracking-[2.5px] mt-[40px] md:text-[18px] sm:text-center">Przybysławice, dn. 23 września 2019 r.</p>
         </div>
       </article>
     </section>
