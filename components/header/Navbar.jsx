@@ -24,8 +24,8 @@ const Navbar = () => {
           <div className={active ? "active-hamburger" : "custom-hamburger"}></div>
         </div>
 
-        <div className={active ? "hidden sm:flex fixed w-full h-screen bg-white transition-all duration-500 ease-in-out transform translate-x-0" : "fixed sm:hidden w-full h-screen bg-white transition-all duration-500 ease-in-out transform translate-x-full"}>
-          <nav className='flex-center flex-col h-full'>
+        <div className={active ? "hidden sm:flex justify-center gap-4 absolute top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.90)] transition-all duration-500 ease-in-out transform translate-x-0" : "fixed sm:hidden w-full h-screen bg-white transition-all duration-500 ease-in-out transform translate-x-full"}>
+          <nav className='flex-center flex-col h-full text-white gap-5'>
             <Link href="/#parafia">Parafia</Link>
             <Link href="/#grupy">Grupy parafialne</Link>
             <Link href="/#galeria">Galeria</Link>
