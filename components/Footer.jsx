@@ -1,7 +1,7 @@
 import React from 'react'
-import Logo from './logo'
+import Logo from '@components/Logo'
 import Navbar from '@components/footer/Navbar'
-import Icon from './footer/Icon'
+import Icon from '@components/footer/Icon'
 
 import fbIcon from '@public/assets/icons/facebook-w.svg'
 import ytIcon from '@public/assets/icons/youtube-w.svg'
