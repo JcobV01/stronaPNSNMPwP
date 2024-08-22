@@ -1,6 +1,6 @@
 'use client';
 
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { usePathname } from 'next/navigation'
 
 import Logo from '@components/Logo'
@@ -25,14 +25,14 @@ import sacraments from '@public/assets/images/header-images/sacraments.webp';
 
 const DynamicHeader = () => {
     const pathname = usePathname();
-    const [size, setSize] = useState({width: 150, height: 150});
+    const [size, setSize] = useState({ width: 150, height: 150 });
 
     useEffect(() => {
         const handleResize = () => {
-            if(window.matchMedia("(max-width: 345px)").matches){
-                setSize({width: 75, height: 75});
+            if (window.matchMedia("(max-width: 345px)").matches) {
+                setSize({ width: 75, height: 75 });
             } else {
-                setSize({width: 150, height: 150});
+                setSize({ width: 150, height: 150 });
             }
         }
         handleResize();
@@ -84,9 +84,9 @@ const DynamicHeader = () => {
                 :
                 <header className="w-full h-[405px] bg-cover bg-center" style={{ backgroundImage: `url(${headerImage.src})` }}>
                     <div className="w-full h-full bg-[#00000090]">
-                        <section className='z-10 relative'>
-
-                        </section>
+                        <div className='flex-center pt-[40px]'>
+                            <Navbar />
+                        </div>
                     </div>
                 </header>
             }

@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from './logo'
-import Navbar from './Navbar'
+import Navbar from '@components/footer/Navbar'
 import Icon from './footer/Icon'
 
 import fbIcon from '@public/assets/icons/facebook-w.svg'

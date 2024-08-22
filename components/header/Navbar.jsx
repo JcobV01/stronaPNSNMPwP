@@ -19,7 +19,7 @@ const Navbar = () => {
 
 
 
-      <div className="hidden sm:flex justify-end mt-[10px]">
+      <div className="hidden sm:flex mt-[10px]">
         <div onClick={() => setActive(!active)} className='relative w-[30px] h-[20px] z-10'>
           <div className={active ? "active-hamburger" : "custom-hamburger"}></div>
         </div>
