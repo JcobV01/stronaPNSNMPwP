@@ -3,7 +3,7 @@ import Grupy from "@components/home/Grupy"
 import Kalendarz from "@components/home/kalendarz/Kalendarz"
 import Kontakt from "@components/home/Kontakt"
 import Parafia from "@components/home/parafia/Parafia"
-import Quote from "@components/quote"
+import Quote from "@components/Quote"
 
 const page = () => {
   return (
