@@ -7,7 +7,7 @@ import ksbodziony from '@public/assets/images/priests/ks-piotr.webp'
 import kspolek from '@public/assets/images/priests/ks-stanislaw.webp'
 import kskopacz from '@public/assets/images/priests/sp-ks-roman.webp'
 import ksdziedzic from '@public/assets/images/priests/sp-ks-michal.webp'
-import PreviousPriest from '@components/priests/previousPriest'
+import PreviousPriest from '@components/priests/PreviousPriest'
 import Title from '@components/Title'
 
 const duszpasterze = () => {
