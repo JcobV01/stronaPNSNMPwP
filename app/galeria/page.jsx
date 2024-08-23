@@ -1,12 +1,8 @@
-
+import React from 'react'
 
 const galeria = () => {
-
-
   return (
-    <div>
-      
-    </div>
+    <div>galeria</div>
   )
 }
 

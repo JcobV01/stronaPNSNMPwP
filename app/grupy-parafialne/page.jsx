@@ -1,9 +1,14 @@
-import React from 'react'
+'use client';
 
-const grupyparafialne = () => {
-  return (
-    <div>grupyparafialne</div>
-  )
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
+export default function GroupsPage() {
+    const router = useRouter();
+
+    useEffect(() => {
+        router.push('/grupy-parafialne/lso');
+    }, [router]);
+
+    return null;
 }
-
-export default grupyparafialne
