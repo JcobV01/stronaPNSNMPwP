@@ -9,9 +9,11 @@ const TitleCard = ({ subtitle, title, link }) => {
                     <p className='text-[#B0B0B0] text-[13px]'>{subtitle}</p>
                     <h4 className='pt-[5px] font-bol text-white text-[25px]'>{title}</h4>
                 </div>
-                <div className='bg-[#F1F1F1] rounded-[2px] mb-[30px] px-[20px] py-[5px] w-max'>
-                    <Link href={link} className='text-[13px] text-[#5A7889] font-medium'>Dowiedz się więcej</Link>
-                </div>
+                <Link href={link}>
+                    <div className='bg-[#F1F1F1] rounded-[2px] mb-[30px] px-[20px] py-[7.5px] w-max'>
+                        <p className='text-[13px] text-[#5A7889] font-medium'>Dowiedz się więcej</p>
+                    </div>
+                </Link>
             </div>
         </div>
     )
