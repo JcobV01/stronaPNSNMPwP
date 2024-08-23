@@ -1,4 +1,4 @@
-import SacramentsNavbar from '@components/home/sakramenty/SacramentsNavbar'
+import SacramentsNavbar from '@components/sacraments/SacramentsNavbar'
 import Title from '@components/Title'
 import React from 'react'
 

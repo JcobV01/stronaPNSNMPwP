@@ -4,47 +4,34 @@ import React, { useState } from 'react'
 import dynamic from 'next/dynamic';
 import CardToNavbar from './CardToNavbar';
 
-import candle from '@public/assets/icons/sacraments/candle.svg'
-import pigeon from '@public/assets/icons/sacraments/peace-pigeon.svg'
-import pitcher from '@public/assets/icons/sacraments/pitcher.svg'
-import stole from '@public/assets/icons/sacraments/stole.svg'
-import rings from '@public/assets/icons/sacraments/rings.svg'
-import coffin from '@public/assets/icons/sacraments/coffin.svg'
-
 const prevSacraments = [
   {
     name: 'baptism',
-    image: candle,
     title: 'Sakrament',
     subtitle: 'chrztu'
   },
   {
     name: 'confirmation',
-    image: pigeon,
     title: 'Sakrament',
     subtitle: 'bierzmowanie'
   },
   {
     name: 'anointing',
-    image: pitcher,
     title: 'Sakrament',
     subtitle: 'namaszczenia chorych'
   },
   {
     name: 'confession',
-    image: stole,
     title: 'Sakrament',
     subtitle: 'pokuty i pojednania'
   },
   {
     name: 'marriage',
-    image: rings,
     title: 'Sakrament',
     subtitle: 'małżeństwa'
   },
   {
     name: 'funeral',
-    image: coffin,
     title: 'Chrześcijański',
     subtitle: 'pogrzeb'
   },
