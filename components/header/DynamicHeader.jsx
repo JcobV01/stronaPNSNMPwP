@@ -13,7 +13,7 @@ import ytIcon from '@public/assets/icons/youtube.svg'
 import mainImage from '@public/assets/images/header-images/main-image.webp';
 import cemetery from '@public/assets/images/header-images/cemetery.webp';
 import priests from '@public/assets/images/header-images/priests.webp';
-import gallery from '@public/assets/images/header-images/main-image.webp';
+import gallery from '@public/assets/images/header-images/gallery.webp';
 import groups from '@public/assets/images/header-images/groups.webp';
 import history from '@public/assets/images/header-images/history.webp';
 import liturgicalCalendar from '@public/assets/images/header-images/liturgical-calendar.webp';

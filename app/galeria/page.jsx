@@ -1,8 +1,12 @@
-import React from 'react'
+
 
 const galeria = () => {
+
+
   return (
-    <div>galeria</div>
+    <div>
+      
+    </div>
   )
 }
 

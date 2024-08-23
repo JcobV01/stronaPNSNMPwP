@@ -9,6 +9,7 @@ const PreviousPriest = ({image, name, dates}) => {
             width={250}
             height={250}
             alt={`Zdjęcie ${name}`}
+            className='brightness-[0.9]'
         />
         <div className='bg-white rounded-b-[5px] py-[17px]'>
             <h5 className='text-[17px] text-center font-semibold tracking-[2px] mb-[10px]'>{name}</h5>
