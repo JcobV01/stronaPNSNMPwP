@@ -66,7 +66,7 @@ const SacramentsNavbar = () => {
 
   return (
     <>
-      <nav className='flex-center gap-[20px]'>
+      <nav className='flex-center gap-[20px] flex-wrap'>
         {prevSacraments.map((sacrament) => (
           <CardToNavbar key={sacrament.name} name={sacrament.name} image={sacrament.image} title={sacrament.title} subtitle={sacrament.subtitle} setComponent={setSelectedComponent} isActive={selectedComponent === sacrament.name}/>
         ))}
