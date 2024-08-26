@@ -10,12 +10,11 @@ export const metadata = {
 }
 
 const RootLayout = ({ children }) => {
-    
     return (
         <html lang="pl-PL">
             <body>
                 <DynamicHeader />
-                <main className='pb-[70px]' style={{ backgroundImage: `url(${mainBgImage.src})`, backgroundAttachment: 'fixed'}}> 
+                <main className='pb-[70px]' style={{ backgroundImage: `url(${mainBgImage.src})`, backgroundAttachment: 'fixed' }}>
                     {children}
                 </main>
                 <Footer />

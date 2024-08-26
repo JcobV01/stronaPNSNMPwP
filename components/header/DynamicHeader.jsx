@@ -82,6 +82,8 @@ const DynamicHeader = () => {
                         </section>
                     </div>
                 </header>
+                : pathname.startsWith("/management") ?
+                <></>
                 :
                 <header className="w-full h-[405px] bg-cover bg-center" style={{ backgroundImage: `url(${headerImage.src})` }}>
                     <div className="w-full h-full bg-[#00000090]">
