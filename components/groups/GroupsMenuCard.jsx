@@ -5,16 +5,35 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-const GroupsMenuCard = ({icon, name, link, isActive, setActive}) => {
+const GroupsMenuCard = ({ icon, name, link, isActive, setActive, rounded }) => {
     const pathname = usePathname()
+
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     return (
         <Link href={link}>
-            <div className={`bg-white w-[200px] h-[200px] flex flex-col flex-center gap-[20px]`} style={{backgroundColor: isActive && '#5A7889', height: isActive && '215px', borderRadius: isActive && 7}} onClick={setActive(pathname)}>
+            <div className={`bg-white w-[200px] h-[200px] flex flex-col flex-center gap-[20px] p-[5px] relative ${rounded != "right" && !isActive && windowWidth > 1023 && "menu-card"} xl:w-[150px] xl:h-[150px] lg:gap-0`}
+                style={{
+                    backgroundColor: isActive && '#5A7889',
+                    height: isActive ? (windowWidth < 1023 ? '150px' : (windowWidth > 1279 ? '215px' : '165px')) : '',
+                    zIndex: isActive && 100,
+                    borderRadius: isActive && ( windowWidth > 1023 ? 7 : 0),
+                    borderStartStartRadius: rounded == 'left' && ( windowWidth > 1023 ? 7 : 0),
+                    borderEndStartRadius: rounded == 'left' && ( windowWidth > 1023 ? 7 : 0),
+                    borderStartEndRadius: rounded == 'right' && ( windowWidth > 1023 ? 7 : 0),
+                    borderEndEndRadius: rounded == 'right' && ( windowWidth > 1023 ? 7 : 0),
+                }} onClick={setActive(pathname)}>
+
                 <div className='bg-white rounded-full p-[8px]'>
                     <Image src={icon} width="auto" height="auto" alt="Ikona zakładki lso" />
                 </div>
-                <p className='text-[12px] font-semibold tracking-[2.4px] text-center' style={{color: isActive && 'white'}}>{name}</p>
+                <p className='text-[12px] font-semibold tracking-[2.4px] text-center xl:text-[10px]' style={{ color: isActive && 'white' }}>{name}</p>
             </div>
         </Link>
     )

@@ -38,3 +38,16 @@
 .custom-hamburger::after{@apply translate-y-[10px];}
 .active-hamburger::before {transform: rotate(45deg);}
 .active-hamburger::after {transform: rotate(-45deg);}
+
+.menu-card::after{
+  position: absolute;
+  content: '';
+  top: 50%;
+  right: -1px;
+  transform: translateY(-50%);
+  height: 100px;
+  width: 2px;
+  background-color: #EFEFEF;
+  border-radius: 20px;
+  z-index: 2;
+}

@@ -53,9 +53,9 @@ const GroupsNav = () => {
     },[])
 
     return (
-        <nav className='flex rounded-[7px] relative top-[-107px] items-center'>
-            {menu.map((item) => (
-                <GroupsMenuCard icon={item.icon} name={item.name} link={item.link} key={item.name} setActive={setSelected} isActive={selected === item.link} />
+        <nav className='flex rounded-[7px] relative top-[-107px] items-center lg:flex-wrap lg:w-[450px] lg:top-[-150px] sm:w-[90%] sm:justify-center'>
+            {menu.map((item, index) => (
+                <GroupsMenuCard icon={item.icon} name={item.name} link={item.link} key={item.name} setActive={setSelected} isActive={selected === item.link} rounded={index === 0 ? 'left' : index === 5 ? 'right' : 'none'}/>
                 
             ))}
         </nav>
