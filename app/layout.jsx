@@ -3,6 +3,7 @@ import '@styles/global.css';
 import DynamicHeader from '@components/header/DynamicHeader'
 
 import mainBgImage from '@public/assets/images/background-images/main-background-image.webp'
+import { AuthProvider } from '@components/management/Providers';
 
 export const metadata = {
     title: "Parafia Przybysławice",
@@ -13,11 +14,13 @@ const RootLayout = ({ children }) => {
     return (
         <html lang="pl-PL">
             <body>
-                <DynamicHeader />
-                <main className='pb-[70px]' style={{ backgroundImage: `url(${mainBgImage.src})`, backgroundAttachment: 'fixed' }}>
-                    {children}
-                </main>
-                <Footer />
+                <AuthProvider>
+                    <DynamicHeader />
+                    <main className='pb-[70px]' style={{ backgroundImage: `url(${mainBgImage.src})`, backgroundAttachment: 'fixed' }}>
+                        {children}
+                    </main>
+                    <Footer />
+                </AuthProvider>
             </body>
         </html>
     )

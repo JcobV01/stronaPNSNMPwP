@@ -1,9 +1,10 @@
+import LoginForm from '@components/management/LoginForm'
 import React from 'react'
 
-const page = () => {
+const logowanie = () => {
   return (
-    <div>page</div>
+    <LoginForm />
   )
 }
 
-export default page
+export default logowanie
