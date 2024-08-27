@@ -34,13 +34,14 @@ const authOptions = {
             },
         }),
     ],
+    pages: {
+        signIn: "/management"
+    },
     session: {
-        strategy: "jwt",
+        strategy: "jwt"
     },
     secret: process.env.NEXTAUTH_SECRET,
-    pages: {
-        signIn: "/management",
-    },
+    debug: true,
 };
 
 const handler = NextAuth(authOptions);

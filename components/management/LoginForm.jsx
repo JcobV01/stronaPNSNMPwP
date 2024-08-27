@@ -35,8 +35,8 @@ const LoginForm = () => {
   }
 
   return (
-    <section className='flex-center flex-col'>
-      <h2>Zaloguj się</h2>
+    <section className='flex-center flex-col h-screen'>
+      <h2 className=''>Zaloguj się</h2>
       {error && <span className='text-red-700 font-semibold'>{error}</span>}
       <form onSubmit={handleSubmit} className='flex flex-col space-y-5'>
         <input onChange={(e) => setName(e.target.value)} type="text" placeholder="Nazwa użytkownika" />

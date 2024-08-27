@@ -16,7 +16,7 @@ const RootLayout = ({ children }) => {
             <body>
                 <AuthProvider>
                     <DynamicHeader />
-                    <main className='pb-[70px]' style={{ backgroundImage: `url(${mainBgImage.src})`, backgroundAttachment: 'fixed' }}>
+                    <main style={{ backgroundImage: `url(${mainBgImage.src})`, backgroundAttachment: 'fixed' }}>
                         {children}
                     </main>
                     <Footer />
