@@ -4,7 +4,7 @@ const layout = ({ children }) => {
     return (
         <section className='flex flex-col items-center'>
             <GroupsNav/>
-            <div>{children}</div>
+            {children}
         </section>
     )
 }

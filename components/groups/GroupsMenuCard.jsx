@@ -8,12 +8,17 @@ import React, { useEffect, useState } from 'react'
 const GroupsMenuCard = ({ icon, name, link, isActive, setActive, rounded }) => {
     const pathname = usePathname()
 
-    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [windowWidth, setWindowWidth] = useState(null); 
 
     useEffect(() => {
+      if (typeof window !== 'undefined') {
+        setWindowWidth(window.innerWidth);
+  
         const handleResize = () => setWindowWidth(window.innerWidth);
         window.addEventListener('resize', handleResize);
+  
         return () => window.removeEventListener('resize', handleResize);
+      }
     }, []);
 
     return (

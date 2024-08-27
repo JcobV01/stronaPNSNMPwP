@@ -1,39 +1,25 @@
 import GropusTopSection from '@components/groups/GropusTopSection'
 
 import rosesLogo from '@public/assets/images/logos/rosesLogo.webp'
-import patron1 from '@public/assets/images/patrons/sw-cecylia.webp'
-import patron2 from '@public/assets/images/patrons/sw-grzegorz-wielki.webp'
-import patron3 from '@public/assets/images/patrons/sw-hildegerda.webp'
+import patron1 from '@public/assets/images/patrons/matka-boza-rozancowa.webp'
+
 
 const roze = () => {
 
   const data = {
     logo: rosesLogo,
-    name: 'Schola Młodzieżowa',
-    name2: 'Szcholi Młodzieżowej',
+    name: 'Róże Różańcowe',
+    name2: 'Róż Różańcowych',
     info: [
-      'Schola to grupa parafialna biorąca udział we Mszy w szczególny sposób. Członkowie scholi prowadzą śpiew na wybranych Mszach. Mocą Ducha Świętego i muzyki wielbią Boga. W naszej parafii schola działa od niedawna (od 2020r.), od czasu do czasu ubogacając liturgię oraz niektóre nabożeństwa śpiewem. Grupa ta ciągle się rozwija i poszerza, ze względu na to, że działa od bardzo niedługiego czasu.',
-      'Zazwyczaj członkowie scholi spotykają się na próbach, podczas których przygotowują repertuar pieśni, zgodny z kalendarzem liturgicznym. Ich śpiew ma na celu wprowadzenie uczestników w nastrój modlitwy i skupienia, tworząc harmonijne tło dla celebracji liturgii. Schola może mieć stały lub zmieniający się skład, często angażując nowych członków, którzy pragną uczestniczyć w życiu parafii poprzez muzykę.',
+      'W naszej parafii istnieje 6 Róż Różańcowych kobiet oraz 1 Róża Różańcowa Mężczyzn. W jednej Róży znajduje się 20 osób, które codziennie odmawiają dziesiątkę różańca. W ten sposób codziennie każda Róża odmawia cały różaniec. Członkowie tej grupy parafialnej gromadzą się w niedzielę na zmianie tajemnic, często również są proszeni o poprowadzenie nabożeństwa różańcowego w październiku.',
+      'Róże różańcowe modlą się w różnych intencjach, jednak mają jedną ogólną, która zmienia się co miesiąc',
     ],
-    link: [
-      'Strona scholi na facebooku: ',
-      'https://www.facebook.com/profile.php?id=100087777166453&locale=pl_PL',
-    ],
+    link: [],
     patrons: [
       {
-        name: 'Św. Cecylia',
+        name: 'Matka Boża Różańcowa',
         image: patron1,
-        wiki: "https://pl.wikipedia.org/wiki/Cecylia_z_Rzymu"
-      },
-      {
-        name: 'Św. Grzegorz Wielki',
-        image: patron2,
-        wiki: "https://pl.wikipedia.org/wiki/Grzegorz_I"
-      },
-      {
-        name: 'Św. Hildegerda z Bingen',
-        image: patron3,
-        wiki: "https://pl.wikipedia.org/wiki/Hildegarda_z_Bingen"
+        wiki: "https://pl.wikipedia.org/wiki/Najświętsza_Maryja_Panna_Różańcowa"
       }
     ] 
   }

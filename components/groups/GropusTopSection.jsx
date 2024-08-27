@@ -6,7 +6,7 @@ import GroupsPatronsCard from './GroupsPatronsCard'
 
 const GropusTopSection = ({logo, name, name2, info, link, patrons}) => {
   return (
-    <section className='w-[1200px] m-auto xl:w-[90%]'>
+    <section className='w-[1200px] m-auto mb-[50px] xl:w-[90%]'>
         <Title title="Grupy" title2="Parafialne" subtitle="Opis grup"/>
         <h4 className='text-[30px] font-medium tracking-[3px] text-center my-[50px] xl:text-[25px] lg:text-[20px]'>Informacje ogólne</h4>
         
@@ -21,19 +21,25 @@ const GropusTopSection = ({logo, name, name2, info, link, patrons}) => {
                 {info.map((paragraph, index) => (
                     <p key={index} className='text-[17px] xl:text-[15px]'>{paragraph}</p>
                 ))}
-                <p className='font-medium'>
-                    {link[0]}
-                    <Link href={link[1]} className='text-[#5A7889]' target="_blank">{link[1]}</Link>
-                </p>
+                {link.length > 0 && 
+                    <p className='font-medium'>
+                        {link[0]}
+                        <Link href={link[1]} className='text-[#5A7889]' target="_blank">{link[1]}</Link>
+                    </p>
+                }
             </div>
         </article>
         <article>
-            <h4 className='text-[30px] font-medium tracking-[3px] text-center my-[50px] xl:text-[25px] lg:text-[20px]'>Patroni {name2}</h4>
-            <div className='flex gap-[70px] justify-center lg:flex-wrap'>
-                {patrons.map((patron, index) => (
-                    <GroupsPatronsCard name={patron.name} link={patron.image} wiki={patron.wiki} key={index}/>
-                ))}
-            </div>
+            {patrons.length > 0 && 
+            <>
+                <h4 className='text-[30px] font-medium tracking-[3px] text-center my-[50px] xl:text-[25px] lg:text-[20px]'>Patroni {name2}</h4>
+                <div className='flex gap-[70px] justify-center lg:flex-wrap'>
+                    {patrons.map((patron, index) => (
+                        <GroupsPatronsCard name={patron.name} link={patron.image} wiki={patron.wiki} key={index}/>
+                    ))}
+                </div>
+            </>
+            }
         </article>
     </section>
   )

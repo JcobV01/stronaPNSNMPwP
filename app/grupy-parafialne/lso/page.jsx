@@ -6,6 +6,7 @@ import patron3 from '@public/assets/images/patrons/sw-jan-berchmans.webp'
 import GropusTopSection from '@components/groups/GropusTopSection'
 
 import bgTeam from '@public/assets/images/background-images/lso-background-image.webp'
+import GroupsLSOList from '@components/groups/GroupsLSOList'
 
 const lso = () => {
 
@@ -41,12 +42,59 @@ const lso = () => {
     ] 
   }
 
+  const people = {
+    ceremoniarze: [
+      "Artur Plebańczyk",
+      "Jakub Baran",
+      "Jakub Wadycki",
+      "Kacper Wielbłąd"
+    ],
+    lektorzy: [
+      "Jakub Wielbłąd",
+      "Kacper Ostrowski",
+      "Kacper Tarchała",
+      "Krzysztof Wielbłąd",
+      "Maksymilian Konop",
+      "Marcel Bocoń",
+      "Michał Wadycki",
+      "Mikołaj Czosnyka",
+      "Patryk Gucwa",
+      "Piotr Tarchała"
+    ],
+    ministranci: [
+      "Bartosz Bratko",
+      "Dominik Bocoń",
+      "Kacper Kądzielawski",
+      "Krystian Niedziela",
+      "Maksymilan Baran",
+      "Marcin Piątek",
+      "Roman Kusior"
+    ]
+  }
+
   return (
     <>
       <GropusTopSection logo={data.logo} name={data.name} name2={data.name2} info={data.info} link={data.link} patrons={data.patrons}/>
 
-      <section style={{backgroundImage: `url(${bgTeam})`}}>
-        <h4 className='text-[30px] font-medium tracking-[3px] text-center my-[50px] xl:text-[25px] lg:text-[20px] text-white'>Skład Liturgicznej Służby Ołtarza</h4>
+      <section style={{backgroundImage: `url(${bgTeam.src})`}} className='w-full relative bg-center py-[30px] my-[50px] bg-cover'>
+        <h4 className='text-[30px] tracking-[3px] text-center my-[30px] text-white relative z-10 xl:text-[25px] lg:text-[20px] '>Skład Liturgicznej Służby Ołtarza</h4>
+        <article className='relative z-10 flex gap-[50px] flex-center lg:flex-col'>
+          
+          <GroupsLSOList title="Ceremoniarze" height="400" team={people.ceremoniarze}>
+            <h5 className='text-white text-[30px] tracking-[4px] font-extralight mt-[20px]'>Zasłużeni</h5>
+            <div className='h-[2px] w-[50%] bg-[#D9D9D9] m-auto mb-[25px] mt-[5px]'></div>
+            <p className='text-white text-[20px] tracking-[2.3px] font-light'>Szymon Mikos</p>
+          </GroupsLSOList>
+
+          <GroupsLSOList title="Ministranci Słowa Bożego" height="500" team={people.lektorzy} />
+          <GroupsLSOList title="Ministranci" height="400" team={people.ministranci} />
+          
+        </article>
+        <div className='absolute w-full h-full top-0 left-0 backdrop-brightness-[0.2] z-0'></div>
+      </section>
+
+      <section>
+        <h4 className='text-[30px] tracking-[3px] font-medium text-center my-[30px] relative z-10 xl:text-[25px] lg:text-[20px]'>Zdjęcia z wybranych celebracji</h4>
       </section>
     </>
   )
