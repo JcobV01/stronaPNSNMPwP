@@ -1,4 +1,5 @@
-import { NextResponse } from "next/server";
+import { NextResponse, NextRequest } from "next/server";
+import { analytics } from "@utils/analytics";
 
 // Definiujemy ścieżki, które mają być chronione
 
@@ -18,7 +19,7 @@ export async function middleware(request) {
       return NextResponse.next();
     }
 
-    if (pathname === '/management/rejestracja'){
+    if (pathname === '/management/rejestracja') {
       return NextResponse.next();
     }
 
@@ -32,6 +33,19 @@ export async function middleware(request) {
     }
   }
 
+  //Analytics
+  if (request.nextUrl.pathname === '/') {
+    // track analytics event
+    try {
+      analytics.track("pageview", {
+        page: '/',
+        country: request.geo?.country
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   // Jeśli użytkownik jest zalogowany lub ścieżka nie jest chroniona, kontynuujemy przetwarzanie
   return NextResponse.next({
     request: {
@@ -42,5 +56,5 @@ export async function middleware(request) {
 
 // Definiujemy, dla jakich ścieżek middleware powinien być uruchamiany
 export const config = {
-  matcher: ['/management/:path*'], // Middleware uruchamia się dla każdej ścieżki zaczynającej się na /management
+  matcher: ['/management/:path*', '/'], // Middleware uruchamia się dla każdej ścieżki zaczynającej się na /management
 };

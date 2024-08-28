@@ -6,13 +6,15 @@ import React from 'react'
 const panel = () => {
 
   const handleLogout = () => {
-    signOut({callbackUrl: '/management'})
+    signOut({ callbackUrl: '/management' })
   }
 
   return (
-    <div>
-      <button onClick={handleLogout}>wyloguj</button>
-    </div>
+    <section>
+      <article>
+        <button onClick={handleLogout}>wyloguj</button>
+      </article>
+    </section>
   )
 }
 
