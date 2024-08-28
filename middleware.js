@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { analytics } from "@utils/analytics";
+import { track } from "@utils/analytics";
 
 // Definiujemy ścieżki, które mają być chronione
 
@@ -37,7 +37,7 @@ export async function middleware(request) {
   if (request.nextUrl.pathname === '/') {
     // track analytics event
     try {
-      analytics.track("pageview", {
+      track("pageview", {
         page: '/',
         country: request.geo?.country
       })
