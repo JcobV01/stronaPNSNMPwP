@@ -1,7 +1,14 @@
+"use client"
+
 import React from 'react'
 import Title from '@components/Title'
+import { useSession } from 'next-auth/react'
 
 const cmentarz = () => {
+
+  const session = useSession()
+  console.log(session);
+  
   return (
     <section className='flex-center'>
       <article className='mt-[65px] w-[1400px] 2xl:w-[90%]'>
