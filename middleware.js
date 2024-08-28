@@ -18,6 +18,10 @@ export async function middleware(request) {
       return NextResponse.next();
     }
 
+    if (pathname === '/management/rejestracja'){
+      return NextResponse.next();
+    }
+
     // Sprawdzenie, czy użytkownik jest zalogowany. W tym przypadku sprawdzamy ciasteczko `next-auth.session-token`
     const token = request.cookies.get('next-auth.session-token');
 
