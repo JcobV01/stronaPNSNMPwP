@@ -1,5 +1,6 @@
 import Logo from '@components/Logo'
 import React from 'react'
+import { headers } from 'next/headers'
 
 import statsImg from '@public/assets/icons/mamagement/chart.png'
 import docksImg from '@public/assets/icons/mamagement/document.png'
@@ -7,8 +8,12 @@ import alarmImg from '@public/assets/icons/mamagement/alarm.png'
 import sandImg from '@public/assets/icons/mamagement/sand.png'
 import imageImg from '@public/assets/icons/mamagement/image.png'
 import letterImg from '@public/assets/icons/mamagement/letter.png'
+
 import Link from 'next/link'
 import Image from 'next/image'
+import UserBar from '@components/management/UserBar'
+import TopBar from '@components/management/TopBar'
+import NavBar from '@components/management/NavBar'
 
 
 
@@ -16,32 +21,32 @@ const menu = [
     {
         icon: statsImg,
         name: "Statystyki",
-        link: "#"
+        link: "/management/panel"
     },
     {
         icon: docksImg,
         name: "Ogłoszenia",
-        link: "#"
+        link: "/management/panel/ogloszenia"
     },
     {
         icon: alarmImg,
         name: "Komunikaty",
-        link: "#"
+        link: "/management/panel/komunikaty"
     },
     {
         icon: sandImg,
         name: "Historia",
-        link: "#"
+        link: "/management/panel/historia"
     },
     {
         icon: imageImg,
         name: "Galeria",
-        link: "#"
+        link: "/management/panel/galeria"
     },
     {
         icon: letterImg,
         name: "Wiadomości",
-        link: "#"
+        link: "/management/panel/wiadomosci"
     },
 ]
 
@@ -54,20 +59,14 @@ const layout = ({ children }) => {
                     <h1 className='text-white text-[20px]'>Panel <br /> Administracyjny</h1>
                 </article>
 
-                <nav className='flex flex-col w-full'>
-                    {menu.map((item, index) => (
-                        <Link href={item.link} key={index}>
-                            <div className='flex items-center gap-[25px] h-[45px] hover:bg-[#212B33] w-full'>
-                                <div className='pl-[45px]'>
-                                    <Image src={item.icon} width="30" height="30" alt={`Ikona ${item.name}`}/>
-                                </div>
-                                <p className='flex text-[20px] text-white font-light'>{item.name}</p>
-                            </div>
-                        </Link>
-                    ))}
-                </nav>
+                <NavBar menu={menu}/>
             </aside>
-            {children}
+            
+            <article className='px-[90px] flex-1 items-center pt-[20px]'>
+                <TopBar/>
+                {children}
+            </article>
+
         </section>
     )
 }
