@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation'
 import UserBar from './UserBar';
+import { connectMongoDB } from '@utils/database';
 
 const TopBar = () => {
 

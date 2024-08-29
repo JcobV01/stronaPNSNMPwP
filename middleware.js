@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { track } from "@utils/analytics";
+import { analytics } from "@utils/analytics";
 
 // Definiujemy ścieżki, które mają być chronione
 
@@ -34,17 +34,40 @@ export async function middleware(request) {
   }
 
   //Analytics
-  if (request.nextUrl.pathname === '/') {
-    // track analytics event
-    try {
-      track("pageview", {
-        page: '/',
-        country: request.geo?.country
-      })
-    } catch (error) {
-      console.log(error);
+  // if (request.nextUrl.pathname === '/') {
+  //   // track analytics event
+  //   try {
+  //     await analytics.track("pageview", {
+  //       page: '/',
+  //       country: request.geo?.country
+  //     })
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
+  const body = JSON.stringify({
+    namespace: 'pageview',
+    event: {
+      page: pathname,
+      country: request.geo?.country || 'unknown'  // Przekazuje 'unknown', jeśli kraj jest niezidentyfikowany
     }
+  });
+
+
+  try {
+    // Wywołaj endpoint API z danymi o ruchu
+    await fetch(`${request.nextUrl.origin}/api/analytics/track`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: body,
+    });
+  } catch (error) {
+    console.error('Błąd podczas śledzenia ruchu:', error);
   }
+
+
+  
 
   // Jeśli użytkownik jest zalogowany lub ścieżka nie jest chroniona, kontynuujemy przetwarzanie
   return NextResponse.next({

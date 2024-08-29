@@ -12,18 +12,18 @@ export class Analytics {
         }
     }
 
-    async track(namespace) {
+    async track(namespace, event) {
         const key = `analytics::${namespace}`
         
         // Połączenie z MongoDB przed rozpoczęciem śledzenia
-        await connectMongoDB();
-
+        // await connectMongoDB();
+        
         // Używamy operacji upsert do dodania lub aktualizacji licznika
-        await Event.updateOne(
-            { _id: key },
-            { $inc: { count: 1 }, $set: { lastEvent: event, updatedAt: new Date() } },
-            { upsert: true }
-        );
+        // await Event.updateOne(
+        //     { _id: key },
+        //     { $inc: { count: 1 }, $set: { lastEvent: event, updatedAt: new Date() } },
+        //     { upsert: true }
+        // );
     }
 }
 
@@ -52,4 +52,4 @@ export class Analytics {
 
 
 // Tworzenie instancji klasy Analytics
-// export const analytics = new Analytics();
+export const analytics = new Analytics();

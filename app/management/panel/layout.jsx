@@ -50,6 +50,7 @@ const menu = [
     },
 ]
 
+
 const layout = ({ children }) => {
     return (
         <section className='h-dvh flex p-[20px]'>  
