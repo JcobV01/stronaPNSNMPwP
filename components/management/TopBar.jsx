@@ -2,7 +2,6 @@
 
 import { usePathname } from 'next/navigation'
 import UserBar from './UserBar';
-import { connectMongoDB } from '@utils/database';
 
 const TopBar = () => {
 
@@ -10,6 +9,7 @@ const TopBar = () => {
         ["/management/panel", "Statystyki"],
         ["/management/panel/ogloszenia", "Ogłoszenia"],
         ["/management/panel/komunikaty", "Komunikaty"],
+        ["/management/panel/komunikaty/nowy", "Dodaj wpis"],
         ["/management/panel/historia", "Historia"],
         ["/management/panel/galeria", "Galeria"],
         ["/management/panel/wiadomosci", "Wiadomości"]
