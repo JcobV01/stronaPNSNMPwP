@@ -1,6 +1,7 @@
 // /pages/api/track-traffic.js
 import { connectMongoDB } from '@utils/database';
 import Event from '@models/events';
+import { getDate } from '@utils/index';
 
 export async function POST(req, res) {
   try {
@@ -13,8 +14,8 @@ export async function POST(req, res) {
       return new Response(JSON.stringify({ error: 'Brakujące dane' }), { status: 400 });
     }
 
-    const key = `analytics::${namespace}`;
-
+    const key = `analytics::${namespace}::${getDate().toString()}`;
+    
     // Zaktualizuj licznik i ustaw informacje o zdarzeniu w bazie danych
     await Event.updateOne(
       { _id: key },
