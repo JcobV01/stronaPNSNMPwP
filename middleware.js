@@ -46,25 +46,25 @@ export async function middleware(request) {
   //   }
   // }
 
-  const body = JSON.stringify({
-    namespace: 'pageview',
-    event: {
-      page: pathname,
-      country: request.geo?.country || 'unknown'  // Przekazuje 'unknown', jeśli kraj jest niezidentyfikowany
-    }
-  });
+  // const body = JSON.stringify({
+  //   namespace: 'pageview',
+  //   event: {
+  //     page: pathname,
+  //     country: request.geo?.country || 'unknown'  // Przekazuje 'unknown', jeśli kraj jest niezidentyfikowany
+  //   }
+  // });
 
 
-  try {
-    // Wywołaj endpoint API z danymi o ruchu
-    await fetch(`${request.nextUrl.origin}/api/analytics/track`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: body,
-    });
-  } catch (error) {
-    console.error('Błąd podczas śledzenia ruchu:', error);
-  }
+  // try {
+  //   // Wywołaj endpoint API z danymi o ruchu
+  //   await fetch(`${request.nextUrl.origin}/api/analytics/track`, {
+  //     method: 'POST',
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: body,
+  //   });
+  // } catch (error) {
+  //   console.error('Błąd podczas śledzenia ruchu:', error);
+  // }
 
 
   
@@ -79,5 +79,5 @@ export async function middleware(request) {
 
 // Definiujemy, dla jakich ścieżek middleware powinien być uruchamiany
 export const config = {
-  matcher: ['/management/:path*', '/'], // Middleware uruchamia się dla każdej ścieżki zaczynającej się na /management
+  matcher: ['/management/:path*'], // Middleware uruchamia się dla każdej ścieżki zaczynającej się na /management dodać '/'
 };
