@@ -1,11 +1,10 @@
 'use client'
 
 import PostsForm from '@components/management/posts/PostsForm';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 
-const nowy = () => {
+const edytuj = () => {
     const [submitting, setsubmitting] = useState(false);
     const [currentDataTime, setCurrentDataTime] = useState('');
     const [post, setPost] = useState({
@@ -15,26 +14,43 @@ const nowy = () => {
     });
 
     const router = useRouter();
-    const session = useSession();
+    const searchParams = useSearchParams();
+    const postId = searchParams.get('id');
 
-    const createPost = async (e) => {
+    useEffect(() => {
+        const getPostDetails = async () => {
+            const response = await fetch(`/api/post/${postId}`)
+            const data = await response.json();
+
+            setPost({
+                title: data.title,
+                date: data.date,
+                category: data.category,
+                contents: data.contents,
+            })
+
+            console.log(data);
+        }
+
+        if (postId) getPostDetails();
+    }, [postId])
+
+    const updatePost = async (e) => {
         e.preventDefault();
         setsubmitting(true);
 
+        if (!postId) return alert('Nie znaleziono ID postu');
+
         try {
-            const response = await fetch('/api/post/new', {
-                method: "POST",
+            const response = await fetch(`/api/post/${postId}`, {
+                method: "PATCH",
                 body: JSON.stringify({
                     title: post.title,
-                    author: session.data?.user?.name,
-                    date: currentDataTime,
+                    date: post.date,
                     category: post.category,
                     contents: post.contents,
                 }),
-            })
-
-            console.log(post.title, session.data?.user?.name, currentDataTime, post.category, post.contents)
-
+            });
 
             if (response.ok) {
                 router.push('/management/panel/komunikaty');
@@ -42,6 +58,7 @@ const nowy = () => {
         } catch (error) {
             console.log(error);
         } finally {
+            console.log(post)
             setsubmitting(false);
         }
     }
@@ -49,11 +66,11 @@ const nowy = () => {
     return (
         <section className='flex-center mt-[20px]'>
             <PostsForm
-                type='Utwórz'
+                type='Edytuj'
                 post={post}
                 setPost={setPost}
                 submitting={submitting}
-                handleSubmit={createPost}
+                handleSubmit={updatePost}
                 currentDataTime={currentDataTime}
                 setCurrentDataTime={setCurrentDataTime}
             />
@@ -61,4 +78,4 @@ const nowy = () => {
     )
 }
 
-export default nowy
+export default edytuj
