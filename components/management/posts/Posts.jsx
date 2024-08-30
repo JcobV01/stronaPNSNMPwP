@@ -1,7 +1,5 @@
-import Image from 'next/image'
 import React from 'react'
-
-import moreImg from '@public/assets/icons/mamagement/more.png'
+import PostOptions from './PostOptions'
 
 const Posts = ({ post, handleEdit, handleDelete }) => {
     return (
@@ -10,9 +8,7 @@ const Posts = ({ post, handleEdit, handleDelete }) => {
             <p className='w-[150px]'>{post.author}</p>
             <p className='w-[100px]'>{post.category}</p>
             <p className='w-[150px]'>{post.date}</p>
-            <Image src={moreImg} alt='Ikona trzech kropeczek - więcej'/>
-            <p onClick={handleEdit}>Edytuj</p>
-            <p onClick={handleDelete}>Edytuj</p>
+            <PostOptions handleEdit={handleEdit} handleDelete={handleDelete}/>
         </div>
     )
 }

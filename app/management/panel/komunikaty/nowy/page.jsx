@@ -8,6 +8,7 @@ import React, { useState } from 'react'
 const nowy = () => {
     const [submitting, setsubmitting] = useState(false);
     const [currentDataTime, setCurrentDataTime] = useState('');
+    const [error, setError] = useState('');
     const [post, setPost] = useState({
         title: '',
         category: '',
@@ -18,9 +19,10 @@ const nowy = () => {
     const session = useSession();
 
     const createPost = async (e) => {
-        e.preventDefault();
         setsubmitting(true);
-
+        e.preventDefault();
+        
+        
         try {
             const response = await fetch('/api/post/new', {
                 method: "POST",
@@ -32,22 +34,27 @@ const nowy = () => {
                     contents: post.contents,
                 }),
             })
-
-            console.log(post.title, session.data?.user?.name, currentDataTime, post.category, post.contents)
-
+            
+            if (!post.title || !post.category || !post.contents ) {
+                setError("Wszystkie pola muszą być wypełnione");
+                return;
+            }
 
             if (response.ok) {
                 router.push('/management/panel/komunikaty');
             }
+            
         } catch (error) {
-            console.log(error);
+            setError("Wystąpił błąd podczas tworzenia posta");
         } finally {
             setsubmitting(false);
         }
     }
 
+
     return (
-        <section className='flex-center mt-[20px]'>
+        <section className='flex-center flex-col mt-[20px]'>
+            {error && <span className='text-red-700 font-light tracking-[2px] mb-[5px]'>{error}</span>}
             <PostsForm
                 type='Utwórz'
                 post={post}
@@ -56,6 +63,7 @@ const nowy = () => {
                 handleSubmit={createPost}
                 currentDataTime={currentDataTime}
                 setCurrentDataTime={setCurrentDataTime}
+                error={error}
             />
         </section>
     )

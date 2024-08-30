@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 const edytuj = () => {
     const [submitting, setsubmitting] = useState(false);
     const [currentDataTime, setCurrentDataTime] = useState('');
+    const [error, setError] = useState('');
     const [post, setPost] = useState({
         title: '',
         category: '',
@@ -52,11 +53,16 @@ const edytuj = () => {
                 }),
             });
 
+            if (!post.title || !post.category || !post.contents) {
+                setError("Wszystkie pola muszą być wypełnione");
+                return;
+            }
+
             if (response.ok) {
                 router.push('/management/panel/komunikaty');
             }
         } catch (error) {
-            console.log(error);
+            setError("Wystąpił błąd podczas edycji posta");
         } finally {
             console.log(post)
             setsubmitting(false);
@@ -65,6 +71,7 @@ const edytuj = () => {
 
     return (
         <section className='flex-center mt-[20px]'>
+            {error && <span className='text-red-700 font-light tracking-[2px] mb-[5px]'>{error}</span>}
             <PostsForm
                 type='Edytuj'
                 post={post}
