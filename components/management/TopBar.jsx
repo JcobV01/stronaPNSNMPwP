@@ -10,6 +10,7 @@ const TopBar = () => {
         ["/management/panel/ogloszenia", "Ogłoszenia"],
         ["/management/panel/komunikaty", "Komunikaty"],
         ["/management/panel/komunikaty/nowy", "Dodaj wpis"],
+        ["/management/panel/komunikaty/edytuj", "Edytuj wpis"],
         ["/management/panel/historia", "Historia"],
         ["/management/panel/galeria", "Galeria"],
         ["/management/panel/wiadomosci", "Wiadomości"]

@@ -2,7 +2,7 @@ import React from 'react'
 
 const komunikaty = () => {
   return (
-    <div>komunikaty</div>
+    <section>Komunikaty</section>
   )
 }
 

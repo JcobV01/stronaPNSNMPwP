@@ -1,11 +1,10 @@
 'use client'
 
 import PostsForm from '@components/management/posts/PostsForm';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import React, { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 
-const nowy = () => {
+const edytuj = () => {
     const [submitting, setsubmitting] = useState(false);
     const [currentDataTime, setCurrentDataTime] = useState('');
     const [error, setError] = useState('');
@@ -16,26 +15,45 @@ const nowy = () => {
     });
 
     const router = useRouter();
-    const session = useSession();
+    const searchParams = useSearchParams();
+    const postId = searchParams.get('id');
 
-    const createPost = async (e) => {
-        setsubmitting(true);
+    useEffect(() => {
+        const getPostDetails = async () => {
+            const response = await fetch(`/api/post/${postId}`)
+            const data = await response.json();
+
+            setPost({
+                title: data.title,
+                date: data.date,
+                category: data.category,
+                contents: data.contents,
+            })
+
+            console.log(data);
+        }
+
+        if (postId) getPostDetails();
+    }, [postId])
+
+    const updatePost = async (e) => {
         e.preventDefault();
-        
-        
+        setsubmitting(true);
+
+        if (!postId) return alert('Nie znaleziono ID postu');
+
         try {
-            const response = await fetch('/api/post/new', {
-                method: "POST",
+            const response = await fetch(`/api/post/${postId}`, {
+                method: "PATCH",
                 body: JSON.stringify({
                     title: post.title,
-                    author: session.data?.user?.name,
-                    date: currentDataTime,
+                    date: post.date,
                     category: post.category,
                     contents: post.contents,
                 }),
-            })
-            
-            if (!post.title || !post.category || !post.contents ) {
+            });
+
+            if (!post.title || !post.category || !post.contents) {
                 setError("Wszystkie pola muszą być wypełnione");
                 return;
             }
@@ -43,30 +61,28 @@ const nowy = () => {
             if (response.ok) {
                 router.push('/management/panel/komunikaty');
             }
-            
         } catch (error) {
-            setError("Wystąpił błąd podczas tworzenia posta");
+            setError("Wystąpił błąd podczas edycji posta");
         } finally {
+            console.log(post)
             setsubmitting(false);
         }
     }
 
-
     return (
-        <section className='flex-center flex-col mt-[20px]'>
+        <section className='flex-center mt-[20px]'>
             {error && <span className='text-red-700 font-light tracking-[2px] mb-[5px]'>{error}</span>}
             <PostsForm
-                type='Utwórz'
+                type='Edytuj'
                 post={post}
                 setPost={setPost}
                 submitting={submitting}
-                handleSubmit={createPost}
+                handleSubmit={updatePost}
                 currentDataTime={currentDataTime}
                 setCurrentDataTime={setCurrentDataTime}
-                error={error}
             />
         </section>
     )
 }
 
-export default nowy
+export default edytuj

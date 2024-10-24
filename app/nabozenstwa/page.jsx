@@ -11,7 +11,7 @@ import imgRozaniec from '@public/assets/images/services/rozaniec.webp'
 
 const nabozenstwa = () => {
   return (
-    <section className='pt-[50px] px-[20px] flex items-center flex-col gap-[30px] text-center'>
+    <section className='pt-[50px] pb-[50px] px-[20px] flex items-center flex-col gap-[30px] text-center'>
       <Title title="Nabożeństwa" title2="" subtitle="Godziny Nabożeństw" />
       <article className='flex mt-[50px] shadow-[0px_4px_20px_#00000025] xl:flex-col'>
         <div className='flex sm:flex-col'> 
@@ -74,7 +74,7 @@ const nabozenstwa = () => {
             <p className='text-[#B0B0B0] text-[13px]'>Niedziela Palmowa - Droga Krzyżowa ulicami parafii</p>
             <p className='text-[#5A7889] text-[15px] font-semibold'>19:00</p>
 
-            <h4 className='text-[15px] font-light'>Gorzkie Żale - Wielki Piątek</h4>
+            <h4 className='text-[15px] font-light'>Gorzkie Żale - Wielki Post</h4>
             <p className='text-[#B0B0B0] text-[13px]'>Niedziela</p>
             <p className='text-[#5A7889] text-[15px] font-semibold'>14:30</p>
             <p className='text-[#B0B0B0] text-[13px]'>Wielki Piątek</p>
