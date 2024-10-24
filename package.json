@@ -9,8 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tiptap/extension-text-align": "^2.6.6",
+    "@tiptap/extension-underline": "^2.6.6",
+    "@tiptap/pm": "^2.6.6",
+    "@tiptap/react": "^2.6.6",
+    "@tiptap/starter-kit": "^2.6.6",
     "bcrypt": "^5.1.1",
     "date-fns": "^3.6.0",
+    "lucide-react": "^0.436.0",
+    "mammoth": "^1.8.0",
     "mongodb": "^6.8.0",
     "mongoose": "^8.5.4",
     "next": "14.2.5",

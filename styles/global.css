@@ -51,3 +51,15 @@
   border-radius: 20px;
   z-index: 2;
 }
+
+ol{
+  list-style-type: decimal !important;
+  /* margin: 1em 0; */
+  padding: 0 0 0 40px;
+}
+
+ul {
+  list-style-type: disc !important; 
+  /* margin: 1em 0; */
+  padding: 0 0 0 40px; 
+}
