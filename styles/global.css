@@ -70,3 +70,13 @@ input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
 }
+
+/*Ograniczenie liczby znaków w postach (komunikaty)*/
+.truncate-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Ustaw, ile linii ma być wyświetlonych */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 4.5em; /* Ustaw wysokość odpowiednio do liczby linii */
+}

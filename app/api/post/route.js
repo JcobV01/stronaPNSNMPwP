@@ -11,7 +11,7 @@ export const GET = async (request) => {
         const skip = (page - 1) * limit;
     
         const totalPosts = await Posts.countDocuments();
-        const posts = await Posts.find({}).skip(skip).limit(limit);
+        const posts = await Posts.find({}).sort({date: -1}).skip(skip).limit(limit);
 
         return new Response(JSON.stringify({posts, totalPosts}), { status: 200 });
     } catch (error) {
