@@ -39,7 +39,7 @@ const nowy = () => {
             
             console.log(post);
 
-            if (!post.title || !post.category || !post.contents ) {
+            if (!post.title || !post.category ) {
                 setError("Wszystkie pola muszą być wypełnione");
                 return;
             }

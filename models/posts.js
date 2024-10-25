@@ -19,7 +19,6 @@ const PostsSchema = new Schema({
     },
     contents: {
         type: String,
-        required: true,
     },
     img: {
         type: String,
