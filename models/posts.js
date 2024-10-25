@@ -19,8 +19,10 @@ const PostsSchema = new Schema({
     },
     contents: {
         type: String,
-        required: true,
     },
+    img: {
+        type: String,
+    }
 });
 
 const Posts = models.Posts || model('Posts', PostsSchema);

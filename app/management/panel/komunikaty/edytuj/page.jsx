@@ -12,6 +12,7 @@ const edytuj = () => {
         title: '',
         category: '',
         contents: '',
+        img: '',
     });
 
     const router = useRouter();
@@ -28,6 +29,7 @@ const edytuj = () => {
                 date: data.date,
                 category: data.category,
                 contents: data.contents,
+                img: data.img,
             })
 
             console.log(data);
@@ -50,10 +52,11 @@ const edytuj = () => {
                     date: post.date,
                     category: post.category,
                     contents: post.contents,
+                    img: post.img,
                 }),
             });
 
-            if (!post.title || !post.category || !post.contents) {
+            if (!post.title || !post.category ) {
                 setError("Wszystkie pola muszą być wypełnione");
                 return;
             }

@@ -13,6 +13,7 @@ const nowy = () => {
         title: '',
         category: '',
         contents: '',
+        img: '',
     });
 
     const router = useRouter();
@@ -32,10 +33,13 @@ const nowy = () => {
                     date: currentDataTime,
                     category: post.category,
                     contents: post.contents,
+                    img: post.img,
                 }),
             })
             
-            if (!post.title || !post.category || !post.contents ) {
+            console.log(post);
+
+            if (!post.title || !post.category ) {
                 setError("Wszystkie pola muszą być wypełnione");
                 return;
             }

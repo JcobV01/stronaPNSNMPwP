@@ -18,7 +18,7 @@ export const GET = async (request, { params }) => {
 
 // PATCH (update)
 export const PATCH = async (request, { params }) => {
-    const { title, date, category, contents } = await request.json();
+    const { title, date, category, contents, img } = await request.json();
     try {
         await connectMongoDB();
 
@@ -30,6 +30,7 @@ export const PATCH = async (request, { params }) => {
         existingPosts.date = date;
         existingPosts.category = category;
         existingPosts.contents = contents;
+        existingPosts.img = img;
 
         await existingPosts.save();
 
