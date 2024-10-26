@@ -16,7 +16,7 @@ const komunikaty = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch(`/api/post?page=${currentPage}&limit=${postsPerPage}`);
+        const response = await fetch(`/api/post?page=${currentPage}&limit=${postsPerPage}&search=${searchTerm}`);
         const data = await response.json();
 
         console.log('Fetched data:', data);
@@ -29,7 +29,7 @@ const komunikaty = () => {
     }
 
     fetchPosts();
-  }, [currentPage]);
+  }, [currentPage, searchTerm]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -49,15 +49,10 @@ const komunikaty = () => {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
+    setCurrentPage(1);
   };
 
-  const filteredPosts = posts.filter(post =>
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
-  const totalPages = searchTerm
-    ? Math.ceil(filteredPosts.length / postsPerPage)
-    : Math.ceil(totalPosts / postsPerPage);
+  const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   return (
     <section className='flex-center flex-col pb-[250px]'>
@@ -67,7 +62,7 @@ const komunikaty = () => {
       </div>
       <Title title="Komunikaty" title2="" subtitle="Najnowsze posty" />
       <article className='mt-[50px]'>
-        {filteredPosts?.map((post) => (
+        {posts?.map((post) => (
           <Posts key={post._id} post={post} />
         ))}
       </article>

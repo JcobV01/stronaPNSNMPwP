@@ -31,7 +31,7 @@ const Posts = ({ post }) => {
             <div className='w-full h-[200px] px-[30px] font-light  relative flex flex-col justify-center'>
                 <h4 className='text-[20px]'>{post.title}</h4>
                 <p className='text-[#B0B0B0] truncate-text'>{post.contents}</p>
-                <button onClick={handleClick} className='absolute bottom-0 right-[30px] flex-center gap-[5px]'>Czytaj dalej <Icon icon="icon-park-outline:double-right" width="20px" height="20px" /></button>
+                <button onClick={handleClick} className='absolute bottom-0 right-[30px] flex-center gap-[5px]'>Czytaj dalej <Icon icon="icon-park-outline:double-right" alt="Ikona strzałek w prawo" width="20px" height="20px" /></button>
             </div>
         </div>
     )
