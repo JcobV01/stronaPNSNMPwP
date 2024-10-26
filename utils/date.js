@@ -1,4 +1,4 @@
-export const getDate = (daysToAdd = 0) => {
+export const getDateToday = (daysToAdd = 0) => {
   const today = new Date();
   today.setDate(today.getDate() + daysToAdd);
 

@@ -50,7 +50,7 @@ export async function POST(req, res) {
     const day = $('#theme-main > .px-3 > article > .font-serif').text().replace(/\s+/g, ' ').trim();
     const color = $('#theme-main > .px-3 > article > .font-sans > span').text().replace(/\s+/g, ' ').trim();
     const date = $('#dzien h2').text().replace(/\s+/g, ' ').trim();
-    const time = $('#dzien > div > div > div.col-md-9 > div > div.col-12.col-lg-5 > p.lh-sm.background-zwykly.px-2.py-1.mb-0.text-center.badge.fw-normal.fs-6').text().replace(/\s+/g, ' ').trim();
+    const time = $('#dzien > div > div > div.col-md-9 > div > div.col-12.col-lg-5 > p.lh-sm.px-2.py-1.mb-0.text-center.badge.fw-normal.fs-6').text().replace(/\s+/g, ' ').trim();
 
     return new Response(JSON.stringify({data: {readings: result, color: color, day: day, year: year, date: date, time: time}}), { status: 200 });
 
