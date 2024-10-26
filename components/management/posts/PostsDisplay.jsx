@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Posts from './Posts';
 import { useRouter } from 'next/navigation';
+import Pagination from '@components/messages/Pagination';
 
 const PostsDisplay = () => {
     const [posts, setPosts] = useState([]);
@@ -81,15 +82,7 @@ const PostsDisplay = () => {
                     handleDelete={() => handleDelete && handleDelete(post)}
                 />
             ))}
-            <div className='flex items-center justify-end mt-[20px] gap-2'>
-                <button onClick={() => handlePageChange(1)} disabled={currentPage === 1} className='text-[24.5px] font-light'>&laquo;</button>
-                <button onClick={handlePrevPage} disabled={currentPage === 1} className='text-[20px] font-light'>&lt;</button>
-                {Array.from({ length: totalPages }, (_, index) => index + 1).map(page => (
-                    <button key={page} onClick={() => handlePageChange(page)} className={currentPage === page ? 'font-medium text-[25px]': 'font-light text-[20px]'}>{page}</button>
-                ))}
-                <button onClick={handleNextPage} disabled={currentPage === totalPages} className='text-[20px] font-light'>&gt;</button>
-                <button onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} className='text-[24.5px] font-light'>&raquo;</button>
-            </div>
+            <Pagination handleNextPage={handleNextPage} handlePageChange={handlePageChange} handlePrevPage={handlePrevPage} currentPage={currentPage} totalPages={totalPages} />
         </article>
     )
 }
