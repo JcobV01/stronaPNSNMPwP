@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import Posts from '@components/messages/Posts'
 import Title from '@components/Title'
 import { Icon } from '@iconify/react'
+import Pagination from '@components/messages/Pagination'
 
 const komunikaty = () => {
   const [posts, setPosts] = useState([]);
@@ -57,7 +58,7 @@ const komunikaty = () => {
   return (
     <section className='flex-center flex-col pb-[250px]'>
       <div className='relative top-[-30px]'>
-        <input type="search" value={searchTerm} onChange={handleSearchChange} placeholder="Wyszukaj po tytule" className='w-[815px] h-[60px] rounded-[30px] pl-[55px] pr-[25px] outline-none' />
+        <input type="search" value={searchTerm} onChange={handleSearchChange} placeholder="Wyszukaj po tytule" className='w-[815px] h-[60px] rounded-[30px] pl-[55px] pr-[65px] outline-none lg:w-[600px] sm:w-[100%]' />
         <Icon icon="stash:search" width="40px" height="40px" className='text-[#5A7889] absolute top-[10px] right-[25px]' />
       </div>
       <Title title="Komunikaty" title2="" subtitle="Najnowsze posty" />
@@ -67,15 +68,7 @@ const komunikaty = () => {
         ))}
       </article>
       {totalPages > 1 && (
-        <div className='flex items-center justify-end mt-[20px] gap-2'>
-          <button onClick={() => handlePageChange(1)} disabled={currentPage === 1} className='text-[24.5px] font-light'>&laquo;</button>
-          <button onClick={handlePrevPage} disabled={currentPage === 1} className='text-[20px] font-light'>&lt;</button>
-          {Array.from({ length: totalPages }, (_, index) => index + 1).map(page => (
-            <button key={page} onClick={() => handlePageChange(page)} className={currentPage === page ? 'font-medium text-[25px]' : 'font-light text-[20px]'}>{page}</button>
-          ))}
-          <button onClick={handleNextPage} disabled={currentPage === totalPages} className='text-[20px] font-light'>&gt;</button>
-          <button onClick={() => handlePageChange(totalPages)} disabled={currentPage === totalPages} className='text-[24.5px] font-light'>&raquo;</button>
-        </div>
+        <Pagination handleNextPage={handleNextPage} handlePageChange={handlePageChange} handlePrevPage={handlePrevPage} currentPage={currentPage} totalPages={totalPages} />
       )}
     </section>
   )
