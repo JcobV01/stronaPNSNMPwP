@@ -112,6 +112,13 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 50%;
   display: inline-block;
   transition-duration: 700ms;
+  cursor: pointer;
+}
+
+#kontakt input[type="radio"]:checked + .radio-label .circle::before {
+  background-color: #5A7889;
+  border-color: #3b585e; 
+  transform: scale(1.2);
 }
 
 /*Style dla ogłoszeń*/
