@@ -113,3 +113,15 @@ input[type="search"]::-webkit-search-cancel-button {
   display: inline-block;
   transition-duration: 700ms;
 }
+
+/*Style dla ogłoszeń*/
+
+.announcements-container > ol{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.announcements-container > ol > li > ul{
+  margin-block: 20px;
+}
