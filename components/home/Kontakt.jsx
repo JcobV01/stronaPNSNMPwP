@@ -31,11 +31,11 @@ const Kontakt = () => {
 
     return (
         <section id="kontakt" className="flex-center mt-[100px] pb-[100px] relative">
-            <Image src={bgImage} width="1920" height="1000" alt="Obrazek tła w sekcji kontakt" className="w-full absolute h-[1000px] object-cover brightness-[0.15]" />
-            <div className="mt-[65px] h-[1000px]">
+            <Image src={bgImage} width="1920" height="1000" alt="Obrazek tła w sekcji kontakt" className="w-full absolute h-[1000px] object-cover brightness-[0.15] lg:h-[1400px]" />
+            <div className="mt-[65px] h-[1000px] lg:h-[1400px]">
                 <Title title="Kontakt" title2="" subtitle="Skontaktuj się z nami" color="#FFF" />
-                <div className="flex gap-[200px] mt-[65px]">
-                    <div className="z-10 relative flex flex-col mt-[80px]">
+                <div className="flex gap-[200px] mt-[65px] xl:gap-[25px] lg:flex-col lg:mt-[25px]">
+                    <div className="z-10 relative flex flex-col mt-[80px] lg:mt-0 sm:px-[15px]">
 
                         <div className="flex items-center gap-[10px]">
                             <Icon icon="heroicons:map-pin-16-solid" width="30" height="30" className="text-[#5A7889]" />
@@ -58,40 +58,38 @@ const Kontakt = () => {
                             </Link>
                         </div>
                     </div>
-                    <div className="z-10 relative flex flex-col">
-                        <h4 className="text-[25px] text-white font-medium tracking-[5px]">Formularz kontaktowy</h4>
+                    <div className="z-10 relative flex flex-col lg:mt-[25px]">
+                        <h4 className="text-[25px] text-white font-medium tracking-[5px] lg:text-center sm:text-[22.5px]">Formularz kontaktowy</h4>
 
-                        <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] flex items-center pl-[25px] mt-[15px]">
-                            <p className="text-[20px] text-[#B0B0B0] tracking-[4px]">Kontakt z:</p>
+                        <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] flex items-center pl-[25px] mt-[15px] gap-[10px] sm:w-[90%] sm:mx-auto sm:flex-col sm:items-start sm:h-[110px]">
+                            <p className="text-[20px] text-[#B0B0B0] tracking-[4px] sm:text-[18px] sm:pt-[5px]">Kontakt z:</p>
+                            <input type="radio" name="role" value="administracja" className="radio-input hidden" />
                             <label className="radio-label">
-                                <input type="radio" name="role" value="administracja" className="radio-input" />
-                                <span className="radio-custom"></span>
-                                Administracja
+                                <span className="pl-[10px] text-[15px] text-[#B0B0B0] tracking-[3px] flex items-center gap-[5px] circle">Administracja</span>
                             </label>
 
+                            <input type="radio" name="role" value="proboszcz" className="radio-input hidden" />
                             <label className="radio-label">
-                                <input type="radio" name="role" value="proboszcz" className="radio-input" />
-                                <span className="radio-custom"></span>
-                                ks. Proboszcz
+                                <span className="pl-[10px] text-[15px] text-[#B0B0B0] tracking-[3px] flex items-center gap-[5px] circle">ks. Proboszcz</span>
                             </label>
                         </div>
 
-                        <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form">
+                        <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="clarity:email-solid" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <input type="text" name="" className="absolute w-[450px] outline-none text-[20px] text-white tracking-[4px] bg-transparent duration-500 z-[11]" required />
-                            <span className="absolute text-[20px] text-[#B0B0B0] tracking-[4px] duration-500">E-mail</span>
+                            <input type="text" name="" className="absolute w-[450px] outline-none text-[20px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[18px] sm:w-[100%] sm:pr-[85px]" required />
+                            <span className="absolute text-[20px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[18px]">E-mail</span>
                         </div>
-                        <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form">
+                        <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="mdi:user" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <input type="text" name="" className="absolute w-[450px] outline-none text-[20px] text-white tracking-[4px] bg-transparent duration-500 z-[11]" required />
-                            <span className="absolute text-[20px] text-[#B0B0B0] tracking-[4px] duration-500">Imię i Nazwisko</span>
+                            <input type="text" name="" className="absolute w-[450px] outline-none text-[20px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[18px] sm:w-[100%] sm:pr-[85px]" required />
+                            <span className="absolute text-[20px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[18px]">Imię i Nazwisko</span>
                         </div>
-                        <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[250px] rounded-[18px] mt-[15px] pl-[25px] pt-[15px] relative contact-form">
+                        <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[250px] rounded-[18px] mt-[15px] pl-[25px] pt-[15px] relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="dashicons:text-page" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <textarea name="" className="absolute w-[450px] h-[200px] outline-none text-[20px] text-white tracking-[4px] bg-transparent duration-500 z-[11]" style={{ resize: 'none' }} required></textarea>
-                            <span className="absolute text-[20px] text-[#B0B0B0] tracking-[4px] duration-500">Wiadomość</span>
+                            <textarea name="" className="absolute w-[450px] h-[200px] outline-none text-[20px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[18px] sm:w-[100%] sm:pr-[85px]" style={{ resize: 'none' }} required></textarea>
+                            <span className="absolute text-[20px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[18px]">Wiadomość</span>
                         </div>
-                        <button className="w-[200px] h-[50px] border-[1px] border-solid border-[#5A7889] bg-[rgba(18,39,43,0.70)] rounded-[5px] text-white tracking-[4px] text-[20px] font-light mt-[35px] ml-auto">Wyślij</button>
+                        <button className="w-[200px] h-[50px] border-[1px] border-solid border-[#5A7889] bg-[rgba(18,39,43,0.70)] rounded-[5px] text-white tracking-[4px] text-[20px] font-light mt-[35px] ml-auto sm:text-[18px]">Wyślij</button>
                     </div>
                 </div>
             </div>

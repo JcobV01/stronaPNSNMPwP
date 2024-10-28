@@ -101,3 +101,15 @@ input[type="search"]::-webkit-search-cancel-button {
 .contact-form input:focus, .contact-form input:valid{padding-top: 15px;}
 
 .contact-form textarea:focus, .contact-form textarea:valid{margin-top: 20px;}
+
+
+/*Kontakt style do input type radio*/
+#kontakt .circle::before{
+  content: "";
+  height: 15px;
+  width: 15px;
+  border: 2px solid #5A7889;
+  border-radius: 50%;
+  display: inline-block;
+  transition-duration: 700ms;
+}
