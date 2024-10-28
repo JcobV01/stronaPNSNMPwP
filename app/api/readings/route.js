@@ -14,30 +14,37 @@ export async function POST(req, res) {
     const result = [];
 
     $('#elementyTabContent0 > .tab-pane:nth-child(1) > h2').each((i, h2Elem) => {
-      const title = $(h2Elem).text();
-    
+      let title = $(h2Elem).text();
+  
+      // Sprawdzenie, czy tytuł zaczyna się od "Psalm" lub "Aklamacja"
+      if (title.startsWith("Psalm") || title.startsWith("Aklamacja")) {
+          title = title.trim(); // Usunięcie białych znaków
+      }
+  
       const h4Elem = $(h2Elem).next('h4');
       if (!h4Elem.length) return;
-    
+  
       const subtitle = h4Elem.text();
       const content = [];
-    
+  
       let nextElem = h4Elem.next();
       while (nextElem.length && nextElem[0].tagName !== 'h2') {
-        if (nextElem[0].tagName === 'p') {
-          content.push(nextElem.text());
-        }
-        nextElem = nextElem.next();
+          if (nextElem[0].tagName === 'p') {
+            const paragraphText = nextElem.text().replace(/\n/g, '<br>');
+            content.push(paragraphText);
+          }
+          nextElem = nextElem.next();
       }
-    
+  
       if (title && subtitle && content.length) {
-        result.push({
-          title,
-          subtitle,
-          content,
-        });
+          result.push({
+              title,
+              subtitle,
+              content,
+          });
       }
-    });
+  });
+  
 
     const year = $('#theme-main > .px-3 > article > h1')
     .text()
