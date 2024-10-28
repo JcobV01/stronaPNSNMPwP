@@ -94,7 +94,7 @@ const kalendarzDzien = () => {
             <article className='flex flex-col gap-[25px]'>
                 <InfoBar year={data?.year?.slice(4, -4)} season={setSeason()} cycle={data?.year?.slice(6)} />
 
-                <div className='flex gap-[25px] h-[80px] sm:flex-col sm:h-auto'>
+                <div className='flex gap-[25px] h-[80px] sm:flex-col sm:h-auto lg:mx-[20px]'>
                     <div className='flex-1 rounded-[5px] flex-center sm:h-[80px] sm:flex-auto' style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
                         <p className={` text-[30px] lg:text-[25px] ${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]': 'text-white'}`}>{data?.date?.split(", ")[0]}</p>
                     </div>
