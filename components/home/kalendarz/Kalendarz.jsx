@@ -49,7 +49,6 @@ const Kalendarz = () => {
 
   const setSeason = () => {
     const time = todayData?.time?.split(" ");
-    console.log(time)
     if (time != null) {
       if (time[1] == "Tydzień" && time[2] == "zwykły") return "Okres zwykły"
       else if (time[1] == "Tydzień" && time[2] == "adwentu") return "Adwent"

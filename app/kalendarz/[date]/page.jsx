@@ -4,7 +4,7 @@ import InfoBar from '@components/home/kalendarz/components/InfoBar'
 import Title from '@components/Title'
 import { Icon } from '@iconify/react'
 import { useParams } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
 const kalendarzDzien = () => {
     const [data, setData] = useState({})
@@ -22,7 +22,7 @@ const kalendarzDzien = () => {
                     body: JSON.stringify({ dateToFind })
                 });
                 const html = await readings.json();
-
+                console.log(html.data)
                 setData(html.data)
             }
             catch (err) {
@@ -48,34 +48,90 @@ const kalendarzDzien = () => {
         }
     }
 
+    const displayColor = {
+        "zielony": '#3C9530',
+        "czerwony": '#e01111',
+        "fioletowy": '#860ac9',
+        "różowy": "#ff3dfb",
+        "biały": "#ffffff"
+    }
+
+    const dateInputRef = useRef(null);
+
+    const handleClick = () => {
+        dateInputRef.current?.showPicker();
+    };
+
+    function formatTitle(title) {
+        const words = title.replace(".", "").split(" ");
+
+        if (words[1] === "czytanie") {
+            return `${words[0]} ${words[1]}: `;
+        }
+
+        return `${words[0]}: `;
+    }
+
     return (
         <section className='pt-[50px] flex flex-col items-center px-[20px] gap-[100px]'>
             <Title title="Kalendarz" title2="Liturgiczny" subtitle="Na każdy dzień" />
             <article>
-                <h4 className='text-[40px] font-medium tracking-[4px] text-center'>{
+                <h4 className='text-[30px] font-medium tracking-[4px] text-center max-w-[1200px]'>{
                     data?.day?.slice(0, 20) == "Dzień Powszedni" ?
                         data?.date?.split(", ")[1].charAt(0).toUpperCase() + data?.date?.split(", ")[1].slice(1) :
-                        data?.day?.charAt(0).toUpperCase() + data?.day?.split(", ")[1].slice(1)
+                        data?.day?.charAt(0).toUpperCase() + data?.day?.slice(1)
                 }, {data?.time}
                 </h4>
             </article>
             <article className='flex flex-col gap-[25px]'>
                 <InfoBar year={data?.year?.slice(4, -4)} season={setSeason()} cycle={data?.year?.slice(6)} />
-                <div className='flex gap-[25px]'>
-                    <div className='flex-1'></div>
-                    <div className="relative w-64">
-                        <input
-                            type="date"
-                            className="w-full p-3 pr-10 text-gray-700 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:border-blue-500 appearance-none"
-                        />
-                        <Icon
-                            icon="ion:calendar"
-                            className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 pointer-events-none"
-                            width="24"
-                            height="24"
-                        />
+
+                <div className='flex gap-[25px] h-[80px]'>
+                    <div className='flex-1 rounded-[5px] flex-center' style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
+                        <p className={` text-[30px] ${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]': 'text-white'}`}>{data?.date?.split(", ")[0]}</p>
+                    </div>
+                    <div className="relative inline-block rounded-[5px] w-[80px] flex-center" style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
+                        <button onClick={handleClick} className="p-2 focus:outline-none z-10">
+                            <Icon icon="ion:calendar" width="50" height="50" className={`${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]': 'text-white'}`} />
+                        </button>
+                        <input type="date" ref={dateInputRef} className="absolute inset-0 opacity-0 w-full h-full cursor-pointer" />
                     </div>
                 </div>
+
+                <div className='min-h-[80px] p-[15px] rounded-[5px] bg-[#5A7889] flex'>
+                    <div className='flex-1'>
+                        {data?.readings?.slice(0, data?.readings?.length / 2).map((item, index) => (
+                            <p className='text-white' key={index}>
+                                <span className='font-semibold text-white'>{formatTitle(item?.title)}</span>
+                                {item?.title.slice(item?.title.indexOf("(") + 1, item?.title.length - 1)}
+                            </p>
+                        ))}
+                    </div>
+                    <div className='flex-1'>
+                        {data?.readings?.slice(data?.readings?.length / 2).map((item, index) => (
+                            <p className='text-white' key={index}>
+                                <span className='font-semibold text-white'>{formatTitle(item?.title)}</span>
+                                {item?.title.slice(item?.title.indexOf("(") + 1, item?.title.length - 1)}
+                            </p>
+                        ))}
+                    </div>
+                </div>
+            </article>
+
+            <article>
+                {
+                    data?.readings?.map((text, index) => (
+                        <div key={index} >
+                            <h4>{text?.title}</h4>
+                            <h5>{text?.subtitle}</h5>
+                            {
+                                text?.content?.map((paragraph, indexInside) => (
+                                    <p key={indexInside}>{paragraph}</p>
+                                ))
+                            }
+                        </div>
+                    ))
+                }
             </article>
 
         </section>

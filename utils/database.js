@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
 
-mongoose.debug = true;
-
 let isConnected = false;
 
 export const connectMongoDB = async () => {
