@@ -2,7 +2,7 @@ import React from 'react'
 
 const Title = ({title, title2, subtitle, color="#353535"}) => {
   return (
-    <div className='flex flex-col gap-[5px]'>
+    <div className='flex flex-col gap-[5px] relative z-10'>
         <h2 className='text-[40px] tracking-[10px] font-[500] text-center 2xl:text-[35px] lg:text-[30px] sm:text-[23px]' style={{color: color}}>
           <span className='text-[#5A7889]'>{`${title[0]}`}</span>
           {`${title.slice(1)} `}
