@@ -1,15 +1,19 @@
 "use client"
 
+import CalendarSigla from '@components/calendar/CalendarSigla'
+import CalendarTextsSection from '@components/calendar/CalendarTextsSection'
 import InfoBar from '@components/home/kalendarz/components/InfoBar'
 import Title from '@components/Title'
 import { Icon } from '@iconify/react'
-import { useParams } from 'next/navigation'
+import { getDateToday } from '@utils/date'
+import { useParams, useRouter } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 
 const kalendarzDzien = () => {
     const [data, setData] = useState({})
 
     const { date } = useParams()
+    const router = useRouter()
 
     useEffect(() => {
         const fetchReadings = async (dateToFind) => {
@@ -62,7 +66,7 @@ const kalendarzDzien = () => {
         dateInputRef.current?.showPicker();
     };
 
-    function formatTitle(title) {
+    const formatTitle = (title) => {
         const words = title.replace(".", "").split(" ");
 
         if (words[1] === "czytanie") {
@@ -72,11 +76,15 @@ const kalendarzDzien = () => {
         return `${words[0]}: `;
     }
 
+    const changeDate = (e) => {
+        router.push(`/kalendarz/${e.target.value}`)
+    }
+
     return (
-        <section className='pt-[50px] flex flex-col items-center px-[20px] gap-[100px]'>
+        <section className='pt-[50px] flex flex-col items-center px-[20px] gap-[100px] pb-[150px]'>
             <Title title="Kalendarz" title2="Liturgiczny" subtitle="Na każdy dzień" />
             <article>
-                <h4 className='text-[30px] font-medium tracking-[4px] text-center max-w-[1200px]'>{
+                <h4 className='text-[30px] lg:text-[25px] font-medium tracking-[4px] text-center max-w-[1200px] xl:w-[80%] m-auto'>{
                     data?.day?.slice(0, 20) == "Dzień Powszedni" ?
                         data?.date?.split(", ")[1].charAt(0).toUpperCase() + data?.date?.split(", ")[1].slice(1) :
                         data?.day?.charAt(0).toUpperCase() + data?.day?.slice(1)
@@ -86,53 +94,22 @@ const kalendarzDzien = () => {
             <article className='flex flex-col gap-[25px]'>
                 <InfoBar year={data?.year?.slice(4, -4)} season={setSeason()} cycle={data?.year?.slice(6)} />
 
-                <div className='flex gap-[25px] h-[80px]'>
-                    <div className='flex-1 rounded-[5px] flex-center' style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
-                        <p className={` text-[30px] ${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]': 'text-white'}`}>{data?.date?.split(", ")[0]}</p>
+                <div className='flex gap-[25px] h-[80px] sm:flex-col sm:h-auto'>
+                    <div className='flex-1 rounded-[5px] flex-center sm:h-[80px] sm:flex-auto' style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
+                        <p className={` text-[30px] lg:text-[25px] ${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]': 'text-white'}`}>{data?.date?.split(", ")[0]}</p>
                     </div>
-                    <div className="relative inline-block rounded-[5px] w-[80px] flex-center" style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
+                    <div className="relative inline-block rounded-[5px] w-[80px] flex-center sm:w-full" style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
                         <button onClick={handleClick} className="p-2 focus:outline-none z-10">
                             <Icon icon="ion:calendar" width="50" height="50" className={`${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]': 'text-white'}`} />
                         </button>
-                        <input type="date" ref={dateInputRef} className="absolute inset-0 opacity-0 w-full h-full cursor-pointer" />
+                        <input type="date" ref={dateInputRef} onChange={(e) => changeDate(e)} max={getDateToday(14)} className="absolute inset-0 opacity-0 w-full h-full cursor-pointer" />
                     </div>
                 </div>
 
-                <div className='min-h-[80px] p-[15px] rounded-[5px] bg-[#5A7889] flex'>
-                    <div className='flex-1'>
-                        {data?.readings?.slice(0, data?.readings?.length / 2).map((item, index) => (
-                            <p className='text-white' key={index}>
-                                <span className='font-semibold text-white'>{formatTitle(item?.title)}</span>
-                                {item?.title.slice(item?.title.indexOf("(") + 1, item?.title.length - 1)}
-                            </p>
-                        ))}
-                    </div>
-                    <div className='flex-1'>
-                        {data?.readings?.slice(data?.readings?.length / 2).map((item, index) => (
-                            <p className='text-white' key={index}>
-                                <span className='font-semibold text-white'>{formatTitle(item?.title)}</span>
-                                {item?.title.slice(item?.title.indexOf("(") + 1, item?.title.length - 1)}
-                            </p>
-                        ))}
-                    </div>
-                </div>
+                <CalendarSigla readings={data?.readings} formatTitle={formatTitle}/>
             </article>
 
-            <article>
-                {
-                    data?.readings?.map((text, index) => (
-                        <div key={index} >
-                            <h4>{text?.title}</h4>
-                            <h5>{text?.subtitle}</h5>
-                            {
-                                text?.content?.map((paragraph, indexInside) => (
-                                    <p key={indexInside}>{paragraph}</p>
-                                ))
-                            }
-                        </div>
-                    ))
-                }
-            </article>
+            <CalendarTextsSection readings={data?.readings} formatTitle={formatTitle}/>
 
         </section>
     )
