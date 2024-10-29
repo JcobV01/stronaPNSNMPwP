@@ -1,5 +1,5 @@
 import React from 'react'
-import { Bold, Strikethrouth, Italic, List, ListOrdered, Heading2, Heading3, Underline, Quote, Undo, Redo, Code, AlignCenter, AlignLeft, AlignRight, sinkListItem } from 'lucide-react'
+import { Bold, Strikethrouth, Italic, List, ListOrdered, Heading2, Heading3, Underline, Quote, Undo, Redo, Code, AlignCenter, AlignLeft, AlignRight, sinkListItem, Heading4, Heading5 } from 'lucide-react'
 
 
 const Toolbar = ({ content, editor }) => {
@@ -81,23 +81,23 @@ const Toolbar = ({ content, editor }) => {
                 <button 
                     onClick={(e) => {
                         e.preventDefault();
-                        editor.chain().focus().setHeading({level: 2}).run()
+                        editor.chain().focus().setHeading({level: 4}).run()
                     }}
                     className={
-                        `${editor.isActive('heading', {level: 2}) ? 'bg-[#ebebeb]' : 'bg-white'} p-[5px] rounded-[2px]`
+                        `${editor.isActive('heading', {level: 4}) ? 'bg-[#ebebeb]' : 'bg-white'} p-[5px] rounded-[2px]`
                     }>
-                    <Heading2/>
+                    <Heading4/>
                 </button>
 
                 <button 
                     onClick={(e) => {
                         e.preventDefault();
-                        editor.chain().focus().setHeading({level: 3}).run()
+                        editor.chain().focus().setHeading({level: 5}).run()
                     }}
                     className={
-                        `${editor.isActive('heading', {level: 3}) ? 'bg-[#ebebeb]' : 'bg-white'} p-[5px] rounded-[2px]`
+                        `${editor.isActive('heading', {level: 5}) ? 'bg-[#ebebeb]' : 'bg-white'} p-[5px] rounded-[2px]`
                     }>
-                    <Heading3/>
+                    <Heading5/>
                 </button>
 
                 <button 
