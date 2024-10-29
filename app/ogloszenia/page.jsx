@@ -1,6 +1,7 @@
 "use client"
 
 import AnnNav from "@components/announcements/AnnNav"
+import AnnPrayer from "@components/announcements/AnnPrayer"
 import Title from "@components/Title"
 import { useEffect, useState } from "react"
 
@@ -23,14 +24,16 @@ const ogloszenia = () => {
   }, [])
 
   return (
-    <section className="pt-[50px] flex flex-col items-center px-[20px] gap-[70px] pb-[150px]">
+    <section className="pt-[50px] flex flex-col items-center gap-[70px] pb-[150px]">
       <Title title="Ogłoszenia" title2="" subtitle="Intencje" />
       <AnnNav clicked={clicked} changeCliked={setClicked} />
       {clicked == 'actual' ?
-        <article dangerouslySetInnerHTML={{ __html: actualAnn.html }} className={`w-[1200px] announcements-container announcement-red ${actualAnn.color}`}></article>
+        <article dangerouslySetInnerHTML={{ __html: actualAnn.html }} className={`w-[1200px] xl:w-[90%] announcements-container announcement-red ${actualAnn.color}`}></article>
         :
-        <article dangerouslySetInnerHTML={{ __html: prevAnn.html }} className={`w-[1200px] announcements-container announcement-red ${prevAnn.color}`}></article>
+        <article dangerouslySetInnerHTML={{ __html: prevAnn.html }} className={`w-[1200px] xl:w-[90%] announcements-container announcement-red ${prevAnn.color}`}></article>
       }
+
+      <AnnPrayer/>
     </section>
   )
 }
