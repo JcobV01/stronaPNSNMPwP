@@ -121,6 +121,15 @@ input[type="search"]::-webkit-search-cancel-button {
   transform: scale(1.2);
 }
 
+/*Style do historii*/
+::-webkit-file-upload-button{
+  background: #5A7889;
+  border: none;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
 /*Style dla ogłoszeń*/
 
 .announcements-container > ol{
