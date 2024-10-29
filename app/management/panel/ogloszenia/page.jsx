@@ -9,6 +9,7 @@ const Page = () => {
   const [htmlContent, setHtmlContent] = useState('');
   const [file, setFile] = useState(null);
   const [fileName, setFileName] = useState('');
+  const [color, setColor] = useState("announcement-green");
   const dialogRef = useRef(null);
 
   const [update, setUpdate] = useState(true)
@@ -83,7 +84,7 @@ const Page = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({html: htmlContent})
+        body: JSON.stringify({html: htmlContent, color: color})
       })
     }
     catch(err){
@@ -139,6 +140,14 @@ const Page = () => {
               <EditorHtml content={htmlContent} onChange={(newContent) => setHtmlContent(newContent)} update={update} setUpdate={setUpdate}/>
             }
           </article>
+
+          <select name="color" onChange={(e) => setColor(e.target.value)} className='outline-none border-none h-[50px] rounded-[5px] pl-[20px]'>
+            <option value="announcement-green" className=''>Zielony</option>
+            <option value="announcement-red">Czerwony</option>
+            <option value="announcement-gold">Złoty</option>
+            <option value="announcement-purple">Fioletowy</option>
+            <option value="announcement-pink">Różowy</option>
+          </select>
 
           <div className='flex gap-[10px] w-full'>
             <button onClick={() => handlePush()} className='bg-[#0e5115] text-white py-2 px-4 rounded-md flex-1'>Zapisz</button>

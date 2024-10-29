@@ -8,10 +8,11 @@ const ogloszenia = () => {
 
   const [actualAnn, setActualAnn] = useState({})
   const [prevAnn, setPrevAnn] = useState({})
+  const [clicked, setClicked] = useState("actual")
 
   useEffect(() => {
     const getAnnouncement = async () => {
-      const result = await fetch('/api/announcements/get', {method: "POST"})
+      const result = await fetch('/api/announcements/get', { method: "POST" })
       const data = await result.json()
 
       setActualAnn(data.announcements.actual)
@@ -19,13 +20,17 @@ const ogloszenia = () => {
       console.log(data.announcements)
     }
     getAnnouncement()
-  },[])
+  }, [])
 
   return (
     <section className="pt-[50px] flex flex-col items-center px-[20px] gap-[70px] pb-[150px]">
-      <Title title="Ogłoszenia" title2="" subtitle="Intencje"/>
-      <AnnNav/>
-      <article dangerouslySetInnerHTML={{__html: actualAnn.html}} className="w-[1200px] announcements-container"></article>
+      <Title title="Ogłoszenia" title2="" subtitle="Intencje" />
+      <AnnNav clicked={clicked} changeCliked={setClicked} />
+      {clicked == 'actual' ?
+        <article dangerouslySetInnerHTML={{ __html: actualAnn.html }} className={`w-[1200px] announcements-container announcement-red ${actualAnn.color}`}></article>
+        :
+        <article dangerouslySetInnerHTML={{ __html: prevAnn.html }} className={`w-[1200px] announcements-container announcement-red ${prevAnn.color}`}></article>
+      }
     </section>
   )
 }
