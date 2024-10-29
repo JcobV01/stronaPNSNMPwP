@@ -28,7 +28,7 @@ const Kontakt = () => {
     console.log(objective);
     console.log(name);
     console.log(message);
-    console.log(date);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -64,7 +64,6 @@ const Kontakt = () => {
 
             if (response.ok) {
                 // toast.success('Wysłano wiadomość!');
-                setObjective('');
                 setEmail('');
                 setName('');
                 setMessage('');
