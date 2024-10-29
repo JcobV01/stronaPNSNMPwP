@@ -5,17 +5,18 @@ import { NextResponse } from "next/server";
 export async function PATCH(req) {
     try {
         await connectMongoDB();
-        const { html } = await req.json();
+        const { html, color } = await req.json();
 
         const currentDocument = await Announcement.findOne({});
 
         if (!currentDocument) {
             // Jeśli nie ma dokumentu, stwórz nowy
 
-            Announcement.create({
+            const newAnnouncement = await Announcement.create({
                 _id: "Announcements",
                 actual: { date: new Date(), html },
                 previous: null,
+                color: 'green'
             })
             
             return res.status(200).json({ message: 'Dokument utworzony i zaktualizowany', data: newDocument });
@@ -24,7 +25,7 @@ export async function PATCH(req) {
         await Announcement.findOneAndUpdate(
             {},
             {
-              $set: { actual: { date: new Date(), html },previous: currentDocument.actual }
+              $set: { actual: { date: new Date(), html, color },previous: currentDocument.actual }
             },
             { new: true } // Zwróć zaktualizowany dokument
           );

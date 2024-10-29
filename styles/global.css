@@ -127,8 +127,17 @@ input[type="search"]::-webkit-search-cancel-button {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  margin-block: 20px;
+  font-size: 18px;
 }
 
-.announcements-container > ol > li > ul{
-  margin-block: 20px;
-}
+.announcements-container > p {font-size: 18px;}
+.announcements-container > ol > li > ul{margin-block: 20px;}
+.announcements-container > h4{font-size: 25px;}
+.announcements-container li::marker{font-weight: 600;}
+
+.announcement-red :is(h4, h4 > strong), .announcement-red li::marker{color: #e01111}
+.announcement-green :is(h4, h4 > strong), .announcement-green li::marker{color: #3C9530}
+.announcement-purple :is(h4, h4 > strong), .announcement-purple li::marker{color: #860ac9}
+.announcement-pink :is(h4, h4 > strong), .announcement-pink li::marker{color: #ff3dfb}
+.announcement-gold :is(h4, h4 > strong), .announcement-gold li::marker{color: #e1b90a}
