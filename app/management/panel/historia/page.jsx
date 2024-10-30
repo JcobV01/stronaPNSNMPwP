@@ -1,3 +1,4 @@
+import HistoryPostsDisplay from '@components/management/historia/HistoryPostsDisplay'
 import Link from 'next/link'
 import React from 'react'
 
@@ -14,7 +15,7 @@ const page = () => {
           <p className='w-[150px]'>Autor</p>
           <div className='w-[30px]'></div>
         </div>
-        {/* <PostsDisplay /> */}
+        <HistoryPostsDisplay />
       </article>
     </section>
   )
