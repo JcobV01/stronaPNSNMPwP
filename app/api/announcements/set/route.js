@@ -14,21 +14,23 @@ export async function PATCH(req) {
 
             const newAnnouncement = await Announcement.create({
                 _id: "Announcements",
-                actual: { date: new Date(), html },
-                previous: null,
-                color: 'green'
+                actual: { date: new Date(), html, color: 'announcements-green' },
+                previous: null,  
             })
-            
-            return res.status(200).json({ message: 'Dokument utworzony i zaktualizowany', data: newDocument });
+
+            return NextResponse.json({ message: "Dokument utworzony i zaktualizowany" }, { status: 200 });
         }
 
         await Announcement.findOneAndUpdate(
             {},
             {
-              $set: { actual: { date: new Date(), html, color },previous: currentDocument.actual }
+                $set: {
+                    actual: { date: new Date(), html, color }, 
+                    previous: currentDocument.actual
+                }
             },
             { new: true } // Zwróć zaktualizowany dokument
-          );
+        );
 
         return NextResponse.json({ message: "Ogłoszenia dodane" }, { status: 201 });
     } catch (error) {
