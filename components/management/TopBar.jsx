@@ -8,6 +8,7 @@ const TopBar = () => {
     const paths = new Map([
         ["/management/panel", "Statystyki"],
         ["/management/panel/ogloszenia", "Ogłoszenia"],
+        ["/management/panel/intencje", "Intencje"],
         ["/management/panel/komunikaty", "Komunikaty"],
         ["/management/panel/komunikaty/nowy", "Dodaj wpis"],
         ["/management/panel/komunikaty/edytuj", "Edytuj wpis"],

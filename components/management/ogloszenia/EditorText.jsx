@@ -28,7 +28,7 @@ const EditorText = ({ content, onChange, update, setUpdate }) => {
   })
 
   useEffect(() => {
-    if(editor && update && content.length > 0){
+    if(editor?.isInitialized && update && content.length > 0){
       editor.commands.setContent(content)
       setUpdate(false)
     }

@@ -29,6 +29,11 @@ const menu = [
         link: "/management/panel/ogloszenia"
     },
     {
+        icon: docksImg,
+        name: "Intencje",
+        link: "/management/panel/intencje"
+    },
+    {
         icon: alarmImg,
         name: "Komunikaty",
         link: "/management/panel/komunikaty"
