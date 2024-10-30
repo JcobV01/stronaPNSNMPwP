@@ -26,7 +26,7 @@ const historia = () => {
     <section className='flex-center flex-col pb-[250px] pt-[50px]'>
       <Title title="Historia" title2="" subtitle="Dzieje Parafii" />
       {posts?.map((post, index) => (
-        <HistoryPosts key={post._id} post={post} index={index} className="post" />
+        <HistoryPosts key={post._id} post={post} index={index} />
       ))}
     </section>
   )
