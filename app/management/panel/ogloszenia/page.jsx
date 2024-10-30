@@ -206,7 +206,7 @@ const Page = () => {
           </select>
 
           <div className='flex gap-[10px] w-full'>
-            <button onClick={() => handlePush()} className='bg-[#0e5115] text-white py-2 px-4 rounded-md flex-1'>Zapisz</button>
+            <button onClick={() => htmlContent.length > 0 ? handlePush() : alert("Nie można przesłać pustego formularza") } className='bg-[#0e5115] text-white py-2 px-4 rounded-md flex-1'>Zapisz</button>
             <button onClick={() => dialogRef.current.close()} className='bg-[#8a1616] text-white py-2 px-4 rounded-md flex-1'>Anuluj</button>
           </div>
         </div>
