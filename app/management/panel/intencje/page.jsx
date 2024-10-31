@@ -47,7 +47,7 @@ const Page = () => {
   },[])
 
   return (
-    <section className='py-[20px] flex flex-col gap-[30px] w-full flex-1 overflow-y-scroll pr-[10px]'>
+    <section className='py-[20px] flex flex-col gap-[30px] w-full flex-1 overflow-y-scroll pr-[10px] admin-scroll'>
       <button className='bg-[#11161A] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light' onClick={() => handleOpenDialog()}>Dodaj nowe Intencje</button>
       {updated && 
         <nav className='flex gap-[10px]'>

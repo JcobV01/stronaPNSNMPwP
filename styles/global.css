@@ -186,3 +186,14 @@ input[type="search"]::-webkit-search-cancel-button {
 .announcement-purple :is(h4, h4 > strong), .announcement-purple li::marker{color: #860ac9}
 .announcement-pink :is(h4, h4 > strong), .announcement-pink li::marker{color: #ff3dfb}
 .announcement-gold :is(h4, h4 > strong), .announcement-gold li::marker{color: #e1b90a}
+
+/* scrollbar w panelu */
+
+.admin-scroll::-webkit-scrollbar{
+  width: 6px;
+}
+
+.admin-scroll::-webkit-scrollbar-thumb{
+  background-color: #1e262d;
+  border-radius: 10px;
+}
