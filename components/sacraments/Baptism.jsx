@@ -2,7 +2,7 @@ import React from 'react'
 
 const Baptism = () => {
   return (
-    <article className='w-[1400px] 2xl:w-[90%]'>
+    <article className='w-[1400px] 2xl:w-[90%] pb-[100px]'>
       <h4 className='text-[40px] font-medium tracking-[8px] text-center sm:text-[20px]'>Chrzest</h4>
       <div>
         <h5 className='text-[25px] mt-[15px] tracking-[10px] text-center sm:text-[18px] sm:tracking-[5px]'>W naszej parafii</h5>

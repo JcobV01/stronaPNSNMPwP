@@ -2,7 +2,7 @@ import React from 'react'
 
 const Funeral = () => {
   return (
-    <article className='w-[1400px] 2xl:w-[90%]'>
+    <article className='w-[1400px] 2xl:w-[90%] pb-[100px]'>
       <h4 className='text-[40px] font-medium tracking-[8px] text-center sm:text-[20px]'>Chrześcijański pogrzeb</h4>
       <div className='mt-[15px]'>
         <h5 className='text-[25px] tracking-[10px] text-center sm:text-[18px] sm:tracking-[5px]'>W naszej parafii</h5>

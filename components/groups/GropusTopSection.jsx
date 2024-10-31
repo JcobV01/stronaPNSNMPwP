@@ -6,7 +6,7 @@ import GroupsPatronsCard from './GroupsPatronsCard'
 
 const GropusTopSection = ({logo, name, name2, info, link, patrons}) => {
   return (
-    <section className='w-[1200px] m-auto mb-[50px] xl:w-[90%]'>
+    <section className='w-[1200px] m-auto mb-[50px] xl:w-[90%] '>
         <Title title="Grupy" title2="Parafialne" subtitle="Opis grup"/>
         <h4 className='text-[30px] font-medium tracking-[3px] text-center my-[50px] xl:text-[25px] lg:text-[20px]'>Informacje ogólne</h4>
         

@@ -2,7 +2,7 @@ import React from 'react'
 
 const Confirmation = () => {
   return (
-    <article className='w-[1400px] 2xl:w-[90%]'>
+    <article className='w-[1400px] 2xl:w-[90%] pb-[100px]'>
       <div>
         <h4 className='text-[40px] font-medium tracking-[8px] text-center sm:text-[20px]'>Bierzmowanie</h4>
         <div className='mt-[15px]'>

@@ -41,7 +41,7 @@ const duszpasterze = () => {
   ]
 
   return (
-    <section className='pt-[50px] flex flex-col items-center px-[20px]'>
+    <section className='pt-[50px] flex flex-col items-center px-[20px] pb-[100px]'>
       <Title title="Duszpasterze" title2="" subtitle="Księża proboszczowie"/>
       <h4 className='text-[25px] font-semibold tracking-[2.5px] text-center mt-[120px] mb-[60px] lg:text-[20px] lg:mt-[70px]'>Aktualny proboszcz</h4>
       

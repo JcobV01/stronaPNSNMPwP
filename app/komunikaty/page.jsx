@@ -56,7 +56,7 @@ const komunikaty = () => {
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
   return (
-    <section className='flex-center flex-col pb-[250px]'>
+    <section className='flex-center flex-col pb-[100px]'>
       <div className='relative top-[-30px]'>
         <input type="search" value={searchTerm} onChange={handleSearchChange} placeholder="Wyszukaj po tytule" className='w-[815px] h-[60px] rounded-[30px] pl-[55px] pr-[65px] outline-none lg:w-[600px] sm:w-[100%]' />
         <Icon icon="stash:search" width="40px" height="40px" className='text-[#5A7889] absolute top-[10px] right-[25px]' />

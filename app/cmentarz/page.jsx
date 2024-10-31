@@ -10,7 +10,7 @@ const cmentarz = () => {
   console.log(session);
   
   return (
-    <section className='flex-center'>
+    <section className='flex-center pb-[100px]'>
       <article className='mt-[65px] w-[1400px] 2xl:w-[90%]'>
         <Title title="Cmentarz" title2="" subtitle="Regulamin"/>
         <div>

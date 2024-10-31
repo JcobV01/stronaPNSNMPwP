@@ -94,7 +94,7 @@ const lso = () => {
         <div className='absolute w-full h-full top-0 left-0 backdrop-brightness-[0.2] z-0'></div>
       </section>
 
-      <section>
+      <section className='pb-[50px]'>
         <h4 className='text-[30px] tracking-[3px] font-medium text-center my-[30px] relative z-10 xl:text-[25px] lg:text-[20px]'>Zdjęcia z wybranych celebracji</h4>
       </section>
     </>

@@ -68,7 +68,7 @@ const rodacy = () => {
   ]
 
   return (
-    <section className='pt-[50px] flex flex-col items-center px-[20px]'>
+    <section className='pt-[50px] flex flex-col items-center px-[20px] pb-[100px]'>
       <Title title="Rodacy" title2="" subtitle="Księża i siostry zakonne"/>
 
       <h4 className='text-[25px] font-semibold tracking-[2.5px] text-center mt-[70px] mb-[60px] lg:text-[20px]'>Księża</h4>
