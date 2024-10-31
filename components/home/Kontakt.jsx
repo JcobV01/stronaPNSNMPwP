@@ -23,14 +23,7 @@ const Kontakt = () => {
     useEffect(() => {
         const currentDate = getCurrentDataTime();
         setDate(currentDate);
-    }, []);
-
-
-    console.log(email);
-    console.log(objective);
-    console.log(name);
-    console.log(message);
-
+    }, [isSubmitting]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
