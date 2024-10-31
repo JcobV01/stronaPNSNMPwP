@@ -7,9 +7,6 @@ import Logo from '@components/Logo'
 import IconHeader from '@components/header/IconHeader'
 import Navbar from '@components/header/Navbar';
 
-import fbIcon from '@public/assets/icons/facebook.svg'
-import ytIcon from '@public/assets/icons/youtube.svg'
-
 import mainImage from '@public/assets/images/header-images/main-image.webp';
 import cemetery from '@public/assets/images/header-images/cemetery.webp';
 import priests from '@public/assets/images/header-images/priests.webp';
