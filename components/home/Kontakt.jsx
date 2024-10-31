@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import Title from "@components/Title"
 import KontaktInfo from "./KontaktInfo"
+import { toast } from 'react-toastify';
 
 import Image from "next/image"
 import bgImage from "@public/assets/images/background-images/contact-background-image.webp"
@@ -57,7 +58,7 @@ const Kontakt = () => {
             });
 
             if (response.ok) {
-                // toast.success('Wysłano wiadomość!');
+                toast.success('Wysłano wiadomość!');
                 setEmail('');
                 setName('');
                 setMessage('');
