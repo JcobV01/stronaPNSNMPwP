@@ -6,7 +6,7 @@ const GroupsCard = ({icon, name, desc, link}) => {
   return (
     <div className='bg-[#D9D9D925] w-[500px] h-[250px] flex gap-[20px] px-[30px] pt-[25px] pb-[20px] rounded-[5px] sm:w-[90%] sm:h-auto sm:flex-col fold:w-[100%]'>
         <div className='w-[56px] h-[56px] rounded-full bg-white flex flex-center'>
-            <Image src={icon} width={40} height={40} alt={`Ikona ${name}`}/>
+            <Image src={icon} width={40} height={40} alt={`Ikona ${name}`} className='aspect-square'/>
         </div>
 
         <div className='relative flex flex-1 flex-col gap-[10px]'>

@@ -24,12 +24,6 @@ const Kontakt = () => {
         setDate(currentDate);
     }, []);
 
-    console.log(email);
-    console.log(objective);
-    console.log(name);
-    console.log(message);
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -96,7 +90,7 @@ const Kontakt = () => {
 
     return (
         <section id="kontakt" className="flex-center mt-[100px] pb-[100px] relative">
-            <Image src={bgImage} width="1920" height="1000" alt="Obrazek tła w sekcji kontakt" className="w-full absolute h-[1000px] object-cover brightness-[0.15] lg:h-[1425px]" />
+            <Image src={bgImage} width="1920" height="1000" alt="Obrazek tła w sekcji kontakt" className="w-full absolute h-[1000px] object-cover brightness-[0.15] lg:h-[1425px] aspect-[1920/1000]" />
             <div className="mt-[65px] h-[1000px] lg:h-[1425px]">
                 <Title title="Kontakt" title2="" subtitle="Skontaktuj się z nami" color="#FFF" />
                 <div className="flex gap-[200px] mt-[65px] xl:gap-[25px] lg:flex-col lg:mt-[25px]">

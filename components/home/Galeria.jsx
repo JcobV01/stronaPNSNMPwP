@@ -1,9 +1,7 @@
 import Title from '@components/Title'
+import { Icon } from '@iconify/react'
 
-import Image from "next/image"
 import Link from "next/link"
-
-import arrow from '@public/assets/icons/right-arrow.svg'
 
 const Galeria = () => {
   return (
@@ -15,7 +13,7 @@ const Galeria = () => {
         <div className='flex justify-end mt-[80px] sm:justify-center'>
           <Link href="/galeria" className='flex gap-3 fold:gap-0'>
             <p className="text-[18px] tracking-[4px] font-medium sm:w-full sm:text-center sm:text-[15px] fold:text-[13px]">Przejdź do pełnej galerii</p>
-            <Image src={arrow} width="auto" height="auto" alt="Ikona strzałki" />
+            <Icon icon="la:angle-double-right" width="20" height="27" alt="Ikona strzałki"/>
           </Link>
         </div>
 

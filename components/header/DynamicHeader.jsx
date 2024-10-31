@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { usePathname } from 'next/navigation'
 
 import Logo from '@components/Logo'
@@ -25,21 +25,6 @@ import sacraments from '@public/assets/images/header-images/sacraments.webp';
 
 const DynamicHeader = () => {
     const pathname = usePathname();
-    const [size, setSize] = useState({ width: 150, height: 150 });
-
-    useEffect(() => {
-        const handleResize = () => {
-            if (window.matchMedia("(max-width: 345px)").matches) {
-                setSize({ width: 75, height: 75 });
-            } else {
-                setSize({ width: 150, height: 150 });
-            }
-        }
-        handleResize();
-
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     const headerImages = {
         "/cmentarz": cemetery,
@@ -65,7 +50,7 @@ const DynamicHeader = () => {
                     <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
                         <section id="homepage" className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)] sm:justify-between'>
                             <div className='pt-[40px] flex-center sm:pt-[20px]'>
-                                <Logo width={size.width} height={size.height} padding={false} backgroundOpacity={false} />
+                                <Logo width={150} height={150} padding={false} backgroundOpacity={false} apectRatio="aspect-[150/150]" mobileWidth="w-[75px]" />
                             </div>
                             <div className='flex-center flex-col text-center'>
                                 <p className='text-[20px] text-[#B0B0B0] mt-[40px] sm:mt-[20px] sm:text-[18px] fold:mt-[10px]'>Rzymskokatolicka</p>

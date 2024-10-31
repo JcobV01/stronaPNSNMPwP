@@ -1,7 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 
-import arrow from '@public/assets/icons/right-arrow.svg'
+import { Icon } from "@iconify/react"
 
 const DayCard = ({dateText, date='', name, color="zielony", texts="", memory=""}) => {
 
@@ -36,7 +35,7 @@ const DayCard = ({dateText, date='', name, color="zielony", texts="", memory=""}
 
             <Link href={`/kalendarz?date=${dateText}`} className="absolute bottom-[15px] right-[15px] flex gap-[10px] sm:static">
                 <p className="text-[15px] sm:w-full sm:text-right">Zobacz więcej</p>
-                <Image src={arrow} width="auto" height="auto" alt="Ikona strzałki"/>
+                <Icon icon="la:angle-double-right" width="20" height="22.5" alt="Ikona strzałki"/>
             </Link>
         </div>
     </div>
