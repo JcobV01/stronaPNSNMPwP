@@ -4,7 +4,7 @@ import React from 'react'
 
 const page = () => {
   return (
-    <section className='mt-[20px]'>
+    <section className='mt-[20px] w-full'>
       <div className='flex items-center gap-20'>
         <Link href="/management/panel/historia/nowy" className='bg-[#11161A] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light'>Dodaj nowy</Link>
       </div>

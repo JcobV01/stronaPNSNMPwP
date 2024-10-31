@@ -3,7 +3,7 @@ import MessagesDisplay from '@components/management/wiadomosci/MessagesDisplay'
 
 const page = () => {
   return (
-    <section className='mt-[20px]'>
+    <section className='mt-[20px] w-full'>
       <article className='mt-[50px]'>
         <div className='flex justify-between px-[50px]'>
           <p className='w-[350px]'>Wiadomość</p>

@@ -44,7 +44,7 @@ const page = () => {
   }, [messageId])
 
   return (
-    <section className='mt-[10px]'>
+    <section className='mt-[10px] w-full'>
       <article>
         <div className='flex items-center justify-between'>
           <h2 className='text-[25px] font-light'>Wiadomość od <span className='font-semibold text-[#5A7889]'>{message.name}</span></h2>

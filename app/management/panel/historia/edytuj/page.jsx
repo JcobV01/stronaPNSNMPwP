@@ -90,7 +90,7 @@ const edytuj = () => {
   console.log(post);
 
   return (
-    <section className='mt-[15px]'>
+    <section className='mt-[15px] w-full'>
       <h2 className='text-[22px] font-light'>Edytuj wpis do historii</h2>
       <PostFormHistory
         type="Edytuj"

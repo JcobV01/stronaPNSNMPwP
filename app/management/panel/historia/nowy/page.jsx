@@ -72,7 +72,7 @@ const page = () => {
 
 
     return (
-        <section className='mt-[15px]'>
+        <section className='mt-[15px] w-full'>
             <h2 className='text-[22px] font-light'>Dodaj nowy wpis do historii</h2>
             <PostFormHistory
                 type="Dodaj"

@@ -73,7 +73,7 @@ const edytuj = () => {
     }
 
     return (
-        <section className='flex-center mt-[20px]'>
+        <section className='flex-center mt-[20px] w-full'>
             {error && <span className='text-red-700 font-light tracking-[2px] mb-[5px]'>{error}</span>}
             <PostsForm
                 type='Edytuj'

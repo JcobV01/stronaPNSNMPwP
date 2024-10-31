@@ -19,37 +19,37 @@ import NavBar from '@components/management/NavBar'
 
 const menu = [
     {
-        icon: statsImg,
+        icon: 'ion:stats-chart',
         name: "Statystyki",
         link: "/management/panel"
     },
     {
-        icon: docksImg,
+        icon: 'basil:document-solid',
         name: "Ogłoszenia",
         link: "/management/panel/ogloszenia"
     },
     {
-        icon: docksImg,
+        icon: 'ri:table-fill',
         name: "Intencje",
         link: "/management/panel/intencje"
     },
     {
-        icon: alarmImg,
+        icon: 'tabler:bell-filled',
         name: "Komunikaty",
         link: "/management/panel/komunikaty"
     },
     {
-        icon: sandImg,
+        icon: 'iconamoon:clock-fill',
         name: "Historia",
         link: "/management/panel/historia"
     },
     {
-        icon: imageImg,
+        icon: 'solar:gallery-bold',
         name: "Galeria",
         link: "/management/panel/galeria"
     },
     {
-        icon: letterImg,
+        icon: 'solar:letter-bold',
         name: "Wiadomości",
         link: "/management/panel/wiadomosci"
     },
@@ -68,7 +68,7 @@ const layout = ({ children }) => {
                 <NavBar menu={menu}/>
             </aside>
             
-            <article className='px-[90px] flex-1 items-center pt-[20px]'>
+            <article className='px-[90px] flex-1 items-center pt-[20px] flex flex-col'>
                 <TopBar/>
                 {children}
             </article>

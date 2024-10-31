@@ -7,7 +7,7 @@ import React from 'react'
 
 const komunikaty = () => {
   return (
-    <section className='mt-[20px]'>
+    <section className='mt-[20px] w-full'>
       <div className='flex items-center gap-20'>
         <Link href="/management/panel/komunikaty/nowy" className='bg-[#11161A] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light'>Dodaj nowy</Link>
         <p className='text-[20px] font-light'>Liczba postów: <PostsCount/></p>

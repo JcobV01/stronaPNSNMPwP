@@ -149,7 +149,7 @@ const Page = () => {
   }
 
   return (
-    <section className='py-[20px] flex flex-col gap-[30px]'>
+    <section className='py-[20px] flex flex-col gap-[30px] w-full'>
       <button onClick={handleShowModal} className='bg-[#11161A] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light'>Dodaj nowe ogłoszenia</button>
       <AnnList handleOpenDialog={handleOpenDialog} actualDate={actualAnn.date} prevDate={prevAnn.date}/>
 
