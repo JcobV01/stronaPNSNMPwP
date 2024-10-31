@@ -68,7 +68,8 @@ const lso = () => {
       "Krystian Niedziela",
       "Maksymilan Baran",
       "Marcin Piątek",
-      "Roman Kusior"
+      "Roman Kusior",
+      "Tomasz Kania",
     ]
   }
 
