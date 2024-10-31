@@ -2,12 +2,9 @@
 import React from 'react'
 import Logo from '@components/Logo'
 import Navbar from '@components/footer/Navbar'
-import Icon from '@components/footer/Icon'
+import IconFooter from '@components/footer/IconFooter'
 
 import { usePathname } from 'next/navigation'
-
-import fbIcon from '@public/assets/icons/facebook-w.svg'
-import ytIcon from '@public/assets/icons/youtube-w.svg'
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -23,8 +20,8 @@ const Footer = () => {
           <Logo width="100" height="100" padding={true} backgroundOpacity={true} apectRatio="aspect-square"/>
           <Navbar />
           <div className='flex gap-[36px]'>
-            <Icon imgSource={fbIcon} destination="https://www.facebook.com/parafiaprzybyslawice" />
-            <Icon imgSource={ytIcon} destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" />
+            <IconFooter imgSource='ph:youtube-logo-fill' destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" />
+            <IconFooter imgSource='ic:baseline-facebook' destination="https://www.facebook.com/parafiaprzybyslawice" />
           </div>
           <p className='text-[13px] tracking-[3px] text-white text-center w-[50%] 2xl:w-[60%] lg:w-[80%] lg:text-[11px]'>Informujemy, że wszystkie dane osobowe zamieszczone na stronie internetowej parafii są umieszczone wyłącznie za zgodą osób zainteresowanych.</p>
           <div className='flex justify-between w-full lg:flex-col lg:gap-[10px]'>

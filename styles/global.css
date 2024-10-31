@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-*:not(svg, path) {
+*:not(svg, path, a) {
   font-family: 'Poppins';
   color: #353535;
 }

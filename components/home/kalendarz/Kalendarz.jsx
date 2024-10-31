@@ -1,11 +1,7 @@
 "use client"
 
 import Title from '@components/Title'
-import Image from 'next/image'
 
-import rlIcon from '@public/assets/icons/liturgical-calendar/bookmark.svg'
-import orIcon from '@public/assets/icons/liturgical-calendar/open-book.svg'
-import ckIcon from '@public/assets/icons/liturgical-calendar/book.svg'
 import DayCard from './components/DayCard'
 import { useEffect, useState } from 'react'
 import { getDateToday } from '@utils/date'

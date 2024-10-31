@@ -4,7 +4,7 @@ import React from 'react'
 import { usePathname } from 'next/navigation'
 
 import Logo from '@components/Logo'
-import Icon from '@components/header/Icon'
+import IconHeader from '@components/header/IconHeader'
 import Navbar from '@components/header/Navbar';
 
 import fbIcon from '@public/assets/icons/facebook.svg'
@@ -57,8 +57,8 @@ const DynamicHeader = () => {
                                 <h1 className='text-white text-[80px] font-bold tracking-[4px] leading-[80px] mt-[40px] md:text-[40px] md:leading-[40px] sm:mt-[20px] sm:text-[30px] fold:text-[25px] fold:mt-[10px]'>PARAFIA PRZYBYSŁAWICE</h1>
                                 <p className='text-white text-[25px] w-[550px] mt-[70px] md:text-[20px] md:mt-[20px] sm:w-[95%] sm:text-[18px] fold:text-[15px] fold:mt-[10px]'>Parafia Niepokalanego Serca Najświętszej Maryi Panny w Przybysławicach – parafia rzymskokatolicka, znajdująca się w diecezji tarnowskiej, w dekanacie Radłów</p>
                                 <div className='flex-center gap-[30px] mt-[55px] sm:mt-[20px] fold:mt-[10px]'>
-                                    <Icon imgSource={ytIcon} destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" />
-                                    <Icon imgSource={fbIcon} destination="https://www.facebook.com/parafiaprzybyslawice" />
+                                    <IconHeader imgSource='ph:youtube-logo-fill' destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" />
+                                    <IconHeader imgSource='ic:baseline-facebook' destination="https://www.facebook.com/parafiaprzybyslawice" />
                                 </div>
                             </div>
                             <div className='mt-auto mb-[30px] md:text-center sm:mt-[20px]'>
