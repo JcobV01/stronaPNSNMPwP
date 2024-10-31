@@ -21,6 +21,12 @@ const RegisterForm = () => {
             return;
         }
 
+        const polishCharacters = /[ąćęłńóśźż]/i; 
+        if (polishCharacters.test(name)) {
+            setError("Nazwa użytkownika nie może zawierać polskich znaków");
+            return;
+        }
+
         try {
             const resNameExists = await fetch('/api/checkUsername', {
                 method: "POST",
