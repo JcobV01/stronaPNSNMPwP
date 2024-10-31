@@ -103,6 +103,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .contact-form textarea:focus, .contact-form textarea:valid{margin-top: 20px;}
 
 
+
 /*Kontakt style do input type radio*/
 #kontakt .circle::before{
   content: "";
@@ -120,6 +121,10 @@ input[type="search"]::-webkit-search-cancel-button {
   border-color: #3b585e; 
   transform: scale(1.2);
 }
+
+/*Tostify  succes*/
+.Toastify__progress-bar--success{background: #5A7889 !important;}
+.Toastify__toast-icon > svg{fill: #5A7889 !important;}
 
 /*Style do historii*/
 ::-webkit-file-upload-button{

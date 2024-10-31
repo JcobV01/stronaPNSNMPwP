@@ -4,6 +4,8 @@ import DynamicHeader from '@components/header/DynamicHeader'
 
 import mainBgImage from '@public/assets/images/background-images/main-background-image.webp'
 import { AuthProvider } from '@components/management/Providers';
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
     title: "Parafia Przybysławice",
@@ -21,6 +23,7 @@ const RootLayout = ({ children }) => {
                         {children}
                     </main>
                     <Footer />
+                    <ToastContainer position="bottom-right" autoClose={5000} hideProgressBar={false} newestOnTop={false} closeOnClick rtl={false} pauseOnFocusLoss draggable pauseOnHover theme="light" />
                 </AuthProvider>
             </body>
         </html>

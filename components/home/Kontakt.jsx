@@ -25,6 +25,13 @@ const Kontakt = () => {
         setDate(currentDate);
     }, []);
 
+
+    console.log(email);
+    console.log(objective);
+    console.log(name);
+    console.log(message);
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
