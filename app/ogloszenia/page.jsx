@@ -2,6 +2,7 @@
 
 import AnnNav from "@components/announcements/AnnNav"
 import AnnPrayer from "@components/announcements/AnnPrayer"
+import IntentionsElements from "@components/announcements/IntentionsElements"
 import Title from "@components/Title"
 import { useEffect, useState } from "react"
 
@@ -9,6 +10,10 @@ const ogloszenia = () => {
 
   const [actualAnn, setActualAnn] = useState({})
   const [prevAnn, setPrevAnn] = useState({})
+
+  const [actualIntentions, setActualIntentions] = useState([])
+  const [prevIntentions, setPrevIntentions] = useState([])
+
   const [clicked, setClicked] = useState("actual")
 
   useEffect(() => {
@@ -18,7 +23,12 @@ const ogloszenia = () => {
 
       setActualAnn(data.announcements.actual)
       setPrevAnn(data.announcements.previous)
-      console.log(data.announcements)
+
+      const intentions = await fetch('/api/intentions/get', { method: "POST" })
+      const intentionsRaw = await intentions.json()
+
+      setActualIntentions(intentionsRaw.intentions.actual)
+      setPrevIntentions(intentionsRaw.intentions.previous)
     }
     getAnnouncement()
   }, [])
@@ -34,6 +44,8 @@ const ogloszenia = () => {
       }
 
       <AnnPrayer/>
+      <IntentionsElements intentions={actualIntentions}/>
+
     </section>
   )
 }
