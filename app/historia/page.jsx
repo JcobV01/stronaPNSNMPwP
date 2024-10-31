@@ -69,7 +69,7 @@ const historia = () => {
   }, [loading, hasMorePosts]);
 
   return (
-    <section className='flex-center flex-col pb-[250px] pt-[50px]'>
+    <section className='flex-center flex-col pb-[250px] pt-[50px] md:pb-[100px]'>
       <Title title="Historia" title2="" subtitle="Dzieje Parafii" />
       {posts.slice(0, visiblePosts).map((post, index) => (
         <HistoryPosts key={post._id} post={post} index={index} />

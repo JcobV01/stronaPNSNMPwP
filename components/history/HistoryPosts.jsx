@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react'
 
-const HistoryPosts = ({ post, index}) => {
+const HistoryPosts = ({ post, index }) => {
     const date = new Date(post.date).toLocaleString('pl-PL', {
         day: 'numeric',
         month: 'long',
@@ -20,7 +20,7 @@ const HistoryPosts = ({ post, index}) => {
                 <p className={`${hasImage ? 'w-[1000px] 2xl:w-[750px] xl:w-[600px] lg:w-full' : 'w-full'} text-${index % 2 === 0 ? 'left' : 'right'} text-[#353535] tracking-[2px] font-light sm:text-[14px]`} style={{ whiteSpace: 'pre-line' }}>{post.contents}</p>
 
                 {hasImage && (
-                    <Image src={`/assets/images/history/${post.img}`} alt={post.title} width={500} height={350} className='w-auto h-auto max-w-[500px] max-h-[350px] object-cover shadow-[5px_5px_5px_0px_rgba(0,0,0,0.25)] xl:max-w-[400px] sm:max-w-[300px]'/>
+                    <Image src={`/assets/images/history/${post.img}`} alt={post.title} width={500} height={350} className='aspect-[10/7] max-w-[500px] max-h-[350px] object-cover shadow-[5px_5px_5px_0px_rgba(0,0,0,0.25)] xl:max-w-[400px] sm:max-w-[300px]' />
                 )}
             </div>
 
