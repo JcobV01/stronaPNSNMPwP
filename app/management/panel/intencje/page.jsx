@@ -2,7 +2,7 @@
 
 import IntentionAddDialog from '@components/management/intencje/IntentionAddDialog';
 import IntentionList from '@components/management/intencje/IntentionList';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Page = () => {
   const addRef = useRef(null)
@@ -25,10 +25,36 @@ const Page = () => {
     setUpdated(false)
   }
 
+  const handleEdit = async () => {
+    const result = await fetch('/api/intentions/update', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ intentions: rows })
+    })
+
+    setUpdated(false)
+  }
+
+  useEffect(() => {
+    const getIntentions = async () => {
+      const result = await fetch('/api/intentions/get', {method: "POST"})
+      const intentions = await result.json()
+      setRows(intentions.intentions.actual)
+    } 
+    getIntentions()
+  },[])
+
   return (
     <section className='py-[20px] flex flex-col gap-[30px]'>
       <button className='bg-[#11161A] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light' onClick={() => handleOpenDialog()}>Dodaj nowe Intencje</button>
-      {updated && <button className='bg-[#1b2229] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light' onClick={() => handlePushChanges()}>Zatwierdź</button> }
+      {updated && 
+        <nav className='flex gap-[10px]'>
+          <button className='bg-[#1b2229] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light flex-1' onClick={() => handlePushChanges()}>Zatwierdź (dodaje nowe)</button>
+          <button className='bg-[#1b2229] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light flex-1' onClick={() => handleEdit()}>Edytuj (edytuje aktualne)</button>
+        </nav>
+      }
       <IntentionList rows={rows}/>
       <IntentionAddDialog addRef={addRef} rows={rows} setRows={setRows} setUpdated={setUpdated}/>
     </section>

@@ -56,31 +56,36 @@ const IntentionAddDialog = ({ addRef, rows, setRows, setUpdated }) => {
                 times: [],
                 intentions: []
             };
-    
+        
             // Pierwsza komórka zawiera dzień tygodnia i datę
             const firstCell = $(element).find('td').eq(0);
             rowObj.day = firstCell.find('p').first().text().trim() || firstCell.find('h1, h2').text().trim();
             rowObj.date = firstCell.find('p strong').text().trim();
-    
+        
             // Druga komórka zawiera godziny
             const timeCell = $(element).find('td').eq(1);
             timeCell.find('p').each((i, p) => {
                 const time = $(p).text().trim();
                 if (time) rowObj.times.push(time); // Dodajemy każdą godzinę do tablicy times
             });
-    
+        
             // Trzecia komórka zawiera intencje
             const intentionCell = $(element).find('td').eq(2);
             intentionCell.find('p').each((i, p) => {
                 const intention = $(p).text().trim();
-                if (intention) rowObj.intentions.push(intention); // Dodajemy każdą intencję do tablicy intentions
+                if (intention) {
+                    // Zamiana wszystkich + na †
+                    const modifiedIntention = intention.replace(/\+/g, '†');
+                    rowObj.intentions.push(modifiedIntention); // Dodajemy zmodyfikowaną intencję do tablicy intentions
+                }
             });
-    
+        
             // Dodajemy obiekt do tablicy głównej
             if (rowObj.day && rowObj.date) {
                 extractedRows.push(rowObj);
             }
         });
+        
 
         console.log(extractedRows);
         
@@ -106,6 +111,8 @@ const IntentionAddDialog = ({ addRef, rows, setRows, setUpdated }) => {
                 console.log(result.value)
                 addRef.current.close()
                 setUpdated(true)
+                setFile(null)
+                setFileName('')
             } catch (error) {
                 console.error('Błąd konwersji pliku na HTML:', error);
             }

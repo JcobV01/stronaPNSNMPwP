@@ -43,8 +43,12 @@ const ogloszenia = () => {
         <article dangerouslySetInnerHTML={{ __html: prevAnn.html }} className={`w-[1200px] xl:w-[90%] announcements-container announcement-red ${prevAnn.color}`}></article>
       }
 
-      <AnnPrayer/>
-      <IntentionsElements intentions={actualIntentions}/>
+      <AnnPrayer />
+      {clicked == 'actual' ?
+        <IntentionsElements intentions={actualIntentions} />
+        :
+        <IntentionsElements intentions={prevIntentions} />
+      }
 
     </section>
   )
