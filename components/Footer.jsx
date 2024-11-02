@@ -1,10 +1,11 @@
 'use client'
 import React from 'react'
+import { usePathname } from 'next/navigation'
 import Logo from '@components/Logo'
 import Navbar from '@components/footer/Navbar'
 import IconFooter from '@components/footer/IconFooter'
+import DownloadFile from '@components/DownloadFile'
 
-import { usePathname } from 'next/navigation'
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -23,6 +24,7 @@ const Footer = () => {
             <IconFooter imgSource='ph:youtube-logo-fill' destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" />
             <IconFooter imgSource='ic:baseline-facebook' destination="https://www.facebook.com/parafiaprzybyslawice" />
           </div>
+          <DownloadFile location='/assets/downloadFiles/STANDARDY-OCHRONY-DZIECI.pdf' text='Standardy Ochrony Dzieci' />
           <p className='text-[13px] tracking-[3px] text-white text-center w-[50%] 2xl:w-[60%] lg:w-[80%] lg:text-[11px]'>Informujemy, że wszystkie dane osobowe zamieszczone na stronie internetowej parafii są umieszczone wyłącznie za zgodą osób zainteresowanych.</p>
           <div className='flex justify-between w-full lg:flex-col lg:gap-[10px]'>
             <p className='text-[#898989] text-[10px] tracking-[2.6px]'>{`©${year} Parafia pw. Niepokalanego Serca Najświętszej Maryi Panny`}</p>
