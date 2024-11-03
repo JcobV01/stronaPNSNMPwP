@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest } from "next/server";
-import { analytics } from "@utils/analytics";
+// import { analytics } from "@utils/analytics";
 
 // Definiujemy ścieżki, które mają być chronione
 
