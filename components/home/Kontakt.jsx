@@ -120,7 +120,7 @@ const Kontakt = () => {
                     </div>
                     <form onSubmit={handleSubmit} className="z-10 relative flex flex-col lg:mt-[25px]">
                         <h4 className="text-[25px] text-white font-medium tracking-[5px] lg:text-center sm:text-[20px]">Formularz kontaktowy</h4>
-                        {error && <span className='text-red-700 font-semibold tracking-[2px] xl:text-[15px]'>{error}</span>}
+                        {error && <span className='text-red-700 font-semibold tracking-[2px] xl:text-[15px] lg:text-center'>{error}</span>}
 
                         <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] flex items-center pl-[25px] mt-[15px] gap-[10px] sm:w-[90%] sm:mx-auto sm:flex-col sm:items-start sm:h-[110px]">
                             <p className="text-[20px] text-[#B0B0B0] tracking-[4px] sm:text-[16px] sm:pt-[5px]">Kontakt z:</p>
@@ -138,13 +138,13 @@ const Kontakt = () => {
 
                         <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="clarity:email-solid" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="absolute w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required/>
+                            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} className="w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required/>
                             <span className="absolute text-[18px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[16px]">E-mail</span>
                         </div>
 
                         <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="mdi:user" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="absolute w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required />
+                            <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required />
                             <span className="absolute text-[18px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[16px]">Imię i Nazwisko</span>
                         </div>
 
