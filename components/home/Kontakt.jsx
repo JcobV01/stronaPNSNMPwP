@@ -107,7 +107,7 @@ const Kontakt = () => {
                             <Icon icon="heroicons:map-pin-16-solid" width="30" height="30" className="text-[#5A7889]" />
                             <p className="text-[#B0B0B0] text-[17px]">Znajdziesz nas tutaj</p>
                         </div>
-                        <p className="text-[#ECECEC] text-[18px] tracking-[1.8px] font-medium mt-[5px] pl-[40px]">Parafia rzymskokatolicka<br />pw.&nbsp;<span className="text-[#5A7889]">Niepokalanego Serca NMP</span><br />Przybysławice 157<br />33-273 Marcinkowice</p>
+                        <p className="text-[#ECECEC] text-[18px] sm:text-[15px] tracking-[1.8px] font-medium mt-[5px] pl-[40px]">Parafia rzymskokatolicka<br />pw.&nbsp;<span className="text-[#5A7889]">Niepokalanego Serca NMP</span><br />Przybysławice 157<br />33-273 Marcinkowice</p>
 
                         {
                             contactInfo.map((info, index) => (

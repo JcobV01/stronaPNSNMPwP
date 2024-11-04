@@ -14,7 +14,7 @@ const DayCard = ({dateText, date='', name, color="zielony", texts="", memory=""}
 
   return (
     <div className="w-[1075px] m-auto flex items-center xl:w-[800px] lg:w-[100%] lg:px-[20px] md:flex-col">
-        <div className="w-[165px] h-[165px] flex flex-col flex-center rounded-[5px] md:h-auto md:w-full md:flex-row md:gap-[20px] md:rounded-b-none" style={{backgroundColor: displayColor[color]}}>
+        <div className="w-[165px] h-[165px] flex flex-col flex-center rounded-[5px] md:h-auto md:w-full md:py-[10px] md:flex-row md:gap-[20px] md:rounded-b-none" style={{backgroundColor: displayColor[color]}}>
             <p className={`${color == "biały" ? 'text-[#353535]': 'text-white'} text-[50px] font-light md:text-[30px] sm:text-[25px]`}>{date[0]?.split(" ")[0]}</p>
             <p className={`${color == "biały" ? 'text-[#353535]': 'text-white'} text-[23px] sm:text-[20px]`}>{date[0]?.split(" ")[1]}</p>
         </div>

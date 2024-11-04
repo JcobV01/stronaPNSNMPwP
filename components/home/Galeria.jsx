@@ -19,7 +19,7 @@ const Galeria = () => {
 
         <div className='flex justify-end mt-[80px] sm:justify-center'>
           <Link href="/galeria" className='flex gap-3 fold:gap-0'>
-            <p className="text-[18px] tracking-[4px] font-medium sm:w-full sm:text-center sm:text-[15px] fold:text-[13px]">Przejdź do pełnej galerii</p>
+            <p className="text-[18px] tracking-[4px] font-medium sm:w-full sm:text-center sm:text-[15px] sm:tracking-[1px] fold:text-[13px]">Przejdź do pełnej galerii</p>
             <Icon icon="la:angle-double-right" width="20" height="27" alt="Ikona strzałki"/>
           </Link>
         </div>
