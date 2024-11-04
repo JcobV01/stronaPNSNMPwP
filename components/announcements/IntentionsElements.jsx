@@ -17,17 +17,17 @@ const IntentionsElements = ({ intentions }) => {
     return (
         <article>
             <Title title="Intencje" title2="" subtitle="Mszy świętych" />
-            <div className='grid grid-cols-3 grid-rows-3 gap-[25px] mt-[50px] '>
+            <div className='grid grid-cols-3 grid-rows-3 gap-[25px] mt-[50px] lg:grid-cols-2 lg:grid-rows-4 sm:grid-cols-1 sm:grid-rows-7'>
                 {intentions?.map((element, index) => (
-                    <div className={`h-[350px] bg-white shadow-[0px_4px_4px_0px_#00000025] p-[30px] flex flex-col gap-[5px] ${index == 6 ? 'col-span-3' : 'w-[350px] items-center'}`} key={index}>
-                        <div className='w-[200px] h-[5px] bg-green-800 mx-auto'></div>
-                        <h4 className='text-[35px] font-semibold tracking-[4px] xl:text-[30px] text-center'>{element.day}</h4>
+                    <div className={`h-[350px] xl:h-[300px] bg-white shadow-[0px_4px_4px_0px_#00000025] p-[30px] flex flex-col gap-[5px] xl:gap-[2px] ${index == 6 ? 'col-span-3 lg:col-span-2 sm:col-span-1 sm:w-[300px]' : 'w-[350px] xl:w-[300px] items-center'}`} key={index}>
+                        <div className='w-[200px] h-[3px] bg-[#5A7889] mx-auto'></div>
+                        <h4 className='text-[35px] font-semibold tracking-[4px] xl:text-[28px] text-center'>{element.day}</h4>
                         <p className='text-[#B0B0B0] text-[15px] text-center'>{formatDate(element.date)}</p>
 
-                        {element.times.length < 3 || index == 6 ? element.times.map((hour, index2) => (
-                            <div className={`flex gap-[5px] mt-[10px] ${index != 6 && 'flex-col text-center'} mx-auto`} key={index2 * 100}>
-                                <p className='text-[#5A7889]  text-[18px] tracking-[5px] font-semibold'>{hour}</p>
-                                <p className='tracking-[2px] text-[16px]'>{element.intentions[index2]}</p>
+                        {element.times.length < 3 ? element.times.map((hour, index2) => (
+                            <div className={`flex sm:flex-col sm:items-center gap-[5px] mt-[10px] ${index != 6 && 'flex-col text-center'} mx-auto`} key={index2 * 100}>
+                                <p className='text-[#5A7889] text-[18px] xl:text-[16px] tracking-[5px] font-semibold'>{hour}</p>
+                                <p className='tracking-[2px] text-[16px] xl:text-[14px] sm:tracking-[1px] sm:text-wrap'>{element.intentions[index2]}</p>
                             </div>
                         ))
                             :
