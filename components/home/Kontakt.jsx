@@ -139,19 +139,19 @@ const Kontakt = () => {
 
                         <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="clarity:email-solid" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <input type="text" onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} placeholder={!isFocused ? "E-mail" : ""} value={email} onChange={(e) => setEmail(e.target.value)} className="w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required/>
+                            <input type="text" onFocus={() => setIsFocused(true)} placeholder={!isFocused ? "E-mail" : ""} value={email} onChange={(e) => setEmail(e.target.value)} className="w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required/>
                             <span className="absolute text-[18px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[16px]">E-mail</span>
                         </div>
 
                         <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="mdi:user" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <input type="text" value={name} onChange={(e) => setName(e.target.value)} className="w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required />
+                            <input type="text" onFocus={() => setIsFocused(true)} placeholder={!isFocused ? "Imię i Nazwisko" : ""} value={name} onChange={(e) => setName(e.target.value)} className="w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required />
                             <span className="absolute text-[18px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[16px]">Imię i Nazwisko</span>
                         </div>
 
                         <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[250px] rounded-[18px] mt-[15px] pl-[25px] pt-[15px] relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="dashicons:text-page" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <textarea value={message} onChange={(e) => setMessage(e.target.value)} className="absolute w-[450px] h-[200px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" style={{ resize: 'none' }} required />
+                            <textarea onFocus={() => setIsFocused(true)} placeholder={!isFocused ? "Wiadomość" : ""} value={message} onChange={(e) => setMessage(e.target.value)} className="absolute w-[450px] h-[200px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" style={{ resize: 'none' }} required />
                             <span className="absolute text-[18px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[16px]">Wiadomość</span>
                         </div>
                         
