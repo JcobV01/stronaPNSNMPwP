@@ -8,7 +8,7 @@ export async function GET(req) {
     
     const document = Announcement.findOne({})
 
-    return new Response(JSON.stringify(document), { status: 200 });
+    return new Response(JSON.stringify({test: document}), { status: 200 });
   } catch (error) {
     console.error('Błąd pobierania:', error);
     return new Response(JSON.stringify({ error: 'Błąd serwera' }), { status: 500 });

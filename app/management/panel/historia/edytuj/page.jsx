@@ -2,9 +2,9 @@
 
 import PostFormHistory from '@components/management/historia/PostFormHistory';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
-const edytuj = () => {
+const EditContent = () => {
   const [submitting, setsubmitting] = useState(false);
   const [error, setError] = useState();
   const [post, setPost] = useState({
@@ -105,4 +105,12 @@ const edytuj = () => {
   )
 }
 
-export default edytuj
+const page = () => {
+  return(
+    <Suspense>
+      <EditContent/>
+    </Suspense>
+  )
+}
+
+export default page
