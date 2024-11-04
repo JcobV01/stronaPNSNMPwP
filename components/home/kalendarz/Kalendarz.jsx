@@ -6,6 +6,7 @@ import DayCard from './components/DayCard'
 import { useEffect, useState } from 'react'
 import { getDateToday } from '@utils/date'
 import InfoBar from './components/InfoBar'
+import useIntersectionObserver from '@hooks/useObserver';
 
 const Kalendarz = () => {
   const [todayData, setTodayData] = useState({})
@@ -58,8 +59,12 @@ const Kalendarz = () => {
     }
   }
 
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.1 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
+
   return (
-    <section id="kalendarz" className='my-[140px] flex flex-col gap-[70px] sm:my-[100px] sm:gap-0'>
+    <section id="kalendarz" ref={ref} className={`my-[140px] flex flex-col gap-[70px] sm:my-[100px] sm:gap-0 transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
       <Title title="Kalendarz" title2="Liturgiczny" subtitle="Czytania na każdy dzień" />
 
       <InfoBar year={todayData?.year?.slice(4, -4)} season={setSeason()} cycle={todayData?.year?.slice(6)}/>
