@@ -117,10 +117,10 @@ const Kontakt = () => {
 
                         <div className="flex gap-[10px] mt-[30px] sm:justify-center">
                             <Link href="https://www.facebook.com/parafiaprzybyslawice" title="Przejdź do facebooka" aria-label="Facebook">
-                                <Icon icon="ic:baseline-facebook" width="30" height="30" className="text-[#5A7889]" />
+                                <Icon icon="ic:baseline-facebook" width="30" height="30" className="text-[#5A7889] duration-700 hover:text-[#ECECEC] hover:scale-110" />
                             </Link>
                             <Link href="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" title="Przejdź do youtube" aria-label="Youtube">
-                                <Icon icon="fa6-brands:youtube" width="30" height="30" className="text-[#5A7889]" />
+                                <Icon icon="fa6-brands:youtube" width="30" height="30" className="text-[#5A7889] duration-700 hover:text-[#ECECEC] hover:scale-110" />
                             </Link>
                         </div>
                     </div>
@@ -160,7 +160,7 @@ const Kontakt = () => {
                             <span className="absolute text-[18px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[16px]">Wiadomość</span>
                         </div>
 
-                        <button disabled={isSubmitting} className="w-[200px] h-[50px] border-[1px] border-solid border-[#5A7889] bg-[rgba(18,39,43,0.70)] rounded-[5px] text-white tracking-[4px] text-[20px] font-light mt-[35px] ml-auto sm:text-[16px] sm:mr-[25px]">Wyślij</button>
+                        <button disabled={isSubmitting} className="w-[200px] h-[50px] border-[1px] border-solid border-[#5A7889] bg-[rgba(18,39,43,0.70)] rounded-[5px] text-white tracking-[4px] text-[20px] font-light mt-[35px] ml-auto sm:text-[16px] sm:mr-[25px] duration-700 hover:bg-[#5A7889] hover:border-[rgba(18,39,43,0.70)] hover:scale-95">Wyślij</button>
                     </form>
                 </div>
             </div>

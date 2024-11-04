@@ -7,7 +7,7 @@ import Link from 'next/link'
 const Logo = ({width, height, padding, backgroundOpacity, apectRatio, mobileWidth}) => {
   return (
     <Link href="/#homepage">
-      <div className='bg-white rounded-[15px]' style={{padding: padding ? 10 : 20, background: backgroundOpacity ? 'rgba(255,255,255,0.80)' : 'rgba(255,255,255,0.60)'}}>
+      <div className='bg-white rounded-[15px] duration-700 hover:opacity-80' style={{padding: padding ? 10 : 20, background: backgroundOpacity ? 'rgba(255,255,255,0.80)' : 'rgba(255,255,255,0.60)'}}>
           <Image 
               src={logo}
               width={width}
