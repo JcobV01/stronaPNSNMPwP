@@ -11,7 +11,7 @@ const TitleCard = ({ subtitle, title, link }) => {
                 </div>
                 <Link href={link}>
                     <div className='bg-[#F1F1F1] rounded-[2px] mb-[30px] px-[20px] py-[7.5px] w-max'>
-                        <p className='text-[13px] text-[#5A7889] font-medium'>Dowiedz się więcej</p>
+                        <p className='text-[13px] text-[#353535] font-medium'>Dowiedz się więcej</p>
                     </div>
                 </Link>
             </div>
