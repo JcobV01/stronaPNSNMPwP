@@ -27,7 +27,6 @@ const kalendarzDzien = () => {
                     body: JSON.stringify({ dateToFind })
                 });
                 const html = await readings.json();
-                console.log(html.data)
                 setData(html.data)
             }
             catch (err) {
