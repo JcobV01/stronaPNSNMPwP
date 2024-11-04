@@ -10,7 +10,7 @@ const TitleCard = ({ subtitle, title, link }) => {
                     <h4 className='pt-[5px] font-bol text-white text-[25px]'>{title}</h4>
                 </div>
                 <Link href={link}>
-                    <div className='bg-[#F1F1F1] rounded-[2px] mb-[30px] px-[20px] py-[7.5px] w-max'>
+                    <div className='bg-[#F1F1F1] rounded-[2px] mb-[30px] px-[20px] py-[7.5px] w-max duration-700 hover:bg-[#5A7889] hoverCardButton'>
                         <p className='text-[13px] text-[#353535] font-medium'>Dowiedz się więcej</p>
                     </div>
                 </Link>

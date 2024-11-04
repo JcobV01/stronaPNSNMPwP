@@ -13,7 +13,7 @@ const GroupsCard = ({icon, name, desc, link}) => {
             <h4 className='text-white text-[18px] font-semibold tracking-[3.6px]'>{name}</h4>
             <p className='text-[#D4D4D4] text-[12px] font-light tracking-[2.4px]'>{desc}</p>
             <Link href={link} className='absolute bottom-0 right-0 sm:relative text-center'>
-                <p className='text-white text-[12px] font-normal tracking-[2.4px]'>Czytaj więcej</p>
+                <p className='text-white text-[12px] font-normal tracking-[2.4px] duration-700 hover:scale-110'>Czytaj więcej</p>
             </Link>
         </div>
     </div>

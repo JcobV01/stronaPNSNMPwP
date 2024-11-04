@@ -27,12 +27,12 @@ const Navbar = () => {
   return (
     <>
       <nav className={`${scrolled === true ? 'backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]' : ''} md:hidden flex justify-center sticky top-0 duration-700 z-[1000] gap-[30px] items-center h-[75px] tracking-[2px] text-white text-[17px] lg:text-[15px] md:flex-col md:gap-[10px]`}>
-        <Link href="/#parafia">Parafia</Link>
-        <Link href="/#grupy">Grupy parafialne</Link>
-        <Link href="/#galeria">Galeria</Link>
-        <Link href="/#kontakt">Kontakt</Link>
-        <Link href="/komunikaty">Komunikaty</Link>
-        <Link href="/ogloszenia">Ogłoszenia</Link>
+        <Link href="/#parafia" className='duration-700 hover:scale-110'>Parafia</Link>
+        <Link href="/#grupy" className='duration-700 hover:scale-110'>Grupy parafialne</Link>
+        <Link href="/#galeria" className='duration-700 hover:scale-110'>Galeria</Link>
+        <Link href="/#kontakt" className='duration-700 hover:scale-110'>Kontakt</Link>
+        <Link href="/komunikaty" className='duration-700 hover:scale-110'>Komunikaty</Link>
+        <Link href="/ogloszenia" className='duration-700 hover:scale-110'>Ogłoszenia</Link>
       </nav>
 
       <div className={`${scrolled === true ? 'backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]' : ''} hidden md:flex justify-center h-[75px] items-center sticky top-0 z-[1000]`}>

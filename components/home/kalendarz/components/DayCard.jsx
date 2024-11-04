@@ -33,7 +33,7 @@ const DayCard = ({dateText, date='', name, color="zielony", texts="", memory=""}
             texts[3]?.title.slice(texts[3]?.title.indexOf("(") + 1, texts[3]?.title.length -1)
             }</p>
 
-            <Link href={`/kalendarz/${dateText}`} className="absolute bottom-[15px] right-[15px] flex gap-[10px] sm:static">
+            <Link href={`/kalendarz/${dateText}`} className="absolute bottom-[15px] right-[15px] flex gap-[10px] sm:static duration-700 hover:text-[#5A7889] hover:scale-90">
                 <p className="text-[15px] sm:w-full sm:text-right">Zobacz więcej</p>
                 <Icon icon="la:angle-double-right" width="20" height="22.5" alt="Ikona strzałki"/>
             </Link>
