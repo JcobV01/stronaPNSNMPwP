@@ -2,23 +2,23 @@
 
 import React from 'react'
 import Title from '@components/Title'
-import { useSession } from 'next-auth/react'
+import useIntersectionObserver from '@hooks/useObserver';
 
 const cmentarz = () => {
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
 
-  const session = useSession()
-  console.log(session);
-  
   return (
     <section className='flex-center pb-[100px]'>
       <article className='mt-[65px] w-[1400px] 2xl:w-[90%]'>
         <Title title="Cmentarz" title2="" subtitle="Regulamin"/>
         <div>
           <h4 className='text-center text-[25px] font-semibold tracking-[3px] mt-[70px] md:text-[20px] sm:text-[18px] sm:mt-[40px]'>Regulamin cmentarza parfii pw. Niepokalanego Serca NMP w Przybysławicach</h4>
-          <ol className='mt-[45px] list-decimal text-[18px] tracking-[2.5px] space-y-[40px] md:text-[15px] md:px-[20px]'>
+          <ol ref={ref} className={`mt-[45px] list-decimal text-[18px] tracking-[2.5px] space-y-[40px] md:text-[15px] md:px-[20px] transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
             <li>Cmentarz jest miejscem świętym, miejscem wiecznego spoczynku naszych Zmarłych i miejscem modlitwy za nich. Ma charakter sakralny. Powinien być otoczony religijną czcią i szacunkiem oraz szczególną troską. Na cmentarzu należy zachowywać powagę, ciszę i porządek.</li>
             <li>Cmentarz jest własnością Parafii Rzymskokatolickiej pw. Niepokalanego Serca NMP w Przybysławicach i służy Parafianom.</li>
-            <li>Cmentarz zarządza Proboszcz Parafii (KANCELARIA PARAFIALNA czynna po Mszach Świętych z wyjątkiem Niedziel i Świąt).  Bezpośrednio w jego imieniu porządku na cmentarzu oraz nadzór sprawuje Pan Kościelny oraz Firma Usługowa p. Ryszard Cierniak 14 67 151 16. Pan Kościelny ma nadzór nad pracami kamieniarskimi, przygotowaniem grobu do pochówku i udostępnieniem wjazdu na cmentarz. Nikomu bez zgody ks. Proboszcza nie można wjechać pojazdem na cmentarz.</li>
+            <li>Cmentarz zarządza Proboszcz Parafii (KANCELARIA PARAFIALNA czynna po Mszach Świętych z wyjątkiem Niedziel i Świąt). Bezpośrednio w jego imieniu porządku na cmentarzu oraz nadzór sprawuje Pan Kościelny oraz Firma Usługowa p. Ryszard Cierniak 14 67 151 16. Pan Kościelny ma nadzór nad pracami kamieniarskimi, przygotowaniem grobu do pochówku i udostępnieniem wjazdu na cmentarz. Nikomu bez zgody ks. Proboszcza nie można wjechać pojazdem na cmentarz.</li>
             <li>Sprawy związane z pochówkiem zmarłych oraz innymi czynnościami wykonywanymi na cmentarzu należy załatwić na kancelarii parafialnej.</li>
             <li>Na niżej wymienione prace prowadzone na cmentarzu należy uzyskać zgodę Zarządcy cmentarza:</li>
             <ul>
