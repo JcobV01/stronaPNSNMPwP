@@ -1,8 +1,15 @@
+'use client'
+
 import React from 'react'
+import useIntersectionObserver from '@hooks/useObserver';
 
 const Confirmation = () => {
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0
+  });
+
   return (
-    <article className='w-[1400px] 2xl:w-[90%] pb-[100px]'>
+    <article ref={ref} className={`w-[1400px] 2xl:w-[90%] pb-[100px] transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
       <div>
         <h4 className='text-[40px] font-medium tracking-[8px] text-center sm:text-[20px]'>Bierzmowanie</h4>
         <div className='mt-[15px]'>
