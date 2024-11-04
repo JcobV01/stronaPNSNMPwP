@@ -10,6 +10,7 @@ import patron3 from '@public/assets/images/patrons/bl-stanislaw-kostka.webp'
 import bgTeam from '@public/assets/images/background-images/ak-background-image.webp'
 import GropusAKHistoryPost from '@components/groups/GropusAKHistoryPost'
 import { useEffect, useState } from 'react'
+import useIntersectionObserver from '@hooks/useObserver'
 
 const ak = () => {
 
@@ -192,11 +193,20 @@ const ak = () => {
     }
   }, []);
 
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.1 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
+
+  const [refTwo, isVisibleTwo] = useIntersectionObserver({
+    threshold: 0.1 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
+
+
   return (
     <>
       <GropusTopSection logo={data.logo} name={data.name} name2={data.name2} info={data.info} link={data.link} patrons={data.patrons} />
 
-      <section style={{ backgroundImage: `url(${bgTeam.src})` }} className='w-full relative bg-center py-[30px] my-[50px] bg-cover px-[30px]'>
+      <section ref={ref} style={{ backgroundImage: `url(${bgTeam.src})` }} className={`w-full relative bg-center py-[30px] my-[50px] bg-cover px-[30px] transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
         <h4 className='text-[30px] tracking-[3px] text-center my-[30px] text-white relative z-10 xl:text-[25px] lg:text-[20px] '>Skład Akcji Katolickiej</h4>
 
         <article className='flex gap-[60px] justify-center z-10 sm:flex-col sm:items-center'>
@@ -220,7 +230,7 @@ const ak = () => {
         <div className='absolute w-full h-full top-0 left-0 backdrop-brightness-[0.2] z-0'></div>
       </section>
 
-      <section className='pb-[50px]'>
+      <section ref={refTwo} className={`pb-[50px] transition-all duration-1000 ease-in-out ${isVisibleTwo ? 'animation-visible' : 'animation-hidden'}`}>
         <h4 className='text-[30px] tracking-[3px] text-center my-[30px] font-medium relative z-10 xl:text-[25px] lg:text-[20px]'>Historia</h4>
         <div className='h-[3px] bg-[#B9B9B9] w-[300px] m-auto sm:w-[80%] fold:w-[90%]'></div>
 

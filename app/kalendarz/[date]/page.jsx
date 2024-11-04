@@ -4,6 +4,7 @@ import CalendarSigla from '@components/calendar/CalendarSigla'
 import CalendarTextsSection from '@components/calendar/CalendarTextsSection'
 import InfoBar from '@components/home/kalendarz/components/InfoBar'
 import Title from '@components/Title'
+import useIntersectionObserver from '@hooks/useObserver'
 import { Icon } from '@iconify/react'
 import { getDateToday } from '@utils/date'
 import { useParams, useRouter } from 'next/navigation'
@@ -81,9 +82,17 @@ const kalendarzDzien = () => {
     const changeDate = (e) => {
         router.push(`/kalendarz/${e.target.value}`)
     }
+    
+    const [ref, isVisible] = useIntersectionObserver({
+        threshold: 0.1
+      });
+
+      const [refTwo, isVisibleTwo] = useIntersectionObserver({
+        threshold: 0.1
+      });
 
     return (
-        <section className='pt-[50px] flex flex-col items-center px-[20px] gap-[100px] pb-[150px]'>
+        <section ref={ref} className={`pt-[50px] flex flex-col items-center px-[20px] gap-[100px] pb-[150px] transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
             <Title title="Kalendarz" title2="Liturgiczny" subtitle="Na każdy dzień" />
             <article>
                 <h4 className='text-[30px] lg:text-[25px] font-medium tracking-[4px] text-center max-w-[1200px] xl:w-[80%] m-auto'>{
@@ -93,7 +102,7 @@ const kalendarzDzien = () => {
                 }, {data?.time}
                 </h4>
             </article>
-            <article className='flex flex-col gap-[25px]'>
+            <article ref={refTwo} className={`flex flex-col gap-[25px] transition-all duration-1000 ease-in-out ${isVisibleTwo ? 'animation-visible' : 'animation-hidden'}`}>
                 <InfoBar year={data?.year?.slice(4, -4)} season={setSeason()} cycle={data?.year?.slice(6)} />
 
                 <div className='flex gap-[25px] h-[80px] sm:flex-col sm:h-auto lg:mx-[20px]'>
