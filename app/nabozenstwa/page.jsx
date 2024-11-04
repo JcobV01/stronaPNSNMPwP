@@ -13,6 +13,14 @@ import useIntersectionObserver from '@hooks/useObserver'
 
 const nabozenstwa = () => {
   const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
+
+  const [refTwo, isVisibleTwo] = useIntersectionObserver({
+    threshold: 0.1 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
+
+  const [refThree, isVisibleThree] = useIntersectionObserver({
     threshold: 0.1 // 10% widoczności sekcji wystarczy do uruchomienia animacji
   });
 
@@ -57,7 +65,7 @@ const nabozenstwa = () => {
       </article>
 
       <article className='flex xl:flex-col'>
-        <div ref={ref} className={`flex xl:flex-row-reverse sm:flex-col shadow-[0px_4px_20px_#00000025] element-visible-left transition-all duration-1000 delay-500 ease-in-out ${isVisible ? 'element-visible-left' : 'element-hidden-left'}`}>
+        <div ref={refTwo} className={`flex xl:flex-row-reverse sm:flex-col shadow-[0px_4px_20px_#00000025] element-visible-left transition-all duration-1000 delay-500 ease-in-out ${isVisibleTwo ? 'element-visible-left' : 'element-hidden-left'}`}>
           <Image src={imgLampion} width="300" height="auto" alt='Zjęcie do sekcji adwent' />
           <div className='bg-white w-[300px] p-[10px] flex-col flex-center gap-[5px] sm:py-[20px]'>
             <h4 className='text-[15px] font-light'>Roraty - adwent</h4>
@@ -70,7 +78,7 @@ const nabozenstwa = () => {
           </div>
         </div>
 
-        <div ref={ref} className={`flex sm:flex-col shadow-[0px_4px_20px_#00000025] element-visible-right transition-all duration-1000 delay-500 ease-in-out ${isVisible ? 'element-visible-right' : 'element-hidden-right'}`}>
+        <div ref={refTwo} className={`flex sm:flex-col shadow-[0px_4px_20px_#00000025] element-visible-right transition-all duration-1000 delay-500 ease-in-out ${isVisibleTwo ? 'element-visible-right' : 'element-hidden-right'}`}>
           <Image src={imgKrzyz} width="300" height="auto" alt='Zjęcie do sekcji droga krzyżowa' />
           <div className='bg-white w-[300px] p-[10px] flex-col flex-center gap-[5px] sm:py-[20px]'>
             <h4 className='text-[15px] font-light'>Droga Krzyżowa - Wielki Post</h4>
@@ -91,7 +99,7 @@ const nabozenstwa = () => {
 
       </article>
       <article className='flex xl:flex-col'>
-        <div ref={ref} className={`flex sm:flex-col shadow-[0px_4px_20px_#00000025] element-visible-left transition-all duration-1000 delay-500 ease-in-out ${isVisible ? 'element-visible-left' : 'element-hidden-left'}`}>
+        <div ref={refThree} className={`flex sm:flex-col shadow-[0px_4px_20px_#00000025] element-visible-left transition-all duration-1000 delay-500 ease-in-out ${isVisibleThree ? 'element-visible-left' : 'element-hidden-left'}`}>
           <div className='bg-white w-[300px] p-[10px] flex-col flex-center gap-[5px] sm:py-[20px]'>
             <h4 className='text-[15px] font-light'>Pierwsze dni miesiąca</h4>
             <p className='text-[#B0B0B0] text-[13px]'>I Czwartek</p>
@@ -104,7 +112,7 @@ const nabozenstwa = () => {
           <Image src={imgMonstrancja} width="300" height="auto" alt='Zjęcie do sekcji dni miesiaca' />
         </div>
 
-        <div ref={ref} className={`flex xl:flex-row-reverse sm:flex-col shadow-[0px_4px_20px_#00000025] element-visible-right transition-all duration-1000 delay-500 ease-in-out ${isVisible ? 'element-visible-right' : 'element-hidden-right'}`}>
+        <div ref={refThree} className={`flex xl:flex-row-reverse sm:flex-col shadow-[0px_4px_20px_#00000025] element-visible-right transition-all duration-1000 delay-500 ease-in-out ${isVisibleThree ? 'element-visible-right' : 'element-hidden-right'}`}>
           <div className='bg-white w-[300px] p-[10px] flex-col flex-center gap-[5px] sm:py-[20px]'>
             <h4 className='text-[15px] font-light'>Majówka - maj</h4>
             <p className='text-[#B0B0B0] text-[13px]'>Od poniedziałku do piątku</p>
