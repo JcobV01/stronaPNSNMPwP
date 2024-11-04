@@ -5,6 +5,7 @@ import Posts from '@components/messages/Posts'
 import Title from '@components/Title'
 import { Icon } from '@iconify/react'
 import Pagination from '@components/messages/Pagination'
+import useIntersectionObserver from '@hooks/useObserver'
 
 const komunikaty = () => {
   const [posts, setPosts] = useState([]);
@@ -55,6 +56,10 @@ const komunikaty = () => {
 
   const totalPages = Math.ceil(totalPosts / postsPerPage);
 
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.1 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
+
   return (
     <section className='flex-center flex-col pb-[100px]'>
       <div className='relative top-[-30px]'>
@@ -62,7 +67,7 @@ const komunikaty = () => {
         <Icon icon="stash:search" width="40px" height="40px" className='text-[#5A7889] absolute top-[10px] right-[25px]' />
       </div>
       <Title title="Komunikaty" title2="" subtitle="Najnowsze posty" />
-      <article className='mt-[50px]'>
+      <article ref={ref} className={`mt-[50px] transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
         {posts?.map((post) => (
           <Posts key={post._id} post={post} />
         ))}

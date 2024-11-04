@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react"
 const DayCard = ({dateText, date='', name, color="zielony", texts="", memory=""}) => {
 
     const displayColor = {
-        "zielony": '#3C9530',
+        "zielony": '#325f2f',
         "czerwony": '#e01111',
         "fioletowy": '#860ac9',
         "różowy": "#ff3dfb",

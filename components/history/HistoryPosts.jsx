@@ -1,3 +1,4 @@
+import useIntersectionObserver from '@hooks/useObserver';
 import Image from 'next/image';
 import React from 'react'
 
@@ -10,8 +11,10 @@ const HistoryPosts = ({ post, index }) => {
 
     const hasImage = post.img && post.img !== null;
 
+    const [ ref, isVisible ] = useIntersectionObserver();
+
     return (
-        <article className={`w-[1500px] mt-[50px] flex flex-col justify-center 2xl:w-[1250px] xl:w-[1000px] lg:w-[90%]`}>
+        <article ref={ref} className={`w-[1500px] mt-[50px] flex flex-col justify-center transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'} 2xl:w-[1250px] xl:w-[1000px] lg:w-[90%]`}>
             <div className={`text-${index % 2 === 0 ? 'left' : 'right'}`}>
                 <span className={`text-[#B0B0B0]`}>{date}</span>
                 <h4 className='text-black text-[25px] font-semibold tracking-[2.5px] uppercase lg:text-[22px]'>{post.title}</h4>
