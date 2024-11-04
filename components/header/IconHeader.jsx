@@ -6,7 +6,7 @@ const IconHeader = ({imgSource, destination}) => {
   return (
     <div className='bg-none'>
         <Link href={destination} target='_blank'>
-            <Icon icon={imgSource} width="50" height="50" alt='Ikona socialmedia' className='text-[#5A7889]'/>
+            <Icon icon={imgSource} width="50" height="50" alt='Ikona socialmedia' className='text-[#5A7889] sm:w-[40px] sm:h-[40px]'/>
         </Link>
     </div>
   )
