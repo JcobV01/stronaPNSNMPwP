@@ -3,7 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import React, { Suspense, useEffect, useState } from 'react'
 
-const page = () => {
+const PageContent = () => {
   const [message, setMessage] = useState({
     name: '',
     email: '',
@@ -44,7 +44,6 @@ const page = () => {
   }, [messageId])
 
   return (
-    <Suspense fallback="Ładowanie...">
       <section className='mt-[10px] w-full'>
         <article>
           <div className='flex items-center justify-between'>
@@ -61,6 +60,13 @@ const page = () => {
           <p className='mt-[10px] h-[625px] overflow-y-auto pr-[20px]'>{message.message}</p>
         </article>
       </section>
+  )
+}
+
+const page = () => {
+  return (
+    <Suspense fallback="Loading...">
+      <PageContent/>
     </Suspense>
   )
 }
