@@ -110,10 +110,10 @@ const Kontakt = () => {
                         }
 
                         <div className="flex gap-[10px] mt-[30px] sm:justify-center">
-                            <Link href="https://www.facebook.com/parafiaprzybyslawice" aria-label="Przejdź do facebooka">
+                            <Link href="https://www.facebook.com/parafiaprzybyslawice" title="Przejdź do facebooka" aria-label="Facebooka">
                                 <Icon icon="ic:baseline-facebook" width="30" height="30" className="text-[#5A7889]" />
                             </Link>
-                            <Link href="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" aria-label="Przejdź do youtube">
+                            <Link href="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" title="Przejdź do youtube" aria-label="Youtube">
                                 <Icon icon="fa6-brands:youtube" width="30" height="30" className="text-[#5A7889]" />
                             </Link>
                         </div>

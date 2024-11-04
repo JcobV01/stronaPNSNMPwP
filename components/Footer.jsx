@@ -21,8 +21,8 @@ const Footer = () => {
           <Logo width="100" height="100" padding={true} backgroundOpacity={true} apectRatio="aspect-square"/>
           <Navbar />
           <div className='flex gap-[36px]'>
-            <IconFooter imgSource='ph:youtube-logo-fill' destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" />
-            <IconFooter imgSource='ic:baseline-facebook' destination="https://www.facebook.com/parafiaprzybyslawice" />
+            <IconFooter imgSource='ph:youtube-logo-fill' destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" desc='Youtube'/>
+            <IconFooter imgSource='ic:baseline-facebook' destination="https://www.facebook.com/parafiaprzybyslawice" desc='Facebook'/>
           </div>
           <DownloadFile location='/assets/downloadFiles/STANDARDY-OCHRONY-DZIECI.pdf' text='Standardy Ochrony Dzieci' />
           <p className='text-[13px] tracking-[3px] text-white text-center w-[50%] 2xl:w-[60%] lg:w-[80%] lg:text-[11px]'>Informujemy, że wszystkie dane osobowe zamieszczone na stronie internetowej parafii są umieszczone wyłącznie za zgodą osób zainteresowanych.</p>
