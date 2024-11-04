@@ -21,7 +21,7 @@ const IntentionsElements = ({ intentions }) => {
                 {intentions?.map((element, index) => (
                     <div className={`h-[350px] bg-white shadow-[0px_4px_4px_0px_#00000025] p-[30px] flex flex-col gap-[5px] ${index == 6 ? 'col-span-3' : 'w-[350px] items-center'}`} key={index}>
                         <div className='w-[200px] h-[5px] bg-green-800 mx-auto'></div>
-                        <h4 className='text-[35px] font-semibold tracking-[4px] text-center'>{element.day}</h4>
+                        <h4 className='text-[35px] font-semibold tracking-[4px] xl:text-[30px] text-center'>{element.day}</h4>
                         <p className='text-[#B0B0B0] text-[15px] text-center'>{formatDate(element.date)}</p>
 
                         {element.times.length < 3 || index == 6 ? element.times.map((hour, index2) => (
