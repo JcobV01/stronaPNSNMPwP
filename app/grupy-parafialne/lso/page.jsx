@@ -1,3 +1,5 @@
+'use client'
+
 import lsoLogo from '@public/assets/images/logos/lsoLogo.webp'
 import patron1 from '@public/assets/images/patrons/sw-dominik-savio.webp'
 import patron2 from '@public/assets/images/patrons/sw-tarsycjusz.webp'
@@ -7,6 +9,7 @@ import GropusTopSection from '@components/groups/GropusTopSection'
 
 import bgTeam from '@public/assets/images/background-images/lso-background-image.webp'
 import GroupsLSOList from '@components/groups/GroupsLSOList'
+import useIntersectionObserver from '@hooks/useObserver'
 
 const lso = () => {
 
@@ -73,11 +76,19 @@ const lso = () => {
     ]
   }
 
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.1 
+  });
+
+  const [refTwo, isVisibleTwo] = useIntersectionObserver({
+    threshold: 0.1
+  });
+
   return (
     <>
       <GropusTopSection logo={data.logo} name={data.name} name2={data.name2} info={data.info} link={data.link} patrons={data.patrons}/>
 
-      <section style={{backgroundImage: `url(${bgTeam.src})`}} className='w-full relative bg-center py-[30px] my-[50px] bg-cover'>
+      <section ref={ref} style={{backgroundImage: `url(${bgTeam.src})`}} className={`w-full relative bg-center py-[30px] my-[50px] bg-cover transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
         <h4 className='text-[30px] tracking-[3px] text-center my-[30px] text-white relative z-10 xl:text-[25px] lg:text-[20px] '>Skład Liturgicznej Służby Ołtarza</h4>
         <article className='relative z-10 flex gap-[50px] flex-center lg:flex-col'>
           
@@ -94,7 +105,7 @@ const lso = () => {
         <div className='absolute w-full h-full top-0 left-0 backdrop-brightness-[0.2] z-0'></div>
       </section>
 
-      <section className='pb-[50px]'>
+      <section ref={refTwo} className={`pb-[50px] transition-all duration-1000 ease-in-out ${isVisibleTwo ? 'animation-visible' : 'animation-hidden'}`}>
         <h4 className='text-[30px] tracking-[3px] font-medium text-center my-[30px] relative z-10 xl:text-[25px] lg:text-[20px]'>Zdjęcia z wybranych celebracji</h4>
       </section>
     </>
