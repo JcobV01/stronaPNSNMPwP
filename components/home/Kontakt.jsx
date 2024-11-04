@@ -19,6 +19,7 @@ const Kontakt = () => {
     const [date, setDate] = useState('');
     const [error, setError] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isFocused, setIsFocused] = useState(false);
 
     useEffect(() => {
         const currentDate = getCurrentDataTime();
@@ -138,7 +139,7 @@ const Kontakt = () => {
 
                         <div className="bg-[rgba(18,39,43,0.70)] w-[550px] h-[75px] rounded-[18px] mt-[15px] pl-[25px] flex items-center relative contact-form sm:w-[90%] sm:mx-auto">
                             <Icon icon="clarity:email-solid" width="40px" height="40px" className="text-[#B0B0B0] absolute right-[15px]" />
-                            <input type="text" placeholder="E-mail" value={email} onChange={(e) => setEmail(e.target.value)} className="w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required/>
+                            <input type="text" onFocus={() => setIsFocused(true)} onBlur={() => setIsFocused(false)} placeholder={!isFocused ? "E-mail" : ""} value={email} onChange={(e) => setEmail(e.target.value)} className="w-[450px] outline-none text-[18px] text-white tracking-[4px] bg-transparent duration-500 z-[11] sm:text-[16px] sm:w-[100%] sm:pr-[85px]" required/>
                             <span className="absolute text-[18px] text-[#B0B0B0] tracking-[4px] duration-500 sm:text-[16px]">E-mail</span>
                         </div>
 
