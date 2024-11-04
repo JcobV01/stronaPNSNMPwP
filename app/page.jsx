@@ -1,9 +1,11 @@
-import Galeria from "@components/home/Galeria"
-import Grupy from "@components/home/Grupy"
-import Kalendarz from "@components/home/kalendarz/Kalendarz"
-import Kontakt from "@components/home/Kontakt"
-import Parafia from "@components/home/parafia/Parafia"
-import Quote from "@components/Quote"
+import dynamic from 'next/dynamic'
+
+const Parafia = dynamic(() => import('@components/home/parafia/Parafia'), {ssr: false, loading: () => <div className='w-full mt-[10px]'><div className='loader-main mx-auto'></div></div>});
+const Kalendarz = dynamic(() => import('@components/home/kalendarz/Kalendarz'), {ssr: false, loading: () => <div className='w-full mt-[10px]'><div className='loader-main mx-auto'></div></div>});
+const Grupy = dynamic(() => import('@components/home/Grupy'), {ssr: false, loading: () => <div className='w-full mt-[10px]'><div className='loader-main mx-auto'></div></div>});
+const Galeria = dynamic(() => import('@components/home/Galeria'),{ssr: false, loading: () => <div className='w-full mt-[10px]'><div className='loader-main mx-auto'></div></div>});
+const Kontakt = dynamic(() => import('@components/home/Kontakt'), {ssr: false, loading: () => <div className='w-full mt-[10px]'><div className='loader-main mx-auto'></div></div>});
+const Quote = dynamic(() => import('@components/Quote'), {ssr: false, loading: () => <div className='w-full mt-[10px]'><div className='loader-main mx-auto'></div></div>});
 
 
 const page = () => {
