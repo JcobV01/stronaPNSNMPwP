@@ -45,7 +45,7 @@ const DynamicHeader = () => {
             {pathname === "/" ?
                 <>
                     <Navbar />
-                    <header className="w-full h-screen bg-cover mt-[-76px] sm:h-full" style={{ backgroundImage: `url(${mainImage.src})` }}>
+                    <header className="w-full h-screen bg-cover mt-[-76px]" style={{ backgroundImage: `url(${mainImage.src})` }}>
                         <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
                             <section id="homepage" className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
                                 <div className='pt-[100px] flex-center md:pt-[150px] sm:pt-[100px]'>
@@ -54,7 +54,7 @@ const DynamicHeader = () => {
                                 <div className='flex-center flex-col text-center'>
                                     <p className='text-[20px] text-[#B0B0B0] mt-[30px] sm:text-[18px] fold:mt-[10px]'>Rzymskokatolicka</p>
                                     <h1 className='text-white text-[80px] font-bold tracking-[4px] leading-[80px] mt-[40px] md:text-[40px] md:leading-[40px] sm:text-[30px] fold:text-[25px] fold:mt-[10px]'>PARAFIA PRZYBYSŁAWICE</h1>
-                                    <p className='text-white text-[25px] w-[550px] mt-[40px] md:text-[20px] md:mt-[20px] sm:w-[95%] sm:text-[18px] fold:text-[15px] fold:mt-[10px]'>Parafia Niepokalanego Serca Najświętszej Maryi Panny w Przybysławicach – parafia rzymskokatolicka, znajdująca się w diecezji tarnowskiej, w dekanacie Radłów</p>
+                                    <p className='text-white text-[25px] w-[550px] mt-[40px] md:text-[20px] md:mt-[20px] sm:w-[95%] sm:text-[15px] fold:text-[15px] fold:mt-[10px]'>Parafia Niepokalanego Serca Najświętszej Maryi Panny w Przybysławicach – parafia rzymskokatolicka, znajdująca się w diecezji tarnowskiej, w dekanacie Radłów</p>
                                     <div className='flex-center gap-[30px] mt-[40px] md:pb-[10px] fold:mt-[10px]'>
                                         <IconHeader imgSource='ph:youtube-logo-fill' destination="https://www.youtube.com/channel/UC-YVjtMoqxUwkuZKdJvoZUw" />
                                         <IconHeader imgSource='ic:baseline-facebook' destination="https://www.facebook.com/parafiaprzybyslawice" />

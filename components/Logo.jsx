@@ -13,7 +13,7 @@ const Logo = ({width, height, padding, backgroundOpacity, apectRatio, mobileWidt
               width={width}
               height={height}
               alt='Logo parafii'
-              className={`${apectRatio} sm:${mobileWidth}`}
+              className={`${apectRatio} sm:w-[90px]`}
           />
       </div>
     </Link>
