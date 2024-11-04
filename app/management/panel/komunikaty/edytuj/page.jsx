@@ -2,9 +2,9 @@
 
 import PostsForm from '@components/management/posts/PostsForm';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 
-const edytuj = () => {
+const EditContent = () => {
     const [submitting, setsubmitting] = useState(false);
     const [currentDataTime, setCurrentDataTime] = useState('');
     const [error, setError] = useState('');
@@ -88,4 +88,12 @@ const edytuj = () => {
     )
 }
 
-export default edytuj
+const page = () => {
+    return (
+        <Suspense fallback="Ładowanie...">
+            <EditContent/>
+        </Suspense>
+    )
+}
+
+export default page

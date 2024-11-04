@@ -39,6 +39,7 @@ const kalendarzDzien = () => {
 
     const setSeason = () => {
         const time = data?.time?.split(" ");
+        const day = data?.day
         if (time != null) {
             if (time[1] == "Tydzień" && time[2] == "zwykły") return "Okres zwykły"
             else if (time[1] == "Tydzień" && time[2] == "adwentu") return "Adwent"
@@ -46,7 +47,8 @@ const kalendarzDzien = () => {
             else if (time[3] == "Narodzeniu" && time[4] == "Pańskim") return "Okres Bożego Narodzenia"
             else if (time[3] == "Narodzeniu" && time[4] == "Pańskim") return "Okres Bożego Narodzenia"
             else if (time[1] == "Wielkiego" && time[2] == "Postu") return "Wielki Post"
-            else if (time[0] == "Wielki" && time[1] == "Tydzień") return "Wielki Post"
+            else if (time[0] == "Wielki" && time[1] == "Tydzień" && !(day == "Wielki Czwartek" || day == "Wielki Piątek Męki Pańskiej" || day == "Wigilia Paschalna")) return "Wielki Post"
+            else if (time[0] == "Wielki" && time[1] == "Tydzień" && (day == "Wielki Czwartek" || day == "Wielki Piątek Męki Pańskiej" || day == "Wigilia Paschalna")) return "Triduum Paschalne"
             else if (time[0] == "Oktawa" && time[1] == "Wielkanocna") return "Okres Wielkanocny"
             else if (time[1] == "Tydzień" && time[2] == "Wielkanocny") return "Okres Wielkanocny"
         }
