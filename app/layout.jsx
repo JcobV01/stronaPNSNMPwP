@@ -15,7 +15,7 @@ export const metadata = {
 
 const RootLayout = ({ children }) => {
     return (
-        <html lang="pl-PL">
+        <html lang="pl-PL" className='scroll-smooth'>
             <body>
                 <AuthProvider>
                     <DynamicHeader />
