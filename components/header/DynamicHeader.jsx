@@ -45,7 +45,7 @@ const DynamicHeader = () => {
             {pathname === "/" ?
                 <>
                     <Navbar />
-                    <header className="w-full h-dvh bg-cover mt-[-70px]" style={{ backgroundImage: `url(${mainImage.src})` }}>
+                    <header className="w-full h-dvh bg-cover mt-[-75px]" style={{ backgroundImage: `url(${mainImage.src})` }}>
                         <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
                             <section id="homepage" className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
                                 <div className='pt-[100px] flex-center md:pt-[150px] sm:pt-[100px]'>

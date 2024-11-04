@@ -26,7 +26,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className={`${scrolled === true ? 'backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]' : ''} md:hidden flex justify-center sticky top-0 duration-700 z-[1000] gap-[30px] py-[25px] tracking-[2px] text-white text-[17px] lg:text-[15px] md:flex-col md:gap-[10px]`}>
+      <nav className={`${scrolled === true ? 'backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]' : ''} md:hidden flex justify-center sticky top-0 duration-700 z-[1000] gap-[30px] items-center h-[75px] tracking-[2px] text-white text-[17px] lg:text-[15px] md:flex-col md:gap-[10px]`}>
         <Link href="/#parafia">Parafia</Link>
         <Link href="/#grupy">Grupy parafialne</Link>
         <Link href="/#galeria">Galeria</Link>
@@ -35,7 +35,7 @@ const Navbar = () => {
         <Link href="/ogloszenia">Ogłoszenia</Link>
       </nav>
 
-      <div className={`${scrolled === true ? 'backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]' : ''} hidden md:flex justify-center py-[25px] sticky top-0 z-[1000]`}>
+      <div className={`${scrolled === true ? 'backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]' : ''} hidden md:flex justify-center h-[75px] items-center sticky top-0 z-[1000]`}>
         <div onClick={() => setActive(!active)} className='w-[30px] h-[20px] relative z-[1000]'>
           <div className={active ? "active-hamburger absolute top-[50%] translate-y-[-50%]" : "custom-hamburger absolute top-[50%] translate-y-[-50%]"}></div>
         </div>
