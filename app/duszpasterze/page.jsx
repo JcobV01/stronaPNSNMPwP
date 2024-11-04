@@ -1,3 +1,5 @@
+'use client'
+
 import Image from 'next/image'
 import React from 'react'
 
@@ -9,6 +11,7 @@ import kskopacz from '@public/assets/images/priests/sp-ks-roman.webp'
 import ksdziedzic from '@public/assets/images/priests/sp-ks-michal.webp'
 import PreviousPriest from '@components/priests/PreviousPriest'
 import Title from '@components/Title'
+import useIntersectionObserver from '@hooks/useObserver'
 
 const duszpasterze = () => {
 
@@ -40,12 +43,22 @@ const duszpasterze = () => {
     }
   ]
 
+  const [ref, isVisible] = useIntersectionObserver({
+    threshold: 0.1 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
+
+  const [refTwo, isVisibleTwo] = useIntersectionObserver({
+    threshold: 0.1 // 10% widoczności sekcji wystarczy do uruchomienia animacji
+  });
+
+
+
   return (
     <section className='pt-[50px] flex flex-col items-center px-[20px] pb-[100px]'>
       <Title title="Duszpasterze" title2="" subtitle="Księża proboszczowie"/>
       <h4 className='text-[25px] font-semibold tracking-[2.5px] text-center mt-[120px] mb-[60px] lg:text-[20px] lg:mt-[70px]'>Aktualny proboszcz</h4>
       
-      <article className='flex lg:flex-col shadow-[0px_4px_10px_rgba(0,0,0,0.25)] rounded-r-[5px]'>
+      <article ref={ref} className={`flex lg:flex-col shadow-[0px_4px_10px_rgba(0,0,0,0.25)] rounded-r-[5px] transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
         <Image 
           src={ksjanczura}
           width={250}
@@ -62,9 +75,9 @@ const duszpasterze = () => {
 
       <h4 className='text-[25px] font-semibold tracking-[2.5px] text-center mt-[120px] mb-[60px] lg:text-[20px]'>Poprzedni proboszczowie</h4>
 
-      <div className='flex flex-wrap gap-[30px] w-[1075px] justify-center xl:w-[900px] lg:w-[100%]'>
+      <div ref={refTwo} className={`flex flex-wrap gap-[30px] w-[1075px] justify-center xl:w-[900px] lg:w-[100%] transition-all duration-1000 ease-in-out ${isVisibleTwo ? 'animation-visible' : 'animation-hidden'}`}>
         {prevPriests.map((priest) => (
-          <PreviousPriest image={priest.image} name={priest.name} dates={priest.dates} key={priest.name}/>
+          <PreviousPriest image={priest.image} name={priest.name} dates={priest.dates} key={priest.name} />
         ))}
       </div>
     </section>
