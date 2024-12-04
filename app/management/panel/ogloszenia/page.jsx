@@ -13,7 +13,7 @@ const Page = () => {
   const [fileName, setFileName] = useState('');
   const [color, setColor] = useState("announcement-green");
   const dialogRef = useRef(null); // referencja do podstyawowego dialogu
-  const editDialogRef = useRef(null); //referencja do dialogu do edycki
+  const editDialogRef = useRef(null); //referencja do dialogu do edycji
   const [editContent, setEditContent] = useState(''); //stan z kontentem, który ma być edytowany
   const [newColor, setNewColor] = useState('') //stan do ustawienia nowego koloru
 
