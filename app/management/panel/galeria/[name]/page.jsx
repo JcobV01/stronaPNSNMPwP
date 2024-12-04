@@ -6,7 +6,7 @@ import React from 'react'
 const page = () => {
     const { name } = useParams()
     return (
-        <div>{name}</div>
+        <div>{decodeURIComponent(name)}</div>
     )
 }
 

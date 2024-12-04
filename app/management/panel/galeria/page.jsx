@@ -21,7 +21,7 @@ const page = () => {
   }
 
   const moveToPhotos = (name) => {
-    router.push(`/management/panel/galeria/${name.replace(/\s+/g, '')}`);
+    router.push(`/management/panel/galeria/${name}`);
   }
 
   const setNewFolder = async () => {
