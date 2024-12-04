@@ -60,7 +60,7 @@ const page = () => {
     <section className='w-full flex-1 pt-8'>
       <button className='bg-[#11161A] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light w-full' onClick={openDialogHandle}>Dodaj album</button>
       <div className='flex gap-3 w-full'>
-        {folders.map((folder, index) => (
+        {folders?.map((folder, index) => (
           <div key={index} className='relative w-[200px] h-[230px] mt-[32px] cursor-pointer' data-name={folder?.folderName} onClick={(e) => moveToPhotos(e.currentTarget.dataset.name)}>
             <Image src={folder?.resources?.secure_url} width={200} height={230} className='object-cover h-full brightness-50'/>
             <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-[20px]'>{folder.folderName}</p>
