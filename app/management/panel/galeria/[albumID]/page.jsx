@@ -7,19 +7,22 @@ import React, { useEffect, useMemo, useState } from 'react'
 
 const page = () => {
     const { albumID } = useParams()
-    const [photos, setPhotos] = useState([])
+    const [photos, setPhotos] = useState([])    
 
     useEffect(() => {
         const getPhotos = async () => {
             try {
-                const response = await fetch(`http://localhost:7000/api/albums/${albumID}`, {
-                    method: "GET",
+                const response = await fetch(`/api/gallery/photos/get`, {
+                    method: "POST",
                     headers: {
-                        'x-api-key': process.env.PHOTO_API_KEY,
+                        'Content-Type': 'application/json',
                     },
+                    body: JSON.stringify({albumID: albumID})
                 })
 
                 const data = await response.json()
+                console.log(data);
+                
                 setPhotos(data)
             }
             catch (error) {
@@ -33,7 +36,7 @@ const page = () => {
     return (
         <section className='flex gap-8 flex-col flex-1 pt-[40px] w-full'>
             <div className='flex gap-4 items-center'>
-                <h3 className='text-[25px] font-bold text-[#353535]'>{decodeURIComponent(name)}</h3>
+                <h3 className='text-[25px] font-bold text-[#353535]'>test</h3>
                 <Icon icon="solar:pen-bold" width="25" height="25" className='color-[#353535] duration-500 cursor-pointer'/>
             </div>
 
@@ -44,9 +47,9 @@ const page = () => {
             </div>
 
 
-            <div className='flex flex-wrap gap-2 w-full flex-1 overflow-y-scroll'>
+            <div className='flex flex-wrap gap-2 w-full flex-1 overflow-y-auto'>
                 {photos?.map((photo, index) => (
-                    <Image src={photo.secure_url} width={300} height={300} key={index} alt={`Zdjęcie z albumu ${decodeURIComponent(name)}`} className='object-cover'/>
+                    <Image src={photo.fullurl} width={200} height={300} key={index} alt={`Zdjęcie z albumu ${photo._id}`} className='object-cover'/>
                 ))}
             </div>
         </section>
