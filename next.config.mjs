@@ -3,8 +3,8 @@ const nextConfig = {
     images: {
         remotePatterns: [
           {
-            protocol: 'https',
-            hostname: 'res.cloudinary.com',
+            protocol: 'http',
+            hostname: 'localhost',
             pathname: '/**', // Pozwala na wszystkie ścieżki z Cloudinary
           },
         ],
