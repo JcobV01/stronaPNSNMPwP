@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewFolderDialog = ({dialogRef, setFolderName, closeDialog, createFolder}) => {
+const NewAlbumDialog = ({dialogRef, setFolderName, closeDialog, createFolder}) => {
   return (
     <dialog ref={dialogRef} className='p-8 w-[50%] bg-[#f0f0f0] backdrop:bg-[#00000098]'>
         <div className='w-full h-full flex flex-col gap-4'>
@@ -15,4 +15,4 @@ const NewFolderDialog = ({dialogRef, setFolderName, closeDialog, createFolder}) 
   )
 }
 
-export default NewFolderDialog
+export default NewAlbumDialog
