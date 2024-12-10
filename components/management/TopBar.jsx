@@ -15,6 +15,7 @@ const TopBar = () => {
         ["/management/panel/historia", "Historia"],
         ["/management/panel/historia/edytuj", "Historia > Edytuj"],
         ["/management/panel/galeria", "Galeria"],
+        ["/management/panel/galeria/", "Galeria > Szczegłóy"],
         ["/management/panel/wiadomosci", "Wiadomości"],
         ["/management/panel/wiadomosci/szczegoly", "Wiadomości > Szczegóły"]
     ]);
