@@ -9,6 +9,7 @@ const page = () => {
   const [albums, setAlbums] = useState([]);
   const [selectedYear, setSelectedYear] = useState('');
   const [years, setYears] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const getAlbums = async () => {
@@ -23,8 +24,6 @@ const page = () => {
   
         const data = await response.json();
 
-        console.log(data);
-  
         /* Grupowanie albumów latami*/
         const groupedAlbums = data.reduce((acc, album) => {
           const year = album.year;
@@ -35,7 +34,6 @@ const page = () => {
           return acc;
         }, {});
         
-        const currentYear = new Date().getFullYear().toString();
         const sortedYears = Object.keys(groupedAlbums).sort((a, b) => b - a);
         
         setAlbums(groupedAlbums);
@@ -53,9 +51,22 @@ const page = () => {
     setSelectedYear(e.target.value);
   }
 
-  const filteredAlbums = selectedYear ? { [selectedYear]: albums[selectedYear] || [] } : albums;
+  const handleSearchTermChange = (e) => {
+    setSearchTerm(e.target.value);
+  }
 
-  console.log("Albumy", filteredAlbums);
+  const filteredAlbums = Object.entries(selectedYear ? { [selectedYear]: albums[selectedYear] || [] } : albums)
+  .reduce((acc, [year, photos]) => {
+    const filteredPhotos = photos.filter((photo) =>
+      photo.name.toLowerCase().includes(searchTerm.toLowerCase()) // Filtrujemy po nazwie albumu
+    );
+
+    if (filteredPhotos.length > 0) {
+      acc[year] = filteredPhotos;
+    }
+
+    return acc;
+  }, {});
 
   return (
     <section className='w-full flex-1 pt-8'>
@@ -69,7 +80,7 @@ const page = () => {
             </option>
           ))}
         </select>
-        <input type="search" placeholder='Wyszukaj album' className='w-[600px] px-[10px] rounded-[5px]' />
+        <input type="search" placeholder='Wyszukaj album' className='w-[600px] px-[10px] rounded-[5px]' value={searchTerm} onChange={handleSearchTermChange} />
       </div>
 
       <div className='flex flex-col gap-3 w-full mt-8 h-[600px] px-[10px] overflow-y-auto'>
