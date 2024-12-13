@@ -1,5 +1,6 @@
 "use client"
 
+import AddPhotosDialog from '@components/management/galeria/AddPhotosDialog'
 import ChangeAlbumNameDialog from '@components/management/galeria/ChangeAlbumNameDialog'
 import { Icon } from '@iconify/react'
 import Image from 'next/image'
@@ -12,6 +13,7 @@ const page = () => {
     const [albumName, setAlbumName] = useState('')
 
     const changeNameDialog = useRef(null)
+    const addPhotosDialog = useRef(null)
 
     const [selectMode, setSelectMode] = useState(false)
     const [selectedPhotos, setSelectedPhotos] = useState([])
@@ -22,6 +24,14 @@ const page = () => {
 
     const closeChangeNameDialog = () => {
         changeNameDialog.current.close()
+    }
+
+    const openAddPhotosDialog = () => {
+        addPhotosDialog.current.showModal()
+    }
+
+    const closeAddPhotosDialog = () => {
+        addPhotosDialog.current.close()
     }
 
     const getPhotos = async () => {
@@ -114,7 +124,7 @@ const page = () => {
             </div>
 
             <div className='flex gap-6'>
-                <button className='bg-[#11161a] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light'>Dodaj zdjęcia do albumu</button>
+                <button className='bg-[#11161a] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={openAddPhotosDialog}>Dodaj zdjęcia do albumu</button>
                 <button className='bg-[#1a2127] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={selectModeChange}>{selectMode === true ? "Zakończ wybieranie" : "Wybierz zdjęcia"}</button>
                 <button className='bg-[#1f272e] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={deletePhotos}>Usuń wybrane</button>
             </div>
@@ -129,6 +139,7 @@ const page = () => {
             </div>
 
             <ChangeAlbumNameDialog dialogRef={changeNameDialog} closeDialog={closeChangeNameDialog} getAlbumName={getAlbumName} albumName={albumName} albumID={albumID}/>
+            <AddPhotosDialog dialogRef={addPhotosDialog} closeDialog={closeAddPhotosDialog} folderId={albumID} getPhotos={getPhotos}/>
         </section>
     )
 }
