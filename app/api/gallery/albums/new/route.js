@@ -1,5 +1,5 @@
 export const POST = async (req) => {
-    const { albumName} = await req.json();
+    const { albumName, eventDate } = await req.json();
 
     try{
         const response = await fetch('http://localhost:7000/api/albums', {
@@ -8,7 +8,7 @@ export const POST = async (req) => {
                 'x-api-key': process.env.PHOTO_API_KEY,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ name: albumName  })
+            body: JSON.stringify({ name: albumName, eventDate: eventDate })
         })
 
         if (!response.ok) {

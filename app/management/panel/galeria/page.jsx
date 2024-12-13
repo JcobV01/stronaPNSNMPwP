@@ -11,6 +11,7 @@ const page = () => {
   const [years, setYears] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [albumName, setAlbumName] = useState('');
+  const [eventDate, setEventDate] = useState('');
   const router = useRouter();
   const albumDialog = useRef(null);
 
@@ -71,13 +72,16 @@ const page = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({albumName: albumName})
+        body: JSON.stringify({
+          albumName: albumName,
+          eventDate: eventDate,
+        })
       })
       
       if (response.ok) {
         setAlbumName('');
+        setEventDate('');
         closeDialogHandle();
-
         getAlbums();
       }
       
@@ -106,6 +110,8 @@ const page = () => {
     albumDialog?.current?.close();
   }
 
+  console.log(filteredAlbums);
+
   return (
     <section className='w-full flex-1 pt-8'>
       <div className='w-full flex justify-between'>
@@ -127,7 +133,7 @@ const page = () => {
             <h2 className='text-[20px] text-center text-black'>{year}</h2>
             <hr className='border-gray-400 w-full' />
             <div className='flex flex-wrap gap-4'>
-              {photos.map((photo) => (
+              {photos.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate)).map((photo) => (
                 <div key={photo.folderId} className='relative w-[200px] h-[230px] mt-[32px] cursor-pointer' onClick={() => handleAlbum(photo.folderId)}>
                   <Image src="" width={200} height={230} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
                   <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-[20px] text-center'>{photo.name}</p>
@@ -138,7 +144,7 @@ const page = () => {
         ))}
       </div>
 
-      <NewAlbumDialog dialogRef={albumDialog} closeDialog={closeDialogHandle} albumName={albumName} setAlbumName={setAlbumName} createFolder={createNewAlbum} />
+      <NewAlbumDialog dialogRef={albumDialog} closeDialog={closeDialogHandle} albumName={albumName} setAlbumName={setAlbumName} eventDate={eventDate} setEventDate={setEventDate} createFolder={createNewAlbum} />
 
     </section>
   )
