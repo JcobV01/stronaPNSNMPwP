@@ -23,11 +23,14 @@ const Galeria = () => {
 
       const data = await response.json();
 
-      // const sortedAlbums = data.sort((a,b) => {
-        
-      // })
+      const sortedAlbums = data.sort((a, b) => {
+        if (a.year === b.year) {
+          return new Date(b.createdAt) - new Date(a.createdAt); // Jeśli ten sam rok, sortuj po dacie utworzenia
+        }
+        return b.year - a.year;
+      });
 
-      setAlbums(data);
+      setAlbums(sortedAlbums.slice(0,3));
     } catch (error) {
       console.log(error);
     }
@@ -45,11 +48,12 @@ const Galeria = () => {
         <Title title="Galeria" title2="" subtitle="Najnowsze albumy" />
         <p className='text-[15px] font-medium tracking-[3px] text-center mt-[50px] sm:tracking-[1px] sm:text-[13px]'>Nasza parafia jest miejscem żywego świadectwa wiary, gdzie odbywa się wiele różnorodnych wydarzeń i uroczystości. W Galerii Parafialnej prezentujemy fotografie, które oddają atmosferę tych wyjątkowych chwil. Zdjęcia są publikowane po każdym wydarzeniu, aby umożliwić wszystkim parafianom ponowne przeżycie ważnych momentów naszej wspólnoty oraz by dać okazję do zapoznania się z tym, co dzieje się w naszym kościele. Zapraszamy do regularnego odwiedzania galerii i dzielenia się wspomnieniami!</p>
 
-        <div className='flex'>
+        <div className='flex my-[75px] flex-center gap-[24px]'>
           {albums.map((album) => (
-            <div key={album.folderId} className='relative'>
+            <div key={album.folderId} className='relative border-2 border-red-500'>
               <Image src='' alt={album.name} width="400" height="600" />
-              <p className='absolute left-2/4 top-2/4 translate-[-50%, -50%]'>{album.name}</p>
+              <p className='absolute top-2/4 left-1/2  -translate-y-1/2- -translate-x-1/2 text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.name}</p>
+              <p className='absolute left-1/2 top-[90%] -translate-x-1/2 text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.eventDate}</p>
             </div>
           ))}
         </div>
