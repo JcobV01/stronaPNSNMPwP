@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 const AddPhotosDialog = ({ folderId, dialogRef, closeDialog, getPhotos }) => {
     const [files, setFiles] = useState([]);
     const [status, setStatus] = useState('');
+    const [uploading, setUploading] = useState(false);
 
     const handleFileChange = (event) => {
         setFiles(event.target.files);
@@ -12,6 +13,8 @@ const AddPhotosDialog = ({ folderId, dialogRef, closeDialog, getPhotos }) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        setUploading(true)
 
         if (!folderId || files.length === 0) {
             setStatus('Please provide folderId and select at least one file.');
@@ -38,6 +41,7 @@ const AddPhotosDialog = ({ folderId, dialogRef, closeDialog, getPhotos }) => {
                 setStatus('Files uploaded successfully');
                 getPhotos()
                 closeDialog()
+                setUploading(false)
             } else {
                 setStatus(data.message || 'Upload failed');
             }
@@ -60,7 +64,7 @@ const AddPhotosDialog = ({ folderId, dialogRef, closeDialog, getPhotos }) => {
                             multiple
                             onChange={handleFileChange}
                         />
-                        <button type="submit">Upload</button>
+                        <button type="submit">{uploading === true ? <div className='loader-main mx-auto'></div> : 'Upload'}</button>
                     </form>
                     {status && <p>{status}</p>}
                 </div>

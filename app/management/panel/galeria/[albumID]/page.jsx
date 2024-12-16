@@ -103,6 +103,7 @@ const page = () => {
                 const errorData = await response.json();
                 throw new Error(errorData.message || "Błąd podczas usuwania zdjęć");
             }
+            selectModeChange()
             getPhotos()
 
         }
