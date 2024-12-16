@@ -55,18 +55,18 @@ const page = () => {
     }
 
     const getAlbumName = async () => {
-        try{
+        try {
             const response = await fetch('/api/gallery/albums/getname', {
                 method: "POST",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({albumID})
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ albumID })
             })
 
             const data = await response.json()
 
             setAlbumName(data)
         }
-        catch(err){
+        catch (err) {
             console.error(err);
         }
     }
@@ -84,7 +84,7 @@ const page = () => {
             photoClass.remove('photo-select-mode')
             photoClass.add('photo-selected')
         }
-        else{
+        else {
             setSelectedPhotos(prev => prev.filter(photoId => photoId !== photoID));
             photoClass.add('photo-select-mode')
             photoClass.remove('photo-selected')
@@ -92,11 +92,11 @@ const page = () => {
     }
 
     const deletePhotos = async () => {
-        try{
+        try {
             const response = await fetch('/api/gallery/photos/delete', {
                 method: "DELETE",
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({selectedPhotos, albumID})
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ selectedPhotos, albumID })
             })
 
             if (!response.ok) {
@@ -107,7 +107,7 @@ const page = () => {
             getPhotos()
 
         }
-        catch(err){
+        catch (err) {
             console.log(err)
         }
     }
@@ -118,10 +118,10 @@ const page = () => {
     }, [])
 
     return (
-        <section className='flex gap-8 flex-col flex-1 pt-[40px] w-full'>
+        <section className='flex gap-8 flex-col flex-1 pt-[40px] w-full' style={{height: 'calc(100% - 84px)'}}>
             <div className='flex gap-4 items-center'>
                 <h3 className='text-[25px] font-bold text-[#353535]'>{albumName}</h3>
-                <Icon icon="solar:pen-bold" width="25" height="25" className='color-[#353535] duration-500 cursor-pointer' onClick={openChangeNameDialog}/>
+                <Icon icon="solar:pen-bold" width="25" height="25" className='color-[#353535] duration-500 cursor-pointer' onClick={openChangeNameDialog} />
             </div>
 
             <div className='flex gap-6'>
@@ -130,17 +130,19 @@ const page = () => {
                 <button className='bg-[#1f272e] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={deletePhotos}>Usuń wybrane</button>
             </div>
 
+            <article className='w-full flex-1 overflow-y-scroll pr-4'>
+                <div className='w-full columns-4'>
+                    {photos?.map((photo, index) => (
+                        <div className={`w-[320px] h-auto mb-[20px] duration-500 ${selectMode === true && 'photo-select-mode'}`} key={index} id={photo._id} onClick={(e) => selectMode === true && selectPhoto(e)}>
+                            <Image src={photo.fullurl} width={320} height={300} alt={`Zdjęcie z albumu ${photo._id}`} className={`object-contain w-full h-auto rounded-[3px] ${selectMode === true && 'cursor-pointer'}`} />
+                        </div>
+                    ))}
+                </div>
 
-            <div className='w-full flex-1 overflow-y-auto columns-4'>
-                {photos?.map((photo, index) => (
-                    <div className={`w-[320px] h-auto mb-[20px] duration-500 ${selectMode === true && 'photo-select-mode'}`} key={index} id={photo._id} onClick={(e) => selectMode === true && selectPhoto(e)}>
-                        <Image src={photo.fullurl} width={320} height={300} alt={`Zdjęcie z albumu ${photo._id}`} className={`object-contain w-full h-auto rounded-[3px] ${selectMode === true && 'cursor-pointer'}`} />
-                    </div>
-                ))}
-            </div>
+            </article>
 
-            <ChangeAlbumNameDialog dialogRef={changeNameDialog} closeDialog={closeChangeNameDialog} getAlbumName={getAlbumName} albumName={albumName} albumID={albumID}/>
-            <AddPhotosDialog dialogRef={addPhotosDialog} closeDialog={closeAddPhotosDialog} folderId={albumID} getPhotos={getPhotos}/>
+            <ChangeAlbumNameDialog dialogRef={changeNameDialog} closeDialog={closeChangeNameDialog} getAlbumName={getAlbumName} albumName={albumName} albumID={albumID} />
+            <AddPhotosDialog dialogRef={addPhotosDialog} closeDialog={closeAddPhotosDialog} folderId={albumID} getPhotos={getPhotos} />
         </section>
     )
 }

@@ -68,7 +68,7 @@ const layout = ({ children }) => {
                 <NavBar menu={menu}/>
             </aside>
             
-            <article className='px-[90px] flex-1 items-center pt-[20px] flex flex-col'>
+            <article className='px-[80px] flex-1 items-center pt-[20px] flex flex-col'>
                 <TopBar/>
                 {children}
             </article>
