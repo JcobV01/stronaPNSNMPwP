@@ -127,7 +127,7 @@ const page = () => {
             <div className='flex gap-6'>
                 <button className='bg-[#11161a] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={openAddPhotosDialog}>Dodaj zdjęcia do albumu</button>
                 <button className='bg-[#1a2127] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={selectModeChange}>{selectMode === true ? "Zakończ wybieranie" : "Wybierz zdjęcia"}</button>
-                <button className='bg-[#1f272e] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={deletePhotos}>Usuń wybrane</button>
+                <button className={`bg-[#1f272e] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light ${selectMode === false && 'bg-gray-400'}`} disabled={selectMode === false && true} onClick={deletePhotos}>Usuń wybrane</button>
             </div>
 
             <article className='w-full flex-1 overflow-y-scroll pr-4'>

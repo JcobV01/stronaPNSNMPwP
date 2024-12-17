@@ -4,8 +4,11 @@ import NewAlbumDialog from '@components/management/galeria/newAlbumDialog';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
+import { useSession } from "next-auth/react"
 
 const page = () => {
+  const session = useSession()  
+
   const [albums, setAlbums] = useState([]);
   const [selectedYear, setSelectedYear] = useState('');
   const [years, setYears] = useState([]);
@@ -75,6 +78,7 @@ const page = () => {
         body: JSON.stringify({
           albumName: albumName,
           eventDate: eventDate,
+          author: session.data?.user?.name
         })
       })
       

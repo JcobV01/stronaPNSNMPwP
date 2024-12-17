@@ -11,7 +11,6 @@ import logoutImg from '@public/assets/icons/mamagement/logout.png'
 const UserBar = () => {
 
     const session = useSession()
-    console.log(session);
 
     const role = session.data?.user?.role
     const name = session.data?.user?.name
