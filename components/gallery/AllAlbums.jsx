@@ -72,8 +72,8 @@ const AllAlbums = () => {
                     )
                 })}
             </article>
-            <aside className='mt-[90px] absolute right-[-15%]'>
-                <ul className='!list-none space-y-[30px]'>
+            <aside className='mt-[115px] w-[175px] absolute right-[-17.5%] max-h-[450px] overflow-y-auto'>
+                <ul className='album-gallery !list-none space-y-[30px]'>
                     {years.map(year => (
                         <li key={year} className='relative flex-center 
                         after:content-[""] after:flex after:flex-col after:w-[5px] after:h-[10px] after:bg-[#353535] after:rounded-[5px] after:absolute after:bottom-[-50%] after:left-[50%] after:-translate-x-[50%] 

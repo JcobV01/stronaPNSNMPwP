@@ -316,5 +316,11 @@ input[type="search"]::-webkit-search-cancel-button {
   z-index: 2;
 }
 
-/* Galeria - rozjaśnienie zdjęcia po najechaniu */
+/* Galeria */
 .gallery-albums:hover img{filter: brightness(0.75);}
+
+.album-gallery{
+  -webkit-mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%, rgba(255, 255, 255, 0.00) 100%);
+  -webkit-mask-size: cover;
+  -webkit-mask-repeat: no-repeat;
+}
