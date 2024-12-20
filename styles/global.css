@@ -315,3 +315,6 @@ input[type="search"]::-webkit-search-cancel-button {
   align-items: center;
   z-index: 2;
 }
+
+/* Galeria - rozjaśnienie zdjęcia po najechaniu */
+.gallery-albums:hover img{filter: brightness(0.75);}

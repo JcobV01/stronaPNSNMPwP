@@ -61,12 +61,12 @@ const AllAlbums = () => {
                     }
 
                     return (
-                        <div key={album.folderId} className={`rounded-[2px] relative ${dynamicAlbumsWidthEverySeven ? 'col-span-2 w-[520px] h-[250px]' : 'w-[250px] h-[250px]'} ${dynamicAlbumsWIdthEveryFiveteen ? 'col-span-2 col-col-2 w-[520px] h-[520px]' : 'w-[250px] h-[250px]'}`}>
+                        <div key={album.folderId} className={`gallery-albums rounded-[2px] relative ${dynamicAlbumsWidthEverySeven ? 'col-span-2 w-[520px] h-[250px]' : 'w-[250px] h-[250px]'} ${dynamicAlbumsWIdthEveryFiveteen ? 'col-span-2 col-col-2 w-[520px] h-[520px]' : 'w-[250px] h-[250px]'}`}>
                             <Link href={`/galeria/${album.folderId}`} className='flex-center w-full h-full duration-500 hover:scale-90'>
                                 <hr className='absolute top-[15px] w-[100px] h-[1px] bg-white z-10' />
                                 <p className='text-white text-[25px] font-light max-w-[200px] text-center z-10'>{album.name}</p>
                                 <hr className='absolute bottom-[15px] w-[100px] h-[1px] bg-white z-10' />
-                                <Image src={album.cover} alt={album.name} width={imageWidth} height={imageHeight} className='absolute w-full h-full brightness-50 object-cover duration-700 hover:brightness-100' />
+                                <Image src={album.cover} alt={album.name} width={imageWidth} height={imageHeight} className='absolute w-full h-full brightness-50 object-cover duration-700' />
                             </Link>
                         </div>
                     )
