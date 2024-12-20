@@ -3,6 +3,7 @@
 import Link from '@node_modules/next/link';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
+import GalleryAside from './GalleryAside';
 
 const AllAlbums = () => {
     const [albums, setAlbums] = useState([]);
@@ -72,17 +73,7 @@ const AllAlbums = () => {
                     )
                 })}
             </article>
-            <aside className='mt-[115px] w-[175px] absolute right-[-17.5%] max-h-[450px] overflow-y-auto'>
-                <ul className='album-gallery !list-none space-y-[30px]'>
-                    {years.map(year => (
-                        <li key={year} className='relative flex-center 
-                        after:content-[""] after:flex after:flex-col after:w-[5px] after:h-[10px] after:bg-[#353535] after:rounded-[5px] after:absolute after:bottom-[-50%] after:left-[50%] after:-translate-x-[50%] 
-                        first:before:content-[""] first:before:flex first:before:flex-col first:before:w-[5px] first:before:h-[10px] first:before:bg-[#353535] first:before:rounded-[5px] first:before:absolute first:before:top-[-50%] first:before:left-[50%] first:before:-translate-x-[50%]'>
-                            <button onClick={() => handleYearClick(year)} className={`text-[#353535] duration-500 ${selectedYear === year ? 'text-[30px] tracking-[7px] font-normal pl-[7px]' : 'text-[25px] tracking-[6px] font-light pl-[6px]'}`}>{year}</button>
-                        </li>
-                    ))}
-                </ul>
-            </aside>
+            <GalleryAside years={years} handleYearClick={handleYearClick} selectedYear={selectedYear}/>
         </div>
     )
 }
