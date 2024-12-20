@@ -63,8 +63,7 @@ const page = () => {
             })
 
             const data = await response.json()
-
-            setAlbumName(data)
+            setAlbumName(data.name)
         }
         catch (err) {
             console.error(err);
