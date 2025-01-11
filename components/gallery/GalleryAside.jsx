@@ -1,6 +1,6 @@
 "use client"
 
-import React, {useState } from 'react'
+import React, {useEffect, useState } from 'react'
 
 const GalleryAside = ({ years, handleYearClick, selectedYear }) => {
     const [indexAlbum, setIndexAlbum] = useState(0);
@@ -17,7 +17,7 @@ const GalleryAside = ({ years, handleYearClick, selectedYear }) => {
     return (
         <aside className='album-gallery flex-center mt-[115px] w-[175px] absolute right-[80px] xl:right-[50px]  max-h-[450px] overflow-y-hidden md:hidden'>
             <div className='relative flex-center w-full h-[450px]'>
-                <ul className='absolute !list-none space-y-[30px] duration-700 pl-0' style={{top: getTopPosition(indexAlbum), transform: 'translateY(-50%)'}}>
+                <ul className='absolute !list-none space-y-[30px] duration-700 pl-0' style={{top: getTopPosition(indexAlbum)}}>
                     {years.map((year, index) => (
                         <li key={year} className='relative flex-center
                             after:content-[""] after:flex after:flex-col after:w-[5px] after:h-[10px] after:bg-[#353535] after:rounded-[5px] after:absolute after:bottom-[-50%] after:left-[50%] after:-translate-x-[50%] 
