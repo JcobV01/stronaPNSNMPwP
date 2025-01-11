@@ -1,6 +1,6 @@
 "use client"
 
-import NewAlbumDialog from '@components/management/galeria/newAlbumDialog';
+import NewAlbumDialog from '@components/management/galeria/NewAlbumDialog';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
