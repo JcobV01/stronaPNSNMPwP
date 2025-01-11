@@ -22,6 +22,7 @@ const Galeria = () => {
       });
 
       const data = await response.json();
+      console.log(data)
 
       const sortedAlbums = data.sort((a, b) => {
         if (a.year === b.year) {
@@ -48,11 +49,13 @@ const Galeria = () => {
 
         <div className='flex my-[75px] flex-center gap-[24px]'>
           {albums.map((album) => (
-            <div key={album.folderId} className='relative border-2 border-red-500'>
-              <Image src='' alt={album.name} width="400" height="600" />
-              <p className='absolute top-2/4 left-1/2  -translate-y-1/2- -translate-x-1/2 text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.name}</p>
-              <p className='absolute left-1/2 top-[90%] -translate-x-1/2 text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.eventDate}</p>
-            </div>
+            <Link href={`/galeria/${album.folderId}`} key={album.folderId} className='w-[30%] h-[600px]'>
+              <div className='relative h-full'>
+                <Image src={album.cover} alt={album.name} width={720} height={0} quality={100} className='object-cover h-full brightness-50'/>
+                <p className='absolute top-2/4 left-1/2  -translate-y-1/2- -translate-x-1/2 text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.name}</p>
+                <p className='absolute left-1/2 top-[90%] -translate-x-1/2 text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.eventDate}</p>
+              </div>
+            </Link>
           ))}
         </div>
 

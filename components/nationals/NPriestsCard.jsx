@@ -10,7 +10,7 @@ const NPriestsCard = ({image, name, desc, alive, dimensions}) => {
             width={dimensions}
             height={dimensions}
             alt={`Zdjęcie ${name}`}
-            className='brightness-[0.8]'
+            className={`brightness-[0.8] ${!alive && 'saturate-0'}`}
             />
         </div>
         <div className='bg-white px-[50px] py-[30px] w-[400px] flex flex-col gap-[17px] md:w-[200px] rounded-r-[5px] flex-1 md:px-[20px]'>

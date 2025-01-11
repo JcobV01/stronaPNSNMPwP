@@ -10,9 +10,7 @@ const GalleryAside = ({ years, handleYearClick, selectedYear }) => {
     };
 
     const getTopPosition = (indexAlbum) => {
-        const percentage = 100 - indexAlbum * 15;
-        const topPosition = percentage < 0 ? `-${Math.abs(percentage)}%` : `${percentage}%`;
-
+        const topPosition = `calc(50% - ${indexAlbum * 67.5}px)`
         return topPosition;
     }
 

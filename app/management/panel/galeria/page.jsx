@@ -132,15 +132,15 @@ const page = () => {
       </div>
 
       <div className='flex flex-col gap-3 w-full mt-8 h-[600px] px-[10px] overflow-y-auto'>
-        {Object.entries(filteredAlbums).sort(([yearA], [yearB]) => yearB - yearA).map(([year, photos]) => (
+        {Object?.entries(filteredAlbums).sort(([yearA], [yearB]) => yearB - yearA).map(([year, photos]) => (
           <div className='w-full' key={year}>
             <h2 className='text-[20px] text-center text-black'>{year}</h2>
             <hr className='border-gray-400 w-full' />
             <div className='flex flex-wrap gap-4'>
-              {photos.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate)).map((photo) => (
-                <div key={photo.folderId} className='relative w-[200px] h-[230px] mt-[32px] cursor-pointer' onClick={() => handleAlbum(photo.folderId)}>
-                  <Image src="" width={200} height={230} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
-                  <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-[20px] text-center'>{photo.name}</p>
+              {photos?.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate)).map((photo) => (
+                <div key={photo?.folderId} className='relative w-[230px] h-[230px] mt-[32px] cursor-pointer' onClick={() => handleAlbum(photo?.folderId)}>
+                  <Image src={photo.cover?.length > 0 ? photo.cover : ''} width={230} height={230} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
+                  <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-[20px] text-center'>{photo?.name}</p>
                 </div>
               ))}
             </div>

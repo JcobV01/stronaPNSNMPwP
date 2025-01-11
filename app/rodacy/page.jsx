@@ -15,7 +15,7 @@ const rodacy = () => {
   const priests = [
     {
       image: ksKozyra,
-      name: "Kaniemierz Kozyra",
+      name: "Kazimierz Kozyra",
       desc: "aktualny rezydent parafii Najświętszego Serca Pana Jezusa w Dębicy.",
       alive: true,
       dimensions: 200
@@ -23,8 +23,8 @@ const rodacy = () => {
     {
       image: ksBak,
       name: "Andrzej Bąk",
-      desc: "aktualny proboszcz parafii św. Jana Ewangelisty w Pisarzowej.",
-      alive: true,
+      desc: "spoczywa na cmentarzu parafialnym w Przybysławicach",
+      alive: false,
       dimensions: 200
     },
     {
