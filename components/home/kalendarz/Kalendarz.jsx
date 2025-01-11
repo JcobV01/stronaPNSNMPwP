@@ -36,6 +36,8 @@ const Kalendarz = () => {
       const tomorrowData = await fetchReadings(getDateToday(1));
       const laterData = await fetchReadings(getDateToday(2));
 
+      console.log("xD:", todayData)
+
       setTodayData(todayData)
       setTomorrowData(tomorrowData)
       setLaterData(laterData)
@@ -67,7 +69,7 @@ const Kalendarz = () => {
     <section id="kalendarz" ref={ref} className={`my-[140px] flex flex-col gap-[70px] sm:my-[100px] sm:gap-0 transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
       <Title title="Kalendarz" title2="Liturgiczny" subtitle="Czytania na każdy dzień" />
 
-      <InfoBar year={todayData?.year?.slice(4, -4)} season={setSeason()} cycle={todayData?.year?.slice(6)}/>
+      <InfoBar year={todayData?.year.length === 8 ? todayData?.year?.slice(4, -3) : todayData?.year?.slice(4, -4)} season={setSeason()} cycle={todayData?.year?.slice(6)}/>
 
       <article className='flex flex-col gap-[30px] sm:mt-[30px]'>
         <DayCard dateText={getDateToday(0)} date={todayData?.date?.split(",")} name={todayData?.time} texts={todayData?.readings} color={todayData?.color?.split(" ")[0]} memory={todayData?.day?.slice(0, 20) == "Dzień Powszedni" ? todayData?.date?.split(", ")[1] : todayData?.day} />

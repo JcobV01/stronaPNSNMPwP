@@ -40,8 +40,6 @@ const Galeria = () => {
     getAlbums();
   }, []);
 
-  console.log(albums);
-
   return (
     <section id="galeria" ref={ref} className={`flex-center transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
       <article className='mt-[70px] mb-[30px] w-[1400px] 2xl:w-[90%]'>
