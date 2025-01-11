@@ -74,20 +74,20 @@ const album = () => {
   return (
     <section className='py-[70px] flex flex-col gap-[70px] items-center'>
       <Title title="Galeria" title2="" subtitle="Zdjęcia z wydarzeń" />
-      <div className="w-[1430px] flex flex-col gap-2">
-        <h4 className='text-[40px] font-bold'>{album.name}</h4>
-        <p className='text-[17px] font-light'>Autor albumu: <span className='font-medium'>{album.author === "Jakub Wadycki" || album.author === "Artur Plebańczyk" ? "Parafia pw. Niepokalanego Serca NPM w Przybysławicach" : album.author}</span></p>
-        <p className='text-[17px] font-light'>Data wydarzenia: <span className='font-medium'>{convertDate(album.eventDate)}</span></p>
+      <div className="w-[1430px] flex flex-col gap-2 2xl:w-[1070px] xl:w-[980px] lg:w-[660px] md:w-[400px] sm:w-[90%]">
+        <h4 className='text-[40px] font-bold xl:text-[35px] md:text-[30px] md:text-center sm:text-[20px]'>{album.name}</h4>
+        <p className='text-[17px] font-light xl:text-[16px] md:text-[15px] md:text-center'>Autor albumu: <span className='font-medium'>{album.author === "Jakub Wadycki" || album.author === "Artur Plebańczyk" ? "Parafia pw. Niepokalanego Serca NPM w Przybysławicach" : album.author}</span></p>
+        <p className='text-[17px] font-light xl:text-[16px] md:text-[15px] md:text-center'>Data wydarzenia: <span className='font-medium'>{convertDate(album.eventDate)}</span></p>
       </div>
-      <div className='columns-4 w-[1430px]'>
+      <div className='columns-4 w-[1430px] 2xl:columns-3 2xl:w-[1070px] xl:w-[980px]  lg:columns-2 lg:w-[660px] md:columns-1 md:w-[400px] sm:w-[90%]'>
         {photos?.map((photo, index) => (
           <div key={index} className='mb-[10px] cursor-pointer hover:brightness-75 duration-500' onClick={() => openImageBrowser(photo._id)}>
-            <Image src={photo.fullurl} width={350} height={250} alt="Zdjęcie z galerii" className='rounded-[3px]'/>
+            <Image src={photo.fullurl} placeholder='blur' blurDataURL={photo.base64hash} width={350} height={250} alt="Zdjęcie z galerii" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]'/>
           </div>
         ))}
       </div>
 
-      <p className='text-[18px] '>To już wszystko z tego wydarzenia - zapraszamy do obejrzenia zdjęć z <Link href="/galeria" className='font-bold text-[#5a7889]'>innych albumów.</Link></p>
+      <p className='text-[18px] sm:text-[15px] md:text-center'>To już wszystko z tego wydarzenia - zapraszamy do obejrzenia zdjęć z <Link href="/galeria" className='font-bold text-[#5a7889]'>innych albumów.</Link></p>
       <ImageBrowserDialog imageBrowserRef={imageBrowser} photos={photos} activePhotoID={activePhoto}/>
     </section>
 
