@@ -6,7 +6,7 @@ export async function GET(req) {
   try {
     await connectMongoDB();
     
-    const document = Announcement.findOne({})
+    const document = await Announcement.findOne({})
 
     return new Response(JSON.stringify({test: document}), { status: 200 });
   } catch (error) {
