@@ -1,8 +1,10 @@
 export const POST = async (request) => {
     const {albumID} = await request.json()
 
+    const apiURL = `${process.env.PHOTO_API_URL}/api/albums/name`;
+
     try{
-        const response = await fetch("http://localhost:7000/api/albums/name", {
+        const response = await fetch(apiURL, {
             method: "POST",
             headers: {
                 'x-api-key': process.env.PHOTO_API_KEY,

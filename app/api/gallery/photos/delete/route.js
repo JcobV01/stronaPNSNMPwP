@@ -1,8 +1,10 @@
 export const DELETE = async (request) => {
     const {selectedPhotos, albumID} = await request.json()
 
+    const apiURL = `${process.env.PHOTO_API_URL}/api/photos`;
+
     try{
-        const response = await fetch(`http://localhost:7000/api/photos`, {
+        const response = await fetch(apiURL, {
             method: "DELETE",
             headers: {
                 'x-api-key': process.env.PHOTO_API_KEY,

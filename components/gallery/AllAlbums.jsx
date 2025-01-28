@@ -86,7 +86,7 @@ const AllAlbums = () => {
                                 <hr className='absolute top-[15px] w-[100px] h-[1px] bg-white z-10' />
                                 <p className='text-white text-[25px] font-light max-w-[200px] text-center z-10'>{album.name}</p>
                                 <hr className='absolute bottom-[15px] w-[100px] h-[1px] bg-white z-10' />
-                                <Image src={album.cover} alt={album.name} width={imageWidth} height={imageHeight} className='absolute w-full h-full brightness-50 object-cover duration-700' />
+                                <Image src={album.cover} placeholder='blur' blurDataURL={album.base64hash} alt={album.name} width={imageWidth} height={imageHeight} className='absolute w-full h-full brightness-50 object-cover duration-700' />
                             </Link>
                         </div>
                     )

@@ -1,9 +1,10 @@
 export const POST = async (request) => {
     const formData = await request.formData()
-    console.log(formData);
+
+    const apiURL = `${process.env.PHOTO_API_URL}/api/photos`;
     
     try{
-        const response = await fetch("http://localhost:7000/api/photos", {
+        const response = await fetch(apiURL, {
             method: "POST",
             headers: {
                 'x-api-key': process.env.PHOTO_API_KEY

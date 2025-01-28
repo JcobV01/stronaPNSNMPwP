@@ -18,6 +18,8 @@ const page = () => {
     const [selectMode, setSelectMode] = useState(false)
     const [selectedPhotos, setSelectedPhotos] = useState([])
 
+    const [coverMode, setCoverMode] = useState(false)
+
     const openChangeNameDialog = () => {
         changeNameDialog.current.showModal()
     }
@@ -71,6 +73,7 @@ const page = () => {
     }
 
     const selectModeChange = () => {
+        coverMode === true && setCoverMode(false)
         setSelectMode(prev => !prev)
         setSelectedPhotos([])
     }
@@ -111,13 +114,46 @@ const page = () => {
         }
     }
 
+    const changeCoverMode = () => {
+        if (coverMode === true) {
+            setCoverMode(false)
+        }
+        else {
+            setCoverMode(true)
+            setSelectMode(false)
+        }
+    }
+
+    const changeCover = async (e) => {
+        try {
+            const response = await fetch('/api/gallery/albums/changecover', {
+                method: "PUT",
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ albumID: albumID, coverID: e.currentTarget.id })
+              })
+        
+              if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || "Błąd podczas aktualizacji folderu");
+              }
+
+              setCoverMode(false)
+
+        } 
+        catch (err) { 
+            console.log(err) 
+        }
+    }
+
     useEffect(() => {
         getPhotos()
         getAlbumName()
     }, [])
 
     return (
-        <section className='flex gap-8 flex-col flex-1 pt-[40px] w-full' style={{height: 'calc(100% - 84px)'}}>
+        <section className='flex gap-8 flex-col flex-1 pt-[40px] w-full' style={{ height: 'calc(100% - 84px)' }}>
             <div className='flex gap-4 items-center'>
                 <h3 className='text-[25px] font-bold text-[#353535]'>{albumName}</h3>
                 <Icon icon="solar:pen-bold" width="25" height="25" className='color-[#353535] duration-500 cursor-pointer' onClick={openChangeNameDialog} />
@@ -125,15 +161,16 @@ const page = () => {
 
             <div className='flex gap-6'>
                 <button className='bg-[#11161a] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={openAddPhotosDialog}>Dodaj zdjęcia do albumu</button>
-                <button className='bg-[#1a2127] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={selectModeChange}>{selectMode === true ? "Zakończ wybieranie" : "Wybierz zdjęcia"}</button>
+                <button className='bg-[#11161a] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={changeCoverMode}>{coverMode === true ? 'Anuluj wybieranie' : 'Wybierz okładkę'}</button>
+                <button className='bg-[#1a2127] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light' onClick={selectModeChange}>{selectMode === true ? "Anuluj wybieranie" : "Wybierz zdjęcia"}</button>
                 <button className={`bg-[#1f272e] py-[10px] px-[50px] rounded-[5px] text-white text-[16px] font-light ${selectMode === false && 'bg-gray-400'}`} disabled={selectMode === false && true} onClick={deletePhotos}>Usuń wybrane</button>
             </div>
 
             <article className='w-full flex-1 overflow-y-scroll pr-4'>
                 <div className='w-full columns-4'>
                     {photos?.map((photo, index) => (
-                        <div className={`w-[320px] h-auto mb-[20px] duration-500 ${selectMode === true && 'photo-select-mode'}`} key={index} id={photo._id} onClick={(e) => selectMode === true && selectPhoto(e)}>
-                            <Image src={photo.fullurl} width={320} height={300} alt={`Zdjęcie z albumu ${photo._id}`} className={`object-contain w-full h-auto rounded-[3px] ${selectMode === true && 'cursor-pointer'}`} />
+                        <div className={`w-[320px] h-auto mb-[20px] duration-500 ${selectMode === true && 'photo-select-mode'}`} key={index} id={photo._id} onClick={(e) => selectMode === true ? selectPhoto(e) : coverMode === true && changeCover(e)}>
+                            <Image src={photo.fullurl} width={320} height={300} alt={`Zdjęcie z albumu ${photo._id}`} className={`object-contain w-full h-auto rounded-[3px] ${selectMode === true ? 'cursor-pointer' : coverMode === true && 'cursor-pointer'}`} />
                         </div>
                     ))}
                 </div>
