@@ -36,8 +36,6 @@ const Kalendarz = () => {
       const tomorrowData = await fetchReadings(getDateToday(1));
       const laterData = await fetchReadings(getDateToday(2));
 
-      console.log("xD:", todayData)
-
       setTodayData(todayData)
       setTomorrowData(tomorrowData)
       setLaterData(laterData)
