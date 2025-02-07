@@ -2,12 +2,14 @@
 
 import React from 'react'
 import { usePathname } from 'next/navigation'
+import Image from 'next/image';
 
 import Logo from '@components/Logo'
 import IconHeader from '@components/header/IconHeader'
 import Navbar from '@components/header/Navbar';
 
 import mainImage from '@public/assets/images/header-images/main-image.webp';
+import winterImage from '@public/assets/images/header-images/winter-main.webp';
 import cemetery from '@public/assets/images/header-images/cemetery.webp';
 import priests from '@public/assets/images/header-images/priests.webp';
 import gallery from '@public/assets/images/header-images/gallery.webp';
@@ -45,7 +47,8 @@ const DynamicHeader = () => {
             {pathname === "/" ?
                 <>
                     <Navbar />
-                    <header className="w-full h-dvh bg-cover mt-[-75px]" style={{ backgroundImage: `url(${mainImage.src})` }}>
+                    <header className="w-full h-dvh bg-cover mt-[-75px]" >
+                        <Image src={winterImage} alt="Zdjęcie przedstawiające Kościół" width="1920" height="960" className='absolute h-dvh object-cover' />
                         <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
                             <section id="homepage" className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
                                 <div className='pt-[100px] flex-center md:pt-[150px] sm:pt-[100px]'>
@@ -66,7 +69,7 @@ const DynamicHeader = () => {
                 </>
                 : pathname.startsWith("/management") ?
                     <></>
-                    :
+                :
                     <>
                         <Navbar />
                         <header className="w-full h-[405px] bg-cover bg-center mt-[-76px]" style={{ backgroundImage: `url(${headerImage.src})` }}>
