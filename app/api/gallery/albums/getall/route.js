@@ -1,6 +1,6 @@
 export const GET = async (request) => {
 
-    const apiURL = `${process.env.PHOTO_API_URL}/api/albums`;
+    const apiURL = `https://przybyslawice.diecezja.tarnow.pl:4242/api/albums`;
 
     try{
         const response = await fetch(apiURL, {
