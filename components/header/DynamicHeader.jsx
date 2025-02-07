@@ -9,6 +9,7 @@ import Logo from '@components/Logo'
 import IconHeader from '@components/header/IconHeader'
 import Navbar from '@components/header/Navbar';
 
+
 import mainImage from '@public/assets/images/header-images/main-image.webp';
 import winterImage from '@public/assets/images/header-images/winter-main.webp';
 import cemetery from '@public/assets/images/header-images/cemetery.webp';
