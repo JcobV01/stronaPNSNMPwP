@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { usePathname } from 'next/navigation'
 import Image from 'next/image';
 
@@ -21,6 +22,13 @@ import events from '@public/assets/images/header-images/events.webp';
 import announcements from '@public/assets/images/header-images/announcements.webp';
 import nationals from '@public/assets/images/header-images/nationals.webp';
 import sacraments from '@public/assets/images/header-images/sacraments.webp';
+
+export function PreloadResources() {
+    ReactDOM.preload(`${winterImage}`, {
+        as: 'image',
+        fetchPriority: 'high',
+    });
+}
 
 const DynamicHeader = () => {
     const pathname = usePathname();
@@ -48,7 +56,14 @@ const DynamicHeader = () => {
                 <>
                     <Navbar />
                     <header className="w-full h-dvh bg-cover mt-[-75px]" >
-                        <Image src={winterImage} alt="Zdjęcie przedstawiające Kościół" width="1920" height="960" className='absolute h-dvh object-cover' />
+                        <Image 
+                        src={winterImage} 
+                        alt="Zdjęcie przedstawiające Kościół"
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 1920px"
+                        priority 
+                        quality={100} 
+                        className='absolute object-cover' />
                         <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
                             <section id="homepage" className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
                                 <div className='pt-[100px] flex-center md:pt-[150px] sm:pt-[100px]'>
