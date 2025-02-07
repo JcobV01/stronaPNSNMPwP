@@ -55,15 +55,16 @@ const DynamicHeader = () => {
             {pathname === "/" ?
                 <>
                     <Navbar />
-                    <header className="w-full h-dvh bg-cover mt-[-75px]" >
+                    <header className="w-full h-dvh bg-cover mt-[-75px] relative" >
                         <Image 
                         src={winterImage} 
                         alt="Zdjęcie przedstawiające Kościół"
                         fill
                         sizes="(max-width: 1024px) 100vw, 1920px"
-                        priority 
-                        quality={100} 
-                        className='absolute object-cover' />
+                        className='absolute object-cover' 
+                        priority
+                        quality={100}
+                        />
                         <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
                             <section id="homepage" className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
                                 <div className='pt-[100px] flex-center md:pt-[150px] sm:pt-[100px]'>

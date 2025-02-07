@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-        remotePatterns: [
-          {
-            protocol: 'http',
-            hostname: 'localhost',
-            pathname: '/**', // Pozwala na wszystkie ścieżki z Cloudinary
-          },
-        ],
+  compress: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'localhost',
       },
+    ],
+  },
 };
 
 export default nextConfig;
