@@ -66,7 +66,6 @@ const DynamicHeader = () => {
                         sizes="(max-width: 1024px) 100vw, 1920px"
                         className='absolute object-cover' 
                         priority
-                        quality={100}
                         />
                         <div className="w-full h-full bg-[rgba(0,0,0,0.30)] flex-center">
                             <section id="homepage" className='w-[960px] h-full flex items-center flex-col backdrop-blur-[5px] bg-[rgba(0,0,0,0.30)]'>
