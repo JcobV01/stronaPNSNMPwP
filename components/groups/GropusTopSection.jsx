@@ -19,7 +19,7 @@ const GropusTopSection = ({ logo, name, name2, info, link, patrons }) => {
             <article className='flex gap-[100px] lg:flex-col lg:gap-[50px]'>
                 <div className='flex flex-col gap-[20px] items-center'>
                     <div className='w-[340px] h-[340px] flex flex-center bg-white rounded-[5px] shadow-[0px_4px_10px_0px_rgba(0,0,0,0.25)] xl:w-[290px] xl:h-[290px] xl:p-[20px] fold:w-[240px] fold:h-[240px]'>
-                        <Image src={logo.src} width={300} height={300} className='xl:w-auto xl:h-auto' />
+                        <Image src={logo.src} alt="Logo grupy parafialnej" width={300} height={300} className='xl:w-auto xl:h-auto' />
                     </div>
                     <p className='text-[12px] tracking-[2.4px] font-semibold'>Logo {name2}</p>
                 </div>

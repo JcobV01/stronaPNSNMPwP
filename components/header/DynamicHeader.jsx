@@ -48,8 +48,6 @@ const DynamicHeader = () => {
         "/sakramenty": sacraments,
     }
 
-    console.log(winterImage);
-
     const groupsPathPrefix = "/grupy-parafialne";
     const headerImage = pathname.startsWith(groupsPathPrefix) ? groups : headerImages[pathname] || groups;
 
