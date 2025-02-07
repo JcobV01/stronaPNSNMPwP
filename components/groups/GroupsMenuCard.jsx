@@ -5,10 +5,11 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
-const GroupsMenuCard = ({ icon, name, link, isActive, setActive, rounded }) => {
-    const pathname = usePathname()
-
+const GroupsMenuCard = ({ icon, name, link, rounded }) => {
     const [windowWidth, setWindowWidth] = useState(null); 
+    
+    const pathname = usePathname();
+    const isActive = pathname === link;
 
     useEffect(() => {
       if (typeof window !== 'undefined') {
@@ -20,6 +21,7 @@ const GroupsMenuCard = ({ icon, name, link, isActive, setActive, rounded }) => {
         return () => window.removeEventListener('resize', handleResize);
       }
     }, []);
+
 
     return (
         <Link href={link}>
@@ -33,7 +35,7 @@ const GroupsMenuCard = ({ icon, name, link, isActive, setActive, rounded }) => {
                     borderEndStartRadius: rounded == 'left' && ( windowWidth > 1023 ? 7 : 0),
                     borderStartEndRadius: rounded == 'right' && ( windowWidth > 1023 ? 7 : 0),
                     borderEndEndRadius: rounded == 'right' && ( windowWidth > 1023 ? 7 : 0),
-                }} onClick={setActive(pathname)}>
+                }}>
 
                 <div className='bg-white rounded-full p-[8px]'>
                     <Image src={icon} width="auto" height="auto" alt="Ikona zakładki lso" />

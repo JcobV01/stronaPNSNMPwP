@@ -220,8 +220,8 @@ const ak = () => {
           <div className='relative z-10'>
             <h5 className='text-white text-[20px] font-bold tracking-[2.5px] mb-[30px] sm:text-center'>Członkowie</h5>
             <div className='flex flex-wrap flex-col gap-[15px] h-[190px] gap-x-[40px] xl:h-[350px] md:h-auto sm:text-center'>
-              {people.map((person) => (
-                <p className='text-white text-[18px] font-medium tracking-[2.3px] lg:text-[15px]'>{person}</p>
+              {people.map((person, index) => (
+                <p key={index} className='text-white text-[18px] font-medium tracking-[2.3px] lg:text-[15px]'>{person}</p>
               ))}
             </div>
           </div>

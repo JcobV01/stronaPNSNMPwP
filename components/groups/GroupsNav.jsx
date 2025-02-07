@@ -1,6 +1,4 @@
-"use client"
-
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import GroupsMenuCard from './GroupsMenuCard'
 
 import lsoIcon from '@public/assets/icons/groups/lso.svg'
@@ -9,7 +7,6 @@ import akIcon from '@public/assets/icons/groups/ak.svg'
 import dsmIcon from '@public/assets/icons/groups/dsm.svg'
 import rosesIcon from '@public/assets/icons/groups/roses.svg'
 import menIcon from '@public/assets/icons/groups/management.svg'
-import { usePathname } from 'next/navigation'
 
 const menu = [
     {
@@ -45,17 +42,10 @@ const menu = [
 ]
 
 const GroupsNav = () => {
-    const [selected, setSelected] = useState('/grupy-parafialne/lso')
-    const pathname = usePathname()
-
-    useEffect(() => {
-        setSelected(pathname)
-    },[])
-
     return (
         <nav className='flex rounded-[7px] relative top-[-107px] items-center lg:flex-wrap lg:w-[450px] lg:top-[-150px] sm:w-[90%] sm:justify-center'>
             {menu.map((item, index) => (
-                <GroupsMenuCard icon={item.icon} name={item.name} link={item.link} key={item.name} setActive={setSelected} isActive={selected === item.link} rounded={index === 0 ? 'left' : index === 5 ? 'right' : 'none'}/>
+                <GroupsMenuCard icon={item.icon} name={item.name} link={item.link} key={item.name} rounded={index === 0 ? 'left' : index === 5 ? 'right' : 'none'}/>
                 
             ))}
         </nav>
