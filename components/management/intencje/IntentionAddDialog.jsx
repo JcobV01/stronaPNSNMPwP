@@ -59,7 +59,7 @@ const IntentionAddDialog = ({ addRef, rows, setRows, setUpdated }) => {
         
             // Pierwsza komórka zawiera dzień tygodnia i datę
             const firstCell = $(element).find('td').eq(0);
-            rowObj.day = firstCell.find('p').first().text().trim() || firstCell.find('h1, h2').text().trim();
+            rowObj.day = firstCell.find('h1, h2').text().trim() || firstCell.find('p').first().text().trim();
             rowObj.date = firstCell.find('p strong').text().trim();
         
             // Druga komórka zawiera godziny
