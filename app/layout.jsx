@@ -9,8 +9,26 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
     title: "Parafia Przybysławice",
-    description: "Parafia Niepokalanego Serca Najświętszej Maryi Panny w Przybysławicach – parafia rzymskokatolicka, znajdująca się w diecezji tarnowskiej, w dekanacie Radłów",
+    description: "Parafia Niepokalanego Serca Najświętszej Maryi Panny w Przybysławicach - parafia rzymskokatolicka, znajdująca się w diecezji tarnowskiej, w dekanacie Radłów",
     icon: '/favicon.ico',
+    openGraph: {
+        title: "Parafia Przybysławice",
+        description: "Parafia Niepokalanego Serca Najświętszej Maryi Panny w Przybysławicach - parafia rzymskokatolicka, znajdująca się w diecezji tarnowskiej, w dekanacie Radłów",
+        type: "website",
+        url: "https://przybyslawice.diecezja.tarnow.pl/",
+        siteName: "Parafia Przybysławice",
+        images: [
+            {
+                url: "https://przybyslawice.diecezja.tarnow.pl/opengraph-image.png",
+                width: 1200,
+                height: 630,
+                alt: "Parafia Przybysławice"
+            }
+        ]
+    },
+    alternates: {
+        canonical: 'https://przybyslawice.diecezja.tarnow.pl/',
+    }
 }
 
 const RootLayout = ({ children }) => {
