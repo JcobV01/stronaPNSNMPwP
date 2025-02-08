@@ -53,9 +53,11 @@ const lso = () => {
       "Kacper Wielbłąd"
     ],
     lektorzy: [
+      "Dominik Bocoń",
       "Jakub Wielbłąd",
       "Kacper Ostrowski",
       "Kacper Tarchała",
+      "Krystian Niedziela",
       "Krzysztof Wielbłąd",
       "Maksymilian Konop",
       "Marcel Bocoń",
@@ -66,11 +68,13 @@ const lso = () => {
     ],
     ministranci: [
       "Bartosz Bratko",
-      "Dominik Bocoń",
+      "Filip Hanek",
+      "Filip Kaczmarski",
+      "Jan Kądzielawski",
       "Kacper Kądzielawski",
-      "Krystian Niedziela",
       "Maksymilan Baran",
       "Marcin Piątek",
+      "Paweł Kaczmarski",
       "Roman Kusior",
       "Tomasz Kania",
     ]
