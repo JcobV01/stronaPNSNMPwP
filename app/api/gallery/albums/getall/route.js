@@ -10,6 +10,7 @@ export const GET = async (request) => {
             },
         })
         const data = await response.json()
+        console.log(response)
         return new Response(JSON.stringify(data), {status: 200})
     }
     catch(err){
