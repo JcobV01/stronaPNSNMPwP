@@ -14,7 +14,7 @@ const AllAlbums = () => {
     const getAlbums = async () => {
         try {
             const response = await fetch("/api/gallery/albums/getall", {
-                method: "GET",
+                method: "POST",
             });
 
             const data = await response.json();

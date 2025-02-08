@@ -1,10 +1,10 @@
-export const GET = async (request) => {
+export const POST = async (request) => {
 
-    const apiURL = `https://przybyslawice.diecezja.tarnow.pl:4242/api/albums`;
+    const apiURL = `https://przybyslawice.diecezja.tarnow.pl:4242/api/albums/all`;
 
     try{
         const response = await fetch(apiURL, {
-            method: "GET",
+            method: "POST",
             headers: {
                 'x-api-key': process.env.PHOTO_API_KEY,
             },
