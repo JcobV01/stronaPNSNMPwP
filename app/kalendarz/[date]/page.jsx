@@ -79,7 +79,7 @@ const kalendarzDzien = () => {
     }
 
     const changeDate = (e) => {
-        router.push(`/kalendarz/${e.target.value}`)
+        router.push(`/kalendarz/${e.target.value}`, undefined, { shallow: true })
     }
     
     const [ref, isVisible] = useIntersectionObserver({
