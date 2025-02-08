@@ -19,6 +19,8 @@ const AllAlbums = () => {
 
             const data = await response.json();
 
+            console.log("Fotki: ", data)
+
             const sortedAlbums = data.sort((a, b) => {
                 if (a.year === b.year) {
                     return new Date(b.createdAt) - new Date(a.createdAt); // Jeśli ten sam rok, sortuj po dacie utworzenia
