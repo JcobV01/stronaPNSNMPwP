@@ -21,8 +21,6 @@ const komunikaty = () => {
         const response = await fetch(`/api/post?page=${currentPage}&limit=${postsPerPage}&search=${searchTerm}`);
         const data = await response.json();
 
-        console.log('Fetched data:', data);
-
         setPosts(data.posts);
         setTotalPosts(data.totalPosts);
       } catch (error) {
