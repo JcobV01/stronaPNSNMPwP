@@ -19,7 +19,7 @@ export const metadata = {
         siteName: "Parafia Przybysławice",
         images: [
             {
-                url: "https://przybyslawice.diecezja.tarnow.pl/opengraph-image.webp",
+                url: "https://przybyslawice.diecezja.tarnow.pl/opengraph-image.png",
                 width: 1200,
                 height: 630,
                 alt: "Parafia Przybysławice"
