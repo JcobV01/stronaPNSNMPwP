@@ -76,7 +76,7 @@ const album = () => {
       <Title title="Galeria" title2="" subtitle="Zdjęcia z wydarzeń" />
       <div className="w-[1430px] flex flex-col gap-2 2xl:w-[1070px] xl:w-[980px] lg:w-[660px] md:w-[400px] sm:w-[90%]">
         <h4 className='text-[40px] font-bold xl:text-[35px] md:text-[30px] md:text-center sm:text-[20px]'>{album.name}</h4>
-        <p className='text-[17px] font-light xl:text-[16px] md:text-[15px] md:text-center'>Autor albumu: <span className='font-medium'>{album.author === "Jakub Wadycki" || album.author === "Artur Plebańczyk" ? "Parafia pw. Niepokalanego Serca NPM w Przybysławicach" : album.author}</span></p>
+        <p className='text-[17px] font-light xl:text-[16px] md:text-[15px] md:text-center'>Autor albumu: <span className='font-medium'>{album.author === "Jakub Wadycki" || album.author === "Artur Plebanczyk" ? "Parafia pw. Niepokalanego Serca NPM w Przybysławicach" : album.author}</span></p>
         <p className='text-[17px] font-light xl:text-[16px] md:text-[15px] md:text-center'>Data wydarzenia: <span className='font-medium'>{convertDate(album.eventDate)}</span></p>
       </div>
       <div className='columns-4 w-[1430px] 2xl:columns-3 2xl:w-[1070px] xl:w-[980px]  lg:columns-2 lg:w-[660px] md:columns-1 md:w-[400px] sm:w-[90%]'>
