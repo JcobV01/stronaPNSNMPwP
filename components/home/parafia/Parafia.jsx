@@ -22,7 +22,7 @@ const Parafia = () => {
         <Title title="Parafia" title2="" subtitle="Informacje ogólne" />
         <article className='grid grid-cols-4 gap-[25px] mt-[70px] xl:grid-cols-2 sm:grid-cols-1 sm:mt-[40px] sm:w-full'>
 
-          <div className="col-span-2 row-span-1 w-[525px] h-[250px] rounded-[15px] xl:col-span-2 sm:mx-auto sm:w-[250px] sm:col-span-1 sm:row-span-1" style={{ backgroundImage: `url(${historyCard.src})` }}>
+          <div className="col-span-2 row-span-1 w-[525px] h-[250px] rounded-[15px] xl:col-span-2 sm:mx-auto sm:w-[250px] sm:col-span-1 sm:row-span-1 sm:bg-center" style={{ backgroundImage: `url(${historyCard.src})` }}>
             <TitleCard subtitle={'DZIEJE PARAFII'} title={'Historia'} link={'/historia'} />
           </div>
 
