@@ -14,7 +14,7 @@ const page = () => {
       <Parafia />
       <Kalendarz />
       <Grupy />
-      <Galeria />
+      {/* <Galeria /> */}
       <Kontakt />
       <Quote text="Bez Maryi Ewangelia staje się bezcielesna i bezkształtną, przemienia się w ideologię, w duchowy racjonalizm." author="~ św. Jan Paweł II" />
     </>
