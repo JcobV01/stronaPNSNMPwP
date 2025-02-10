@@ -6,6 +6,7 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'przybyslawice.diecezja.tarnow.pl',
+        port: '4242',
       },
     ],
   },
