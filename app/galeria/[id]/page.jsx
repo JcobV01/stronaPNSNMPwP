@@ -79,7 +79,7 @@ const album = () => {
         <p className='text-[17px] font-light xl:text-[16px] md:text-[15px] md:text-center'>Autor albumu: <span className='font-medium'>{album.author === "Jakub Wadycki" || album.author === "Artur Plebanczyk" ? "Parafia pw. Niepokalanego Serca NPM w Przybysławicach" : album.author}</span></p>
         <p className='text-[17px] font-light xl:text-[16px] md:text-[15px] md:text-center'>Data wydarzenia: <span className='font-medium'>{convertDate(album.eventDate)}</span></p>
       </div>
-      <div className='columns-3 w-[1070px] xl:w-[980px]  lg:columns-2 lg:w-[660px] md:columns-1 md:w-[400px] sm:w-[90%]'>
+      <div className='flex flex-wrap gap-[10px] 2xl:columns-3 2xl:w-[1070px] xl:w-[980px]  lg:columns-2 lg:w-[660px] md:columns-1 md:w-[400px] sm:w-[90%]'>
         {photos?.map((photo, index) => (
           <div key={index} className='mb-[10px] cursor-pointer hover:brightness-75 duration-500' onClick={() => openImageBrowser(photo._id)}>
             <Image src={photo.fullurl} placeholder='blur' blurDataURL={photo.base64hash} width={350} height={250} alt="Zdjęcie z galerii" loading="lazy" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]'/>
