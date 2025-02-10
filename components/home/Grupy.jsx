@@ -35,7 +35,7 @@ const Grupy = () => {
     },
     {
       icon: dsmIcon,
-      name: "Akcja Katolicka",
+      name: "Dziewczęca Służba Maryjna",
       desc: "Dziewczęca Służba Maryjna jest to wspólnota parafialna w Kościele. Należą do niej dziewczęta, zazwyczaj w wieku szkoły podstawowej lub starsze, które zgłosiły chęć przynależenia do tej grupy i zawierzenia swojego życia Maryi.",
       link: "dsm"
     },
