@@ -2,9 +2,9 @@
 
 import ImageBrowserDialog from '@components/management/galeria/ImageBrowserDialog'
 import Title from '@components/Title'
-import Image from '@node_modules/next/image'
-import Link from '@node_modules/next/link'
-import { useParams } from '@node_modules/next/navigation'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 
 const album = () => {
@@ -69,7 +69,7 @@ const album = () => {
   useEffect(() => {
     getAlbum()
     getPhotos()
-  }, [])
+  }, [id])
 
   return (
     <section className='py-[70px] flex flex-col gap-[70px] items-center'>
