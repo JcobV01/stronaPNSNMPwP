@@ -15,10 +15,6 @@ const nextConfig = {
     formats: ['image/webp'],
     minimumCacheTTL: 60,
   },
-  // Nowa opcja eksperymentalna
-  experimental: {
-    optimizeCss: true,
-  },
 };
 
 export default nextConfig;
