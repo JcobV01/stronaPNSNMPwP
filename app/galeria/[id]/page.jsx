@@ -84,7 +84,7 @@ const album = () => {
         {photos?.map((photo, index) => (
           <div key={index} className='mb-[10px] cursor-pointer hover:brightness-75 duration-500' onClick={() => openImageBrowser(photo._id)}>
             {/* <img src={photo.fullurl} placeholder='blur' blurDataURL={photo.base64hash} width={350} height={250} alt="Zdjęcie z galerii" loading="lazy" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]' onError={(e) => {e.target.style.display = 'none'}}/> */}
-            <Image src={photo.fullurl} placeholder='blur' blurDataURL={photo.base64hash} width={350} height={250} alt="Zdjęcie z galerii" loading="lazy" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]' onError={(e) => {e.target.style.display = 'none'}}/>
+            <Image src={photo.fullurl} unoptimized placeholder='blur' blurDataURL={photo.base64hash} width={350} height={250} alt="Zdjęcie z galerii" loading="lazy" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]' onError={(e) => {e.target.style.display = 'none'}}/>
           </div>
         ))}
       </div>
