@@ -20,7 +20,7 @@ const album = () => {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'Cache-Control': 'no-store'
+          'Cache-Control': 'no-cache'
         },
         body: JSON.stringify({
           albumID: id
