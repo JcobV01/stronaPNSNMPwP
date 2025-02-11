@@ -2,9 +2,9 @@
 
 import ImageBrowserDialog from '@components/management/galeria/ImageBrowserDialog'
 import Title from '@components/Title'
-import Image from '@node_modules/next/image'
-import Link from '@node_modules/next/link'
-import { useParams } from '@node_modules/next/navigation'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useParams } from 'next/navigation'
 import React, { useEffect, useRef, useState } from 'react'
 
 const album = () => {
@@ -70,7 +70,7 @@ const album = () => {
   useEffect(() => {
     getAlbum()
     getPhotos()
-  }, [])
+  }, [id])
 
   return (
     <section className='py-[70px] flex flex-col gap-[70px] items-center'>
@@ -83,7 +83,7 @@ const album = () => {
       <div className='columns-4 w-[1430px] 2xl:columns-3 2xl:w-[1070px] xl:w-[980px]  lg:columns-2 lg:w-[660px] md:columns-1 md:w-[400px] sm:w-[90%]'>
         {photos?.map((photo, index) => (
           <div key={index} className='mb-[10px] cursor-pointer hover:brightness-75 duration-500' onClick={() => openImageBrowser(photo._id)}>
-            <Image src={photo.fullurl} placeholder='blur' blurDataURL={photo.base64hash} width={350} height={250} alt="Zdjęcie z galerii" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]'/>
+            <Image src={photo.fullurl} placeholder='blur' blurDataURL={photo.base64hash} width={350} height={250} alt="Zdjęcie z galerii" loading="lazy" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]' onError={(e) => {e.target.style.display = 'none'}}/>
           </div>
         ))}
       </div>
