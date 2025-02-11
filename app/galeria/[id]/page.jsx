@@ -34,7 +34,7 @@ const album = () => {
       console.error(err)
     }
   }
-  
+
 
   const getAlbum = async () => {
     try {
@@ -84,7 +84,7 @@ const album = () => {
       <div className='columns-4 w-[1430px] 2xl:columns-3 2xl:w-[1070px] xl:w-[980px]  lg:columns-2 lg:w-[660px] md:columns-1 md:w-[400px] sm:w-[90%]'>
         {photos?.map((photo, index) => (
           <div key={index} className='mb-[10px] cursor-pointer hover:brightness-75 duration-500' onClick={() => openImageBrowser(photo._id)}>
-            <Image src={photo.fullurl} placeholder='blur' blurDataURL={photo.base64hash} width={350} height={250} alt="Zdjęcie z galerii" loading="lazy" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]' onError={(e) => {e.target.style.display = 'none'}}/>
+            <Image src={photo.fullurl}   width={350} height={250} alt="Zdjęcie z galerii" loading="lazy" className='rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]' onError={(e) => {e.target.style.display = 'none'}}/>
           </div>
         ))}
       </div>
