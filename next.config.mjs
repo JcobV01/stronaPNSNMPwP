@@ -6,14 +6,9 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'przybyslawice.diecezja.tarnow.pl',
-        // USUŃ PORT Z KONFIGURACJI
-        pathname: '/uploads/**',
+        port: '4242',
       },
     ],
-    // Dodaj to dla Next.js 14
-    loader: 'default',
-    formats: ['image/webp'],
-    minimumCacheTTL: 60,
   },
 };
 
