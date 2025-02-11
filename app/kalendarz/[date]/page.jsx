@@ -79,16 +79,17 @@ const kalendarzDzien = () => {
     }
 
     const changeDate = (e) => {
-        router.push(`/kalendarz/${e.target.value}`, undefined, { shallow: true })
+        const selectedDate = e.target.value;
+        router.push(`/kalendarz/${selectedDate}`, undefined, { shallow: true });
     }
-    
+
     const [ref, isVisible] = useIntersectionObserver({
         threshold: 0.1
-      });
+    });
 
-      const [refTwo, isVisibleTwo] = useIntersectionObserver({
+    const [refTwo, isVisibleTwo] = useIntersectionObserver({
         threshold: 0.1
-      });
+    });
 
     return (
         <section ref={ref} className={`pt-[50px] flex flex-col items-center px-[20px] gap-[100px] pb-[150px] transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
@@ -106,20 +107,20 @@ const kalendarzDzien = () => {
 
                 <div className='flex gap-[25px] h-[80px] sm:flex-col sm:h-auto lg:mx-[20px]'>
                     <div className='flex-1 rounded-[5px] flex-center sm:h-[80px] sm:flex-auto' style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
-                        <p className={` text-[30px] lg:text-[25px] ${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]': 'text-white'}`}>{data?.date?.split(", ")[0]}</p>
+                        <p className={` text-[30px] lg:text-[25px] ${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]' : 'text-white'}`}>{data?.date?.split(", ")[0]}</p>
                     </div>
                     <div className="relative inline-block rounded-[5px] w-[80px] flex-center sm:w-full" style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
                         <button onClick={handleClick} className="p-2 focus:outline-none z-10">
-                            <Icon icon="ion:calendar" width="50" height="50" className={`${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]': 'text-white'}`} />
+                            <Icon icon="ion:calendar" width="50" height="50" className={`${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]' : 'text-white'}`} />
                         </button>
-                        <input type="date" ref={dateInputRef} onChange={(e) => changeDate(e)} max={getDateToday(14)} className="absolute inset-0 opacity-0 w-full h-full cursor-pointer" />
+                        <input type="date" ref={dateInputRef} onBlur={changeDate} max={getDateToday(14)} className="absolute inset-0  w-full h-full cursor-pointer z-10" />
                     </div>
                 </div>
 
-                <CalendarSigla readings={data?.readings} formatTitle={formatTitle}/>
+                <CalendarSigla readings={data?.readings} formatTitle={formatTitle} />
             </article>
 
-            <CalendarTextsSection readings={data?.readings} formatTitle={formatTitle}/>
+            <CalendarTextsSection readings={data?.readings} formatTitle={formatTitle} />
 
         </section>
     )

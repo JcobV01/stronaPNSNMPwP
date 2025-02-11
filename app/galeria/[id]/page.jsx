@@ -28,6 +28,7 @@ const album = () => {
 
       const data = await response.json()
       setPhotos(data)
+      console.log("Zdjęcia:", data);
     }
     catch (err) {
       console.error(err)
