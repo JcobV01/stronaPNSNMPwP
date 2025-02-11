@@ -34,6 +34,7 @@ const album = () => {
       console.error(err)
     }
   }
+  
 
   const getAlbum = async () => {
     try {
