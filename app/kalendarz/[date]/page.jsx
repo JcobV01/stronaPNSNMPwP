@@ -15,6 +15,8 @@ const kalendarzDzien = () => {
 
     const { date } = useParams()
     const router = useRouter()
+    const [newDate, setNewDate] = useState('');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchReadings = async (dateToFind) => {
@@ -78,9 +80,13 @@ const kalendarzDzien = () => {
         return `${words[0]}: `;
     }
 
-    const changeDate = (e) => {
-        const selectedDate = e.target.value;
-        router.push(`/kalendarz/${selectedDate}`, undefined, { shallow: true });
+    const changeDate = () => {
+        if(newDate === ''){
+            setError("Wybierz odpowiednią datę klikając w ikonę kalendarza");
+        }
+        else{
+            router.push(`/kalendarz/${newDate}`, undefined, { shallow: true });
+        }
     }
 
     const [ref, isVisible] = useIntersectionObserver({
@@ -103,6 +109,7 @@ const kalendarzDzien = () => {
                 </h4>
             </article>
             <article ref={refTwo} className={`flex flex-col gap-[25px] transition-all duration-1000 ease-in-out ${isVisibleTwo ? 'animation-visible' : 'animation-hidden'}`}>
+                {error !== null && <p className='text-[20px] text-red-700 md:text-[18px] sm:text-[17px] sm:text-center sm:p-[20px]'>{error}</p>}
                 <InfoBar year={data?.year?.slice(4, -4)} season={setSeason()} cycle={data?.year?.slice(6)} />
 
                 <div className='flex gap-[25px] h-[80px] sm:flex-col sm:h-auto lg:mx-[20px]'>
@@ -113,8 +120,11 @@ const kalendarzDzien = () => {
                         <button onClick={handleClick} className="p-2 focus:outline-none z-10">
                             <Icon icon="ion:calendar" width="50" height="50" className={`${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]' : 'text-white'}`} />
                         </button>
-                        <input type="date" ref={dateInputRef} onBlur={changeDate} max={getDateToday(14)} className="absolute inset-0  w-full h-full cursor-pointer z-10" />
+                        <input type="date" ref={dateInputRef} onChange={(e) => setNewDate(e.target.value)} max={getDateToday(14)} className="absolute inset-0 opacity-0 w-full h-full cursor-pointer" />
                     </div>
+                    <button className="relative inline-block rounded-[5px] w-[80px] flex-center sm:w-full sm:py-[10px]" onClick={changeDate} style={{ backgroundColor: displayColor[data?.color?.split(" ")[0]] }}>
+                        <Icon icon="octicon:search-16" width="45" height="45" className={`${data?.color?.split(" ")[0] == 'biały' ? 'text-[#353535]' : 'text-white'}`} />
+                    </button>
                 </div>
 
                 <CalendarSigla readings={data?.readings} formatTitle={formatTitle} />
