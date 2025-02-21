@@ -41,7 +41,7 @@ const ImageBrowserDialog = ({ photos, imageBrowserRef, activePhotoID }) => {
                 </div>
 
                 <div className='absolute bottom-[-50px] left-[50%] translate-x-[-50%]'>
-                    <p className='text-white'>{actualIndex}/{photos.length}</p>
+                    <p className='text-white'>{actualIndex+1}/{photos.length}</p>
                 </div>
             </div>
         </dialog>
