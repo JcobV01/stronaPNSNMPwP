@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import { useSession } from "next-auth/react"
 
+import placeholderImg from '@public/assets/images/header-images/history.webp'
+
 const page = () => {
   const session = useSession()  
 
@@ -139,7 +141,7 @@ const page = () => {
             <div className='flex flex-wrap gap-4'>
               {photos?.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate)).map((photo) => (
                 <div key={photo?.folderId} className='relative w-[230px] h-[230px] mt-[32px] cursor-pointer' onClick={() => handleAlbum(photo?.folderId)}>
-                  <Image src={photo.cover?.length > 0 ? photo.cover : ''} width={230} height={230} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
+                  <Image src={photo.cover !== 'default' ? photo.cover : placeholderImg} width={230} height={230} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
                   <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-[20px] text-center'>{photo?.name}</p>
                 </div>
               ))}

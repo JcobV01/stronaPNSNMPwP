@@ -65,6 +65,7 @@ const page = () => {
             })
 
             const data = await response.json()
+            console.log(data.cover)
             setAlbumName(data.name)
         }
         catch (err) {
@@ -115,13 +116,8 @@ const page = () => {
     }
 
     const changeCoverMode = () => {
-        if (coverMode === true) {
-            setCoverMode(false)
-        }
-        else {
-            setCoverMode(true)
-            setSelectMode(false)
-        }
+        setCoverMode(prev => !prev);
+        if (!coverMode) setSelectMode(false);
     }
 
     const changeCover = async (e) => {
@@ -135,12 +131,12 @@ const page = () => {
               })
         
               if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.message || "Błąd podczas aktualizacji folderu");
-              }
-
-              setCoverMode(false)
-
+                  const errorData = await response.json();
+                  throw new Error(errorData.message || "Błąd podczas aktualizacji folderu");
+                }
+            
+            await getAlbumName()
+            setCoverMode(false)
         } 
         catch (err) { 
             console.log(err) 

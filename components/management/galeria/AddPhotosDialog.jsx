@@ -103,7 +103,7 @@ const AddPhotosDialog = ({ folderId, dialogRef, closeDialog, getPhotos }) => {
 
                 <div className='flex justify-between'>
                     <button className='bg-[#8a1616] text-white py-2 px-4 rounded-md flex-1 max-w-[250px]' onClick={closeDialog}>Anuluj</button>
-                    <button className='bg-[#0e5115] text-white py-2 px-4 rounded-md flex-1 max-w-[250px]' onClick={handleSubmit}>{uploading ? <div class="loader-spin"></div> : 'Prześlij'}</button>
+                    <button className='bg-[#0e5115] text-white py-2 px-4 rounded-md flex-1 max-w-[250px] flex justify-center items-center' onClick={handleSubmit}>{uploading ?  <div className="loader-dots"></div> : 'Prześlij'}</button>
                 </div>
             </div>
         </dialog>

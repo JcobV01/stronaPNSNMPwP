@@ -31,7 +31,7 @@ const ImageBrowserDialog = ({ photos, imageBrowserRef, activePhotoID }) => {
             <Icon icon="zondicons:close-solid" width="50" height="50" className='fixed top-[30px] right-[30px] text-[#c0c0c0] cursor-pointer duration-300 hover:text-[#5A7889]' onClick={closeBrowser}/>
             <div className='relative w-full h-full flex justify-center'>
                 {photos[actualIndex] !== undefined && 
-                    <Image width={1080} height={720} src={photos[actualIndex].fullurl} placeholder='blur' blurDataURL={photos[actualIndex].base64hash} unoptimized quality={100} alt="Zdjęcie w przeglądarce" className='w-auto h-full' />
+                    <Image width={1080} height={720} src={photos[actualIndex].fullurl} placeholder='blur' blurDataURL={photos[actualIndex].base64hash} unoptimized quality={100} alt="Zdjęcie w przeglądarce" className='w-auto h-full select-none pointer-events-none' />
                 }
                 <div className='absolute top-[50%] left-[-20px] translate-y-[-50%] text-white cursor-pointer bg-[#5A7889] h-[100px] md:h-[70px]  rounded-[5px] flex-center' onClick={() => setNewIndex(0)}>
                     <Icon icon="ic:round-play-arrow" width="50" height="50" className='rotate-180 md:h-[30px] md:w-[30px]' />
