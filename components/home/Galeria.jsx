@@ -8,7 +8,7 @@ import Image from 'next/image'
 import Link from "next/link"
 import { useEffect, useState } from 'react'
 
-const Galeria = () => {
+const Galeria = ({home = true}) => {
   const [albums, setAlbums] = useState([]);
   const [loading, setLoading] = useState(true)
 
@@ -45,16 +45,16 @@ const Galeria = () => {
   return (
     <section id="galeria" ref={ref} className={`flex-center transition-all duration-1000 ease-in-out ${isVisible ? 'animation-visible' : 'animation-hidden'}`}>
       <article className='mt-[70px] mb-[30px] w-[1400px] 2xl:w-[90%]'>
-        <Title title="Galeria" title2="" subtitle="Najnowsze albumy" />
-        <p className='text-[15px] font-medium tracking-[3px] text-center mt-[50px] sm:tracking-[1px] sm:text-[13px]'>Nasza parafia jest miejscem żywego świadectwa wiary, gdzie odbywa się wiele różnorodnych wydarzeń i uroczystości. W Galerii Parafialnej prezentujemy fotografie, które oddają atmosferę tych wyjątkowych chwil. Zdjęcia są publikowane po każdym wydarzeniu, aby umożliwić wszystkim parafianom ponowne przeżycie ważnych momentów naszej wspólnoty oraz by dać okazję do zapoznania się z tym, co dzieje się w naszym kościele. Zapraszamy do regularnego odwiedzania galerii i dzielenia się wspomnieniami!</p>
+        {home && <Title title="Galeria" title2="" subtitle="Najnowsze albumy" />}
+        {home && <p className='text-[15px] font-medium tracking-[3px] text-center mt-[50px] sm:tracking-[1px] sm:text-[13px]'>Nasza parafia jest miejscem żywego świadectwa wiary, gdzie odbywa się wiele różnorodnych wydarzeń i uroczystości. W Galerii Parafialnej prezentujemy fotografie, które oddają atmosferę tych wyjątkowych chwil. Zdjęcia są publikowane po każdym wydarzeniu, aby umożliwić wszystkim parafianom ponowne przeżycie ważnych momentów naszej wspólnoty oraz by dać okazję do zapoznania się z tym, co dzieje się w naszym kościele. Zapraszamy do regularnego odwiedzania galerii i dzielenia się wspomnieniami!</p>}
 
-        <div className='flex my-[75px] flex-center gap-[24px]'>
+        <div className='flex my-[75px] flex-center gap-[24px] lg:flex-col'>
           {loading === false && albums.map((album) => (
-            <Link href={`/galeria/${album.folderId}`} key={album.folderId} className='w-[30%] h-[600px]'>
-              <div className='relative h-full'>
-                <Image src={album.cover} placeholder='blur' blurDataURL={album.base64hash} alt={album.name} width={720} height={0} quality={100} className='object-cover h-full brightness-50'/>
-                <p className='absolute top-2/4 left-1/2  -translate-y-1/2- -translate-x-1/2 text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.name}</p>
-                <p className='absolute left-1/2 top-[90%] -translate-x-1/2 text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.eventDate}</p>
+            <Link href={`/galeria/${album.folderId}`} key={album.folderId} className='w-[30%] h-[600px] xl:h-[400px] lg:w-[60%] sm:w-[300px]'>
+              <div className='relative h-full flex-center p-[32px]'>
+                <Image src={album.cover} placeholder='blur' blurDataURL={album.base64hash} alt={album.name} width={720} height={0} quality={100} className='absolute top-0 left-0 object-cover h-full brightness-50'/>
+                <p className='text-[20px] text-white text-center font-semibold tracking-[4px] z-20'>{album.name}</p>
+                <p className='text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.eventDate}</p>
               </div>
             </Link>
           ))}

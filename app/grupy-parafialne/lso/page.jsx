@@ -10,6 +10,7 @@ import GropusTopSection from '@components/groups/GropusTopSection'
 import bgTeam from '@public/assets/images/background-images/lso-background-image.webp'
 import GroupsLSOList from '@components/groups/GroupsLSOList'
 import useIntersectionObserver from '@hooks/useObserver'
+import Galeria from '@components/home/Galeria'
 
 const lso = () => {
 
@@ -110,7 +111,8 @@ const lso = () => {
       </section>
 
       <section ref={refTwo} className={`pb-[50px] transition-all duration-1000 ease-in-out ${isVisibleTwo ? 'animation-visible' : 'animation-hidden'}`}>
-        <h4 className='text-[30px] tracking-[3px] font-medium text-center my-[30px] relative z-10 xl:text-[25px] lg:text-[20px]'>Zdjęcia z wybranych celebracji</h4>
+        <h4 className='text-[30px] tracking-[3px] font-medium text-center mt-[30px] relative z-10 xl:text-[25px] lg:text-[20px]'>Zdjęcia z wybranych celebracji</h4>
+        <Galeria home={false}/>
       </section>
     </>
   )

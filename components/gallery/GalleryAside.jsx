@@ -17,10 +17,7 @@ const GalleryAside = ({ years, handleYearClick, selectedYear }) => {
     useEffect(() => {
         const newIndex = years.findIndex(year => year == selectedYear);
         setIndexAlbum(newIndex !== -1 ? newIndex : 0);
-        getTopPosition(newIndex)
-
-        console.log("YY", selectedYear, newIndex, years);
-        
+        getTopPosition(newIndex)        
       }, [selectedYear, years]);
 
     return (
