@@ -100,20 +100,21 @@ const AllAlbums = () => {
         Cookies.set("selectedYear", year, {expires: 1 / 24, path: '/'});
         setAlbums([]); // resetujemy listę przy zmianie roku
         setPage(1); // resetujemy stronę
-        showDropdown();
     }
+
+    useEffect(() => setDropdown(false), [selectedYear])
 
     // Wyświetlamy tylko część albumów – do indeksu page * 12
     const displayedAlbums = albums.slice(0, page * 12);
 
     return (
-        <div className='flex md:flex-col'>
-            <article className='hidden md:block mt-[50px]'>
+        <div className='flex lg:flex-col'>
+            <article className='hidden lg:block mt-[50px]'>
                 <p className='text-[15px]'>Wybierz rok</p>
                 <div className='relative w-full h-[40px] rounded-full bg-[#5A7889] flex items-center px-[20px] justify-between' onClick={showDropdown}>
                     <p className='text-white'>{selectedYear}</p>
-                    <Icon icon="bxs:up-arrow" height={20} width={20} className={`text-white duration-500 rotate-180 ${dropdown && 'rotate-0'}`}/>
-                    <div className='absolute left-0 w-full bg-[#5a7889ed] z-30 px-[20px] py-[10px] rounded-[10px]' style={{bottom: `-${years.length * 30}px`, display: dropdown ? 'block' : 'none'}}>
+                    <Icon icon="bxs:up-arrow" height={20} width={20} className={`text-white duration-500 rotate-180`} style={{transform: `${dropdown ? 'rotate(0)' : 'rotate(180deg)'}`}}/>
+                    <div className='absolute left-0 w-full bg-[#5a7889ed] z-30 px-[20px] py-[10px] rounded-[10px]' style={{bottom: `-${(years.length+1) * 30}px`, display: dropdown ? 'block' : 'none'}}>
                         {years?.map((year) => (
                             year !== selectedYear && 
                             <p 
@@ -128,7 +129,7 @@ const AllAlbums = () => {
                     </div>
                 </div> 
             </article>
-            <article className='mt-[90px] grid grid-cols-4 2xl:grid-cols-3 xl:grid-cols-2 lg:grid-cols-1 gap-[20px]'>
+            <article className='mt-[90px] grid grid-cols-4 2xl:grid-cols-3 xl:grid-cols-2 sm:grid-cols-1 gap-[20px] sm:flex sm:flex-col'>
                 {displayedAlbums.map((album, index) => {
                     const dynamicAlbumsWidthEverySeven = (index + 1) % 12 === 5;
                     const dynamicAlbumsWIdthEveryFiveteen = (index + 1) % 12 === 10;

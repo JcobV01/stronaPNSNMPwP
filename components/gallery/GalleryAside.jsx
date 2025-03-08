@@ -24,7 +24,7 @@ const GalleryAside = ({ years, handleYearClick, selectedYear }) => {
       }, [selectedYear, years]);
 
     return (
-        <aside className='album-gallery flex-center mt-[115px] w-[175px] absolute right-[80px] xl:right-[50px]  max-h-[450px] overflow-y-hidden md:hidden'>
+        <aside className='album-gallery flex-center mt-[115px] w-[175px] absolute right-[80px] xl:right-[50px]  max-h-[450px] overflow-y-hidden lg:hidden'>
             <div className='relative flex-center w-full h-[450px]'>
                 <ul className='absolute !list-none space-y-[30px] duration-700 pl-0' style={{top: getTopPosition(indexAlbum)}}>
                     {years.map((year, index) => (

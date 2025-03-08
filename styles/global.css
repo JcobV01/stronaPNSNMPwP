@@ -365,6 +365,14 @@ input[type="search"]::-webkit-search-cancel-button {
   height: 520px;
 }
 
+@media screen and (max-width: 639px){
+  .gallery-albums:nth-child(12n + 5){width: 250px;}
+.gallery-albums:nth-child(12n + 10){
+  width: 250px;
+  height: 250px;
+}
+}
+
 .album-gallery{
   -webkit-mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%, rgba(255, 255, 255, 0.00) 100%);
   -webkit-mask-size: cover;
