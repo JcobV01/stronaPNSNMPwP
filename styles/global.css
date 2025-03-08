@@ -357,6 +357,14 @@ input[type="search"]::-webkit-search-cancel-button {
 /* Galeria */
 .gallery-albums:hover img{filter: brightness(0.75);}
 
+.gallery-albums:nth-child(12n + 5){grid-column: span 2; width: 520px;}
+.gallery-albums:nth-child(12n + 10){
+  grid-column: span 2;
+  grid-row: span 2;
+  width: 520px;
+  height: 520px;
+}
+
 .album-gallery{
   -webkit-mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%, rgba(255, 255, 255, 0.00) 100%);
   -webkit-mask-size: cover;

@@ -135,7 +135,6 @@ const page = () => {
                   throw new Error(errorData.message || "Błąd podczas aktualizacji folderu");
                 }
             
-            await getAlbumName()
             setCoverMode(false)
         } 
         catch (err) { 
