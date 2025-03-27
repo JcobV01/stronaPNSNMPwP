@@ -21,7 +21,6 @@ const page = () => {
   const [hasMore, setHasMore] = useState(true);
   const loaderRef = useRef(null);
 
-  const [searchTerm, setSearchTerm] = useState('');
   const [albumName, setAlbumName] = useState('');
   const [eventDate, setEventDate] = useState('');
   const router = useRouter();
