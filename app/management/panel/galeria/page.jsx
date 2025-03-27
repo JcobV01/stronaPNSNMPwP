@@ -5,70 +5,111 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useRef, useState } from 'react'
 import { useSession } from "next-auth/react"
+import Cookies from 'js-cookie';
+
 
 import placeholderImg from '@public/assets/images/header-images/history.webp'
 
 const page = () => {
-  const session = useSession()  
+  const session = useSession()
 
   const [albums, setAlbums] = useState([]);
   const [selectedYear, setSelectedYear] = useState('');
   const [years, setYears] = useState([]);
+  const [page, setPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
+  const loaderRef = useRef(null);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [albumName, setAlbumName] = useState('');
   const [eventDate, setEventDate] = useState('');
   const router = useRouter();
   const albumDialog = useRef(null);
 
-  const getAlbums = async () => {
+  const getAlbums = async (year) => {
+    setIsLoading(true);
     try {
-      const response = await fetch("/api/gallery/albums/getall", {
-        method: "POST",
+      const response = await fetch('/api/gallery/albums/getbyyear', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ albumYear: year })
       });
-
-      if (!response.ok) {
-        throw new Error("Błąd podczas pobierania danych");
-      }
-
       const data = await response.json();
+      setAlbums(data);
+      setPage(1); // resetujemy stronę, aby pokazać pierwsze 12 albumów
+    } catch (err) {
+      console.log(err);
+    }
+    setIsLoading(false);
+  }
 
-      /* Grupowanie albumów latami*/
-      const groupedAlbums = data.reduce((acc, album) => {
-        const year = album.year;
-        if (!acc[year]) {
-          acc[year] = [];
-        }
-        acc[year].push(album);
-        return acc;
-      }, {});
-
-      const sortedYears = Object.keys(groupedAlbums).sort((a, b) => b - a);
-
-      setAlbums(groupedAlbums);
-      setYears(sortedYears);
-
-    } catch (error) {
-      console.log(error);
+  const getRangeYears = async () => {
+    try {
+      const response = await fetch('/api/gallery/albums/getrange', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+      });
+      const data = await response.json();
+      const yrs = Array.from({ length: parseInt(data.maxYear) - parseInt(data.minYear) + 1 }, (_, i) => parseInt(data.minYear) + i).reverse();
+      return yrs;
+    } catch (err) {
+      console.log(err);
     }
   }
-  
+
   useEffect(() => {
-    getAlbums();
+    getRangeYears().then((yrs) => {
+      setYears(yrs);
+      const cookieYear = Cookies.get("selectedYearManagement");
+      const initialYear = cookieYear || yrs[0];
+      setSelectedYear(initialYear);
+    });
   }, []);
 
+  // Gdy zmienia się wybrany rok, pobieramy pełną listę albumów
+  useEffect(() => {
+    if (selectedYear) {
+      getAlbums(selectedYear);
+    }
+  }, [selectedYear]);
 
-  const filteredAlbums = Object.entries(selectedYear ? { [selectedYear]: albums[selectedYear] || [] } : albums)
-    .reduce((acc, [year, photos]) => {
-      const filteredPhotos = photos.filter((photo) =>
-        photo.name.toLowerCase().includes(searchTerm.toLowerCase()) // Filtrujemy po nazwie albumu
-      );
+  // Aktualizujemy flagę hasMore na podstawie liczby wyświetlanych albumów
+  useEffect(() => {
+    setHasMore(page * 12 < albums.length);
+  }, [page, albums]);
 
-      if (filteredPhotos.length > 0) {
-        acc[year] = filteredPhotos;
+  // Intersection Observer, który zwiększa stronę gdy użytkownik przewinie do dołu
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && hasMore && !isLoading) {
+        setPage(prev => prev + 1);
       }
+    }, {
+      rootMargin: '100px',
+    });
+    if (loaderRef.current) {
+      observer.observe(loaderRef.current);
+    }
+    return () => {
+      if (loaderRef.current) {
+        observer.unobserve(loaderRef.current);
+      }
+    }
+  }, [hasMore, isLoading]);
 
-      return acc;
-  }, {});
+  const handleYearClick = (year) => {
+    setSelectedYear(year);
+    Cookies.set("selectedYearManagement", year, { expires: 1 / 24, path: '/' });
+    setAlbums([]); // resetujemy listę przy zmianie roku
+    setPage(1); // resetujemy stronę
+  }
+
+
+  // Wyświetlamy tylko część albumów – do indeksu page * 12
+  const displayedAlbums = albums.slice(0, page * 12);
+
+  /*------------------------------*/
 
   const createNewAlbum = async () => {
     try {
@@ -83,25 +124,17 @@ const page = () => {
           author: session.data?.user?.name
         })
       })
-      
+
       if (response.ok) {
         setAlbumName('');
         setEventDate('');
         closeDialogHandle();
         getAlbums();
       }
-      
+
     } catch (error) {
       console.error(err);
     }
-  }
-
-  const handleYearChange = (e) => {
-    setSelectedYear(e.target.value);
-  }
-
-  const handleSearchTermChange = (e) => {
-    setSearchTerm(e.target.value);
   }
 
   const handleAlbum = (folderId) => {
@@ -116,38 +149,35 @@ const page = () => {
     albumDialog?.current?.close();
   }
 
-  console.log(filteredAlbums);
+  console.log(displayedAlbums)
 
   return (
     <section className='w-full flex-1 pt-8'>
       <div className='w-full flex justify-between'>
         <button className='bg-[#11161A] py-[10px] px-[50px] rounded-[5px] text-white text-[20px] font-light w-[300px]' onClick={openDialogHandle}>Dodaj album</button>
-        <select className='w-[200px] px-[10px] rounded-[5px]' onChange={handleYearChange}>
-          <option value="">Wszystkie</option>
+        <select className='w-[200px] px-[10px] rounded-[5px]' value={selectedYear} onChange={(e) => handleYearClick(Number(e.target.value))}>
           {years.map((year) => (
             <option key={year} value={year}>
               {year}
             </option>
           ))}
         </select>
-        <input type="search" placeholder='Wyszukaj album' className='w-[600px] px-[10px] rounded-[5px]' value={searchTerm} onChange={handleSearchTermChange} />
       </div>
 
       <div className='flex flex-col gap-3 w-full mt-8 h-[600px] px-[10px] overflow-y-auto'>
-        {Object?.entries(filteredAlbums).sort(([yearA], [yearB]) => yearB - yearA).map(([year, photos]) => (
-          <div className='w-full' key={year}>
-            <h2 className='text-[20px] text-center text-black'>{year}</h2>
-            <hr className='border-gray-400 w-full' />
-            <div className='flex flex-wrap gap-4'>
-              {photos?.sort((a, b) => new Date(b.eventDate) - new Date(a.eventDate)).map((photo) => (
-                <div key={photo?.folderId} className='relative w-[230px] h-[230px] mt-[32px] cursor-pointer' onClick={() => handleAlbum(photo?.folderId)}>
-                  <Image src={photo.cover !== 'default' ? photo.cover : placeholderImg} width={230} height={230} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
-                  <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-[20px] text-center'>{photo?.name}</p>
-                </div>
-              ))}
+        <h2 className='text-[20px] text-center text-black'>{selectedYear}</h2>
+        <hr className='border-gray-400 w-full' />
+        <div className='w-full flex flex-wrap gap-4'>
+          {displayedAlbums.map((album) => (
+            <div className='relative w-[230px] h-[230px] mt-[32px] cursor-pointer' key={album.folderId} onClick={() => handleAlbum(album?.folderId)}>
+              <Image src={album.cover ? album.cover : placeholderImg} width={230} height={230} placeholder='blur' blurDataURL={album.base64hash} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
+              <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-[20px] text-center'>{album?.name}</p>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <div ref={loaderRef} className="w-full flex justify-center my-8">
+          {isLoading && <div className='loader'></div>}
+        </div>
       </div>
 
       <NewAlbumDialog dialogRef={albumDialog} closeDialog={closeDialogHandle} albumName={albumName} setAlbumName={setAlbumName} eventDate={eventDate} setEventDate={setEventDate} createFolder={createNewAlbum} />
