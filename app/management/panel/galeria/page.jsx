@@ -108,8 +108,6 @@ const page = () => {
   // Wyświetlamy tylko część albumów – do indeksu page * 12
   const displayedAlbums = albums.slice(0, page * 12);
 
-  /*------------------------------*/
-
   const createNewAlbum = async () => {
     try {
       const response = await fetch('/api/gallery/albums/new', {
@@ -148,8 +146,6 @@ const page = () => {
     albumDialog?.current?.close();
   }
 
-  console.log(displayedAlbums)
-
   return (
     <section className='w-full flex-1 pt-8'>
       <div className='w-full flex justify-between'>
@@ -169,7 +165,7 @@ const page = () => {
         <div className='w-full flex flex-wrap gap-4'>
           {displayedAlbums.map((album) => (
             <div className='relative w-[230px] h-[230px] mt-[32px] cursor-pointer' key={album.folderId} onClick={() => handleAlbum(album?.folderId)}>
-              <Image src={album.cover ? album.cover : placeholderImg} width={230} height={230} placeholder='blur' blurDataURL={album.base64hash} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
+              <Image src={album.cover !== 'default' ? album.cover : placeholderImg} width={230} height={230} placeholder='blur' blurDataURL={album.base64hash} className='object-cover h-full brightness-50' alt="Zdjęcie przedstawiające album" />
               <p className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-[20px] text-center'>{album?.name}</p>
             </div>
           ))}

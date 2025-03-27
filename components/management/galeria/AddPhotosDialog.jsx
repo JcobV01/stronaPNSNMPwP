@@ -92,9 +92,9 @@ const AddPhotosDialog = ({ folderId, dialogRef, closeDialog, getPhotos }) => {
                     onDrop={handleDrop}
                 >
                     <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
-                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
                             <Icon icon="iconamoon:cloud-upload-fill" className='text-gray-500' width="40" height="40" />
-                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Wybierz pliki</span> lub przeciągnij i upuść</p>
+                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400"><span className="font-semibold">Wybierz pliki</span> lub przeciągnij i upuść</p>
                             <p className="text-xs text-gray-500 dark:text-gray-400">PNG, JPG, JPEG, WEBP</p>
                         </div>
                         <input id="dropzone-file" type="file" className="hidden" multiple onChange={handleFileChange} accept='image/png, image/jpg, image/jpeg, image/webp'/>

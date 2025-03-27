@@ -10,15 +10,120 @@ import React, { useEffect, useRef, useState } from 'react'
 const page = () => {
     const { albumID } = useParams()
     const [photos, setPhotos] = useState([])
-    const [albumName, setAlbumName] = useState('')
+    const [album, setAlbum] = useState('')
+    const [columns, setColumns] = useState(1);
+    const [visibleCount, setVisibleCount] = useState(8);
+    const [layoutReady, setLayoutReady] = useState(false);
+    const [coords, setCoords] = useState([]);
+    const [siteHeight, setSiteHeight] = useState(0);
+    const [observerY, setObserverY] = useState(0);
+    const resizeTimeout = useRef(null);
+    const loadMoreRef = useRef(null);
 
     const changeNameDialog = useRef(null)
     const addPhotosDialog = useRef(null)
-
     const [selectMode, setSelectMode] = useState(false)
     const [selectedPhotos, setSelectedPhotos] = useState([])
-
     const [coverMode, setCoverMode] = useState(false)
+    const [coverImage, setCoverImage] = useState(null);
+
+    const calculateColumns = () => {
+        const width = window.innerWidth;
+        if (width >= 1536) return 4;
+        else if (width >= 1024) return 3;
+        else if (width >= 768) return 2;
+        else return 1;
+    };
+
+    const getPhotos = async () => {
+        try {
+            const response = await fetch("/api/gallery/photos/get", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ albumID: albumID }),
+            });
+            const data = await response.json();
+            // Sortowanie alfabetyczne po nazwie pliku
+            const sorted = data.sort((a, b) =>
+                a.filename.localeCompare(b.filename)
+            );
+            setPhotos(sorted);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const getAlbum = async () => {
+        try {
+            const response = await fetch("/api/gallery/albums/getname", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ albumID: albumID }),
+            });
+            const data = await response.json();
+            setAlbum(data);
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const handleResize = () => {
+        clearTimeout(resizeTimeout.current);
+        resizeTimeout.current = setTimeout(() => {
+            getPhotos();
+            setColumns(calculateColumns());
+        }, 500);
+    };
+
+    useEffect(() => {
+        if (photos.length === 0) return;
+        setLayoutReady(false); // Layout się przelicza – nie pokazujemy zdjęć
+        const visiblePhotos = photos.slice(0, visibleCount);
+        // Inicjujemy wysokość dla każdej kolumny
+        let columnHeights = new Array(columns).fill(0);
+        const newCoords = visiblePhotos.map((photo) => {
+            // Znajdujemy kolumnę o najmniejszej dotychczasowej wysokości
+            const column = columnHeights.indexOf(Math.min(...columnHeights));
+            const imgWidth =
+                window.innerWidth > 1279
+                    ? 330
+                    : window.innerWidth > 767
+                        ? 330
+                        : window.innerWidth > 639
+                            ? 410
+                            : window.innerWidth * 0.9;
+            const x = column * imgWidth;
+            const y = columnHeights[column];
+            // Obliczamy wysokość zdjęcia, zachowując proporcje (dodajemy 10px marginesu)
+            const photoHeight = (photo.height * imgWidth) / photo.width + 10;
+            // Aktualizujemy wysokość kolumny
+            columnHeights[column] += photoHeight;
+            return { x, y };
+        });
+        // Całkowita wysokość kontenera to najwyższa kolumna
+        setSiteHeight(Math.max(...columnHeights));
+        // Pozycja elementu obserwowanego – ustawiamy go przy najniższej kolumnie
+        setObserverY(Math.min(...columnHeights));
+        setCoords(newCoords);
+        setLayoutReady(true); // Layout gotowy – możemy pokazać zdjęcia
+    }, [photos, visibleCount, columns]);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setVisibleCount((prev) => (prev >= photos.length ? prev : prev + 8));
+                }
+            },
+            { threshold: 1.0 }
+        );
+        if (loadMoreRef.current) {
+            observer.observe(loadMoreRef.current);
+        }
+        return () => {
+            if (loadMoreRef.current) observer.unobserve(loadMoreRef.current);
+        };
+    }, [photos]);
 
     const openChangeNameDialog = () => {
         changeNameDialog.current.showModal()
@@ -36,43 +141,6 @@ const page = () => {
         addPhotosDialog.current.close()
     }
 
-    const getPhotos = async () => {
-        try {
-            const response = await fetch(`/api/gallery/photos/get`, {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ albumID: albumID })
-            })
-
-            const data = await response.json()
-            console.log(data);
-
-            setPhotos(data)
-        }
-        catch (error) {
-            console.error(error);
-        }
-    }
-
-    const getAlbumName = async () => {
-        try {
-            const response = await fetch('/api/gallery/albums/getname', {
-                method: "POST",
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ albumID })
-            })
-
-            const data = await response.json()
-            console.log(data.cover)
-            setAlbumName(data.name)
-        }
-        catch (err) {
-            console.error(err);
-        }
-    }
-
     const selectModeChange = () => {
         coverMode === true && setCoverMode(false)
         setSelectMode(prev => !prev)
@@ -82,6 +150,8 @@ const page = () => {
     const selectPhoto = (e) => {
         const photoClass = e.currentTarget.classList
         const photoID = e.currentTarget.id
+        console.log(photoID);
+
         if (photoClass.contains('photo-select-mode')) {
             setSelectedPhotos(prev => [...prev, photoID])
             photoClass.remove('photo-select-mode')
@@ -108,7 +178,6 @@ const page = () => {
             }
             selectModeChange()
             getPhotos()
-
         }
         catch (err) {
             console.log(err)
@@ -120,37 +189,41 @@ const page = () => {
         if (!coverMode) setSelectMode(false);
     }
 
-    const changeCover = async (e) => {
+    const changeCover = async (e, index) => {
         try {
             const response = await fetch('/api/gallery/albums/changecover', {
                 method: "PUT",
                 headers: {
-                  'Content-Type': 'application/json'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ albumID: albumID, coverID: e.currentTarget.id })
-              })
-        
-              if (!response.ok) {
-                  const errorData = await response.json();
-                  throw new Error(errorData.message || "Błąd podczas aktualizacji folderu");
-                }
-            
-            setCoverMode(false)
-        } 
-        catch (err) { 
-            console.log(err) 
+            })
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || "Błąd podczas aktualizacji folderu");
+            } else {
+                setCoverImage(index)
+                setCoverMode(false)
+            }
+        }
+        catch (err) {
+            console.log(err)
         }
     }
 
     useEffect(() => {
         getPhotos()
-        getAlbumName()
-    }, [])
+        getAlbum()
+        setColumns(calculateColumns());
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, [albumID])
 
     return (
         <section className='flex gap-8 flex-col flex-1 pt-[40px] w-full' style={{ height: 'calc(100% - 84px)' }}>
             <div className='flex gap-4 items-center'>
-                <h3 className='text-[25px] font-bold text-[#353535]'>{albumName}</h3>
+                <h3 className='text-[25px] font-bold text-[#353535]'>{album.name}</h3>
                 <Icon icon="solar:pen-bold" width="25" height="25" className='color-[#353535] duration-500 cursor-pointer' onClick={openChangeNameDialog} />
             </div>
 
@@ -162,17 +235,51 @@ const page = () => {
             </div>
 
             <article className='w-full flex-1 overflow-y-scroll pr-4'>
-                <div className='w-full columns-4'>
-                    {photos?.map((photo, index) => (
-                        <div className={`w-[320px] h-auto mb-[20px] duration-500 ${selectMode === true && 'photo-select-mode'}`} key={index} id={photo._id} onClick={(e) => selectMode === true ? selectPhoto(e) : coverMode === true && changeCover(e)}>
-                            <Image src={photo.fullurl} width={320} height={300} alt={`Zdjęcie z albumu ${photo._id}`} className={`object-contain w-full h-auto rounded-[3px] ${selectMode === true ? 'cursor-pointer' : coverMode === true && 'cursor-pointer'}`} />
-                        </div>
-                    ))}
+                <div
+                    className="relative  justify-center flex-col"
+                    style={{
+                        height: columns > 1 ? siteHeight : "auto",
+                        display: columns === 1 ? "flex" : undefined,
+                    }}
+                >
+                    {layoutReady &&
+                        photos.slice(0, visibleCount).map((photo, index) => (
+                            <div
+                                key={index}
+                                className={`hover:brightness-75 duration-300 ${selectMode === true && 'photo-select-mode cursor-pointer'} ${coverMode === true && 'cursor-pointer'} ${coverMode === true && index === coverImage && 'border-[2px] border-[#5A7889]'}`}
+                                style={{
+                                    transform:
+                                        columns > 1
+                                            ? `translate(${coords[index]?.x}px, ${coords[index]?.y}px)`
+                                            : undefined,
+                                    position: columns > 1 ? "absolute" : "relative",
+                                }}
+                                id={photo._id}
+                                onClick={(e) => selectMode === true ? selectPhoto(e) : coverMode === true && changeCover(e, index)}
+                            >
+                                <Image
+                                    src={photo.fullurl}
+                                    placeholder="blur"
+                                    blurDataURL={photo.base64hash}
+                                    width={320}
+                                    height={300}
+                                    alt="Zdjęcie z galerii"
+                                    loading="lazy"
+                                    className="rounded-[3px] xl:w-[320px] md:w-[400px] sm:w-[100%]"
+                                />
+                            </div>
+                        ))}
+                    {/* Element obserwowany – pozycjonowany przy najniższej kolumnie */}
+                    <div
+                        ref={loadMoreRef}
+                        className="h-1"
+                        style={{ position: "absolute", top: observerY, left: 0 }}
+                    ></div>
                 </div>
 
             </article>
 
-            <ChangeAlbumNameDialog dialogRef={changeNameDialog} closeDialog={closeChangeNameDialog} getAlbumName={getAlbumName} albumName={albumName} albumID={albumID} />
+            <ChangeAlbumNameDialog dialogRef={changeNameDialog} closeDialog={closeChangeNameDialog} getAlbumName={getAlbum} album={album} albumID={albumID} />
             <AddPhotosDialog dialogRef={addPhotosDialog} closeDialog={closeAddPhotosDialog} folderId={albumID} getPhotos={getPhotos} />
         </section>
     )
