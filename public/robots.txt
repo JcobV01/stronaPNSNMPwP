@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_next/
+Disallow: /management/
+Sitemap: https://przybyslawice.diecezja.tarnow.pl/sitemap.xml
