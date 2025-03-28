@@ -126,7 +126,7 @@ const page = () => {
         setAlbumName('');
         setEventDate('');
         closeDialogHandle();
-        getAlbums();
+        getAlbums(selectedYear);
       }
 
     } catch (error) {
