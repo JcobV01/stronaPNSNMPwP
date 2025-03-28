@@ -6,7 +6,8 @@ import UserBar from './UserBar';
 const TopBar = () => {
 
     const paths = new Map([
-        ["/management/panel", "Statystyki"],
+        ["/management/panel", "Strona główna"],
+        ["/management/panel/statystyki", "Statystyki"],
         ["/management/panel/ogloszenia", "Ogłoszenia"],
         ["/management/panel/intencje", "Intencje"],
         ["/management/panel/komunikaty", "Komunikaty"],

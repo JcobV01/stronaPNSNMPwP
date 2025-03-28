@@ -1,27 +1,20 @@
 import Logo from '@components/Logo'
 import React from 'react'
-import { headers } from 'next/headers'
 
-import statsImg from '@public/assets/icons/mamagement/chart.png'
-import docksImg from '@public/assets/icons/mamagement/document.png'
-import alarmImg from '@public/assets/icons/mamagement/alarm.png'
-import sandImg from '@public/assets/icons/mamagement/sand.png'
-import imageImg from '@public/assets/icons/mamagement/image.png'
-import letterImg from '@public/assets/icons/mamagement/letter.png'
-
-import Link from 'next/link'
-import Image from 'next/image'
-import UserBar from '@components/management/UserBar'
 import TopBar from '@components/management/TopBar'
 import NavBar from '@components/management/NavBar'
 
 
-
 const menu = [
+    {
+        icon: 'fa6-solid:house',
+        name: "Strona główna",
+        link: "/management/panel"
+    },
     {
         icon: 'ion:stats-chart',
         name: "Statystyki",
-        link: "/management/panel"
+        link: "/management/panel/statystyki"
     },
     {
         icon: 'basil:document-solid',

@@ -1,18 +1,13 @@
 "use client"
 
-import { signOut } from 'next-auth/react'
 import React from 'react'
 
 const panel = () => {
-
-  const handleLogout = () => {
-    signOut({ callbackUrl: '/management' })
-  }
-
   return (
-    <section>
-      <article>
-        <button onClick={handleLogout}>wyloguj</button>
+    <section className='mt-[16px] '>
+      <article className='flex flex-col justify-center items-center'>
+        <h3 className='text-[20px]'>Designed by Airtilion</h3>
+        <p>Tutaj kiedyś coś się może pojawi</p>
       </article>
     </section>
   )
