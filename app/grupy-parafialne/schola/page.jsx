@@ -10,7 +10,7 @@ const schola = () => {
   const data = {
     logo: scholaLogo,
     name: 'Schola Młodzieżowa',
-    name2: 'Szcholi Młodzieżowej',
+    name2: 'Scholi Młodzieżowej',
     info: [
       'Schola to grupa parafialna biorąca udział we Mszy w szczególny sposób. Członkowie scholi prowadzą śpiew na wybranych Mszach. Mocą Ducha Świętego i muzyki wielbią Boga. W naszej parafii schola działa od niedawna (od 2020r.), od czasu do czasu ubogacając liturgię oraz niektóre nabożeństwa śpiewem. Grupa ta ciągle się rozwija i poszerza, ze względu na to, że działa od bardzo niedługiego czasu.',
       'Zazwyczaj członkowie scholi spotykają się na próbach, podczas których przygotowują repertuar pieśni, zgodny z kalendarzem liturgicznym. Ich śpiew ma na celu wprowadzenie uczestników w nastrój modlitwy i skupienia, tworząc harmonijne tło dla celebracji liturgii. Schola może mieć stały lub zmieniający się skład, często angażując nowych członków, którzy pragną uczestniczyć w życiu parafii poprzez muzykę.',

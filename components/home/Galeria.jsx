@@ -44,7 +44,7 @@ const Galeria = ({home = true}) => {
         <div className='flex my-[75px] flex-center gap-[24px] lg:flex-col'>
           {loading === false && albums.map((album) => (
             <Link href={`/galeria/${album.folderId}`} key={album.folderId} className='w-[30%] h-[600px] xl:h-[400px] lg:w-[60%] sm:w-[300px]'>
-              <div className='relative h-full flex-center p-[32px]'>
+              <div className='relative h-full flex-center p-[32px] duration-700 hover:brightness-75'>
                 <Image src={album.cover} placeholder='blur' blurDataURL={album.base64hash} alt={album.name} width={720} height={0} quality={100} className='absolute top-0 left-0 object-cover h-full brightness-50'/>
                 <p className='text-[20px] text-white text-center font-semibold tracking-[4px] z-20'>{album.name}</p>
                 <p className='text-[20px] text-white text-center font-semibold tracking-[4px]'>{album.eventDate}</p>
@@ -53,8 +53,8 @@ const Galeria = ({home = true}) => {
           ))}
         </div>
 
-        <div className='flex justify-end mt-[80px] sm:justify-center'>
-          <Link href="/galeria" className='flex gap-3 fold:gap-0'>
+        <div className='flex justify-end mt-[80px] lg:justify-center'>
+          <Link href="/galeria" className='flex items-center gap-3 fold:gap-[5px] duration-700 hover:scale-95'>
             <p className="text-[18px] tracking-[4px] font-medium sm:w-full sm:text-center sm:text-[15px] sm:tracking-[1px] fold:text-[13px]">Przejdź do pełnej galerii</p>
             <Icon icon="la:angle-double-right" width="20" height="27" alt="Ikona strzałki" />
           </Link>
