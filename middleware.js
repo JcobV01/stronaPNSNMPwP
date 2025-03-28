@@ -1,9 +1,6 @@
 import { NextResponse, NextRequest } from "next/server";
+import { getToken } from "next-auth/jwt";
 // import { analytics } from "@utils/analytics";
-
-// Definiujemy ścieżki, które mają być chronione
-
-const protectedPaths = ['/management'];
 
 export async function middleware(request) {
   const requestHeaders = new Headers(request.headers);
@@ -11,26 +8,26 @@ export async function middleware(request) {
 
   const { pathname } = request.nextUrl;
 
-  // Sprawdzamy, czy ścieżka jest chroniona i czy użytkownik nie jest zalogowany
-  if (protectedPaths.some(path => pathname.startsWith(path))) {
-    // Sprawdzenie, czy użytkownik próbuje uzyskać dostęp do strony logowania
-    if (pathname === '/management') {
-      // Pozwalamy na dostęp do strony logowania
-      return NextResponse.next();
-    }
+  const token = await getToken({ req: request, secret: process.env.NEXTAUTH_SECRET });
 
-    if (pathname === '/management/rejestracja') {
-      return NextResponse.next();
-    }
+  // Jeśli użytkownik NIE jest zalogowany i próbuje wejść na /management/* → przekierowanie na logowanie
+  if (!token && pathname.startsWith("/management") && pathname !== "/management") {
+    return NextResponse.redirect(new URL("/management", request.url));
+  }
 
-    // Sprawdzenie, czy użytkownik jest zalogowany. W tym przypadku sprawdzamy ciasteczko `next-auth.session-token`
-    const token = request.cookies.get('next-auth.session-token');
+  // Jeśli użytkownik JEST zalogowany, ale nie ma przypisanej roli → blokujemy
+  if (token && !token.role) {
+    return NextResponse.redirect(new URL("/", request.url));
+  }
 
-    if (!token) {
-      // Jeśli użytkownik nie jest zalogowany, przekierowujemy na stronę logowania
-      const loginUrl = new URL('/management', request.url);
-      return NextResponse.redirect(loginUrl);
-    }
+  // Ścieżka dostępna zarówno dla "user", jak i "admin"
+  if (pathname === "/management/panel/galeria") {
+    return NextResponse.next();
+  }
+
+  // Jeśli użytkownik NIE jest adminem i próbuje wejść na inne strony w /management/panel/*
+  if (pathname.startsWith("/management/panel/") && token.role !== "admin") {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   //Analytics
@@ -67,7 +64,7 @@ export async function middleware(request) {
   // }
 
 
-  
+
 
   // Jeśli użytkownik jest zalogowany lub ścieżka nie jest chroniona, kontynuujemy przetwarzanie
   return NextResponse.next({

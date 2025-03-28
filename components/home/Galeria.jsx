@@ -18,20 +18,13 @@ const Galeria = ({home = true}) => {
 
   const getAlbums = async () => {
     try {
-      const response = await fetch("/api/gallery/albums/getall", {
+      const response = await fetch("/api/gallery/albums/getlatest", {
         method: "POST",
       });
 
       const data = await response.json();
 
-      const sortedAlbums = data.sort((a, b) => {
-        if (a.year === b.year) {
-          return new Date(b.createdAt) - new Date(a.createdAt); // Jeśli ten sam rok, sortuj po dacie utworzenia
-        }
-        return b.year - a.year;
-      });
-
-      setAlbums(sortedAlbums.slice(0,3));
+      setAlbums(data);
       setLoading(false)
     } catch (error) {
       console.log(error);
