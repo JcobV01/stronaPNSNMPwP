@@ -11,6 +11,10 @@ import Navbar from '@components/header/Navbar';
 
 
 import winterImage from '@public/assets/images/header-images/winter-main.webp';
+import springImage from '@public/assets/images/header-images/spring-main.webp'
+import summerImage from '@public/assets/images/header-images/summer-main.webp'
+import autumnImage from '@public/assets/images/header-images/autumn-main.webp'
+
 import cemetery from '@public/assets/images/header-images/cemetery.webp';
 import priests from '@public/assets/images/header-images/priests.webp';
 import gallery from '@public/assets/images/header-images/gallery.webp';
@@ -57,7 +61,7 @@ const DynamicHeader = () => {
                     <Navbar />
                     <header className="w-full h-dvh bg-cover mt-[-75px] relative" >
                         <Image 
-                        src={winterImage} 
+                        src={springImage} 
                         alt="Zdjęcie przedstawiające Kościół"
                         fill
                         sizes="(max-width: 1024px) 100vw, 1920px"
