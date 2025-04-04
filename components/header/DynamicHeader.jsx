@@ -61,7 +61,7 @@ const DynamicHeader = () => {
                     <Navbar />
                     <header className="w-full h-dvh bg-cover mt-[-75px] relative" >
                         <Image 
-                        src={springImage} 
+                        src={summerImage} 
                         alt="Zdjęcie przedstawiające Kościół"
                         fill
                         sizes="(max-width: 1024px) 100vw, 1920px"
