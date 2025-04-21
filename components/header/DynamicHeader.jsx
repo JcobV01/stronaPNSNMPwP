@@ -14,6 +14,7 @@ import winterImage from '@public/assets/images/header-images/winter-main.webp';
 import springImage from '@public/assets/images/header-images/spring-main.webp'
 import summerImage from '@public/assets/images/header-images/summer-main.webp'
 import autumnImage from '@public/assets/images/header-images/autumn-main.webp'
+import zaloba from '@public/assets/images/header-images/zaloba-main.webp'
 
 import cemetery from '@public/assets/images/header-images/cemetery.webp';
 import priests from '@public/assets/images/header-images/priests.webp';
@@ -28,7 +29,7 @@ import nationals from '@public/assets/images/header-images/nationals.webp';
 import sacraments from '@public/assets/images/header-images/sacraments.webp';
 
 export function PreloadResources() {
-    ReactDOM.preload(`${winterImage}`, {
+    ReactDOM.preload(`${zaloba}`, {
         as: 'image',
         fetchPriority: 'high',
     });
@@ -61,7 +62,7 @@ const DynamicHeader = () => {
                     <Navbar />
                     <header className="w-full h-dvh bg-cover mt-[-75px] relative" >
                         <Image 
-                        src={summerImage} 
+                        src={zaloba} 
                         alt="Zdjęcie przedstawiające Kościół"
                         fill
                         sizes="(max-width: 1024px) 100vw, 1920px"
