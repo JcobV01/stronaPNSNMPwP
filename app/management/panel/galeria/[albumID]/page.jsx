@@ -236,7 +236,7 @@ const page = () => {
 
             <article className='w-full flex-1 overflow-y-scroll pr-4'>
                 <div
-                    className="relative  justify-center flex-col"
+                    className="relative  justify-center flex-col mb-[32px]"
                     style={{
                         height: columns > 1 ? siteHeight : "auto",
                         display: columns === 1 ? "flex" : undefined,
