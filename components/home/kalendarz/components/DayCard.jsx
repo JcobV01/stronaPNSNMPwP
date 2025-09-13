@@ -12,6 +12,8 @@ const DayCard = ({dateText, date='', name, color="zielony", texts="", memory=""}
         "biały": "#ffffff"
     }
 
+    console.log(texts)
+
   return (
     <div className="w-[1075px] m-auto flex items-center xl:w-[800px] lg:w-[100%] lg:px-[20px] md:flex-col">
         <div className="w-[165px] h-[165px] flex flex-col flex-center rounded-[5px] md:h-auto md:w-full md:py-[10px] md:flex-row md:gap-[20px] md:rounded-b-none" style={{backgroundColor: displayColor[color]}}>
@@ -23,7 +25,7 @@ const DayCard = ({dateText, date='', name, color="zielony", texts="", memory=""}
 
             <div className="flex gap-[30px]">
                 <p><span className="text-[15px] font-medium sm:text-[13px]">I czytanie: </span>{texts[0]?.title.slice(texts[0]?.title.indexOf("(") + 1, texts[0]?.title.length -1)}</p>
-                {texts?.length > 4 && <p><span className="text-[15px] font-medium">II czytanie: </span>{texts[2]?.title.split("(")[1].slice(0, -1)}</p>}
+                {(texts?.length > 4 && texts[2]?.title !== 'Aklamacja') && <p><span className="text-[15px] font-medium">II czytanie: </span>{texts[2]?.title.split("(")[1].slice(0, -1)}</p>}
             </div>
 
             <p><span className="text-[15px] font-medium sm:text-[13px]">Psalm: </span>{texts[1]?.title.slice(texts[1]?.title.indexOf("(") + 1, texts[1]?.title.length -1)}</p>
