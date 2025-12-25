@@ -5,7 +5,7 @@ import React from 'react'
 
 import ksjanczura from '@public/assets/images/priests/ks-wojciech.webp'
 import ksbubula from '@public/assets/images/priests/ks-daniel.webp'
-import ksbodziony from '@public/assets/images/priests/ks-piotr.webp'
+import ksbodziony from '@public/assets/images/priests/sp-ks-piotr.webp'
 import kspolek from '@public/assets/images/priests/ks-stanislaw.webp'
 import kskopacz from '@public/assets/images/priests/sp-ks-roman.webp'
 import ksdziedzic from '@public/assets/images/priests/sp-ks-michal.webp'
@@ -23,7 +23,7 @@ const duszpasterze = () => {
     },
     {
       image: ksbodziony,
-      name: "Ks. Piotr Bodziony",
+      name: "Śp. Ks. Piotr Bodziony",
       dates: ["12 sierpnia 2013r.", "10 sierpnia 2019r."]
     },
     {
